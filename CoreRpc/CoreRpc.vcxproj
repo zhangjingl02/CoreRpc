@@ -72,7 +72,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\common\net\SocketWapper.h" />
+    <ClInclude Include="src\common\net\connection.h" />
+    <ClInclude Include="src\common\net\net_def.h" />
+    <ClInclude Include="src\common\net\net_buffer.h" />
+    <ClInclude Include="src\common\net\socket_wapper.h" />
     <ClInclude Include="src\common\rpc\RpcChannel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

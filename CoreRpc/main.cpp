@@ -6,7 +6,8 @@
  */
 
 #include <cstdlib>
-
+#include <iostream>
+#include "src\common\net\net_buffer.h"
 using namespace std;
 
 /*
@@ -14,6 +15,10 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 	//test
+	net::NetBuffer buffer;
+	 auto func = [] () { cout << "Hello world"; };  
+    func(); // now call the function
+	 cin.get();
     return 0;
 }
 

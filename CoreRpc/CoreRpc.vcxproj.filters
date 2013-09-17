@@ -15,11 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\common\net\SocketWapper.h">
-      <Filter>common\net</Filter>
-    </ClInclude>
     <ClInclude Include="src\common\rpc\RpcChannel.h">
       <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\connection.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\net_buffer.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\socket_wapper.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\net_def.h">
+      <Filter>common\net</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
