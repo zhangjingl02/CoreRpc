@@ -14,9 +14,17 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-	//test
+	
 	net::NetBuffer buffer;
-	 auto func = [] () { cout << "Hello world"; };  
+
+	buffer.appendInt32((int32_t)65);
+	buffer.appendInt32((int32_t)-98);
+
+	int32_t a=buffer.readInt32();
+	int32_t b=buffer.readInt32();
+	int32_t c=buffer.readInt32();
+	cout << "Hello world"<<a<<"|"<<b<<endl;
+	 auto func = [] () { cout << "Hello world"<<endl; };  
     func(); // now call the functionaa
 	 cin.get();
     return 0;

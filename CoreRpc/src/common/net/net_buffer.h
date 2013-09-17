@@ -26,6 +26,10 @@ namespace net{
 		std::size_t readableBytes()const{return writerIndex_-readerIndex_;} ;
 		std::size_t writableBytes()const{return buffer_.size()-writerIndex_;};
 		bool readBytes(char* message,std::size_t len);
+
+
+
+
 		const char* peek() const {return begin()+readerIndex_;};
 		int8_t peekInt8() const{
 			assert(readableBytes() >= sizeof(int8_t));
@@ -35,19 +39,16 @@ namespace net{
 
 		int16_t peekInt16() const{
 			assert(readableBytes() >= sizeof(int16_t));
-			int16_t x16=0;
-			memcpy(&x16,peek(),sizeof x16);
+			return get16(peek());
 		};
 		int32_t peekInt32() const{
 			assert(readableBytes() >= sizeof(int32_t));
-			int32_t x32=0;
-			memcpy(&x32,peek(),sizeof x32);
+			return get32(peek());
 		};
 
 		int64_t peekInt64() const{
 			assert(readableBytes() >= sizeof(int64_t));
-			int64_t x64=0;
-			memcpy(&x64,peek(),sizeof x64);
+			return get64(peek());
 		};
 
 		void peekString(std::string& str,size_t len)const {
@@ -96,17 +97,70 @@ namespace net{
 			writerIndex_ = kCheapPrepend;
 		}
 
-		void prepend(const void* /*restrict*/ data, size_t len)
-		{
-			assert(len <= prependableBytes());
-			readerIndex_ -= len;
-			const char* d = static_cast<const char*>(data);
-			std::copy(d, d+len, begin()+readerIndex_);
+		void append(const char* data,size_t len){
+
 		}
+
+		void append(const char data){
+			buffer_[writerIndex_++]=data;
+		}
+
+		void appendInt16(int16_t data){
+			append(char(data>>8));
+			append(char(data));
+		}
+
+		void appendInt32(int32_t data){
+			append(char(data>>24));
+			append(char(data>>16));
+			append(char(data>>8));
+			append(char(data));
+		}
+
+
+		//void prepend(const void* /*restrict*/ data, size_t len)
+		//{
+		//	assert(len <= prependableBytes());
+		//	readerIndex_ -= len;
+		//	const char* d = static_cast<const char*>(data);
+		//	std::copy(d, d+len, buffer_.begin()+readerIndex_);
+		//}
+
+		size_t prependableBytes() const{return readerIndex_; };
+
 	private:
 
 		char* begin(){ return &*buffer_.begin();};
 		const char* begin() const { return &*buffer_.begin(); }
+		private:
+			static inline int16_t get16(const char* buffer){
+				int16_t accumulator=buffer[0];
+				accumulator = (accumulator << 8) |buffer[1];
+				return accumulator;
+			}
+
+			static inline int32_t get32(const char* buffer){
+				int32_t accumulator=buffer[0];
+				accumulator = (accumulator << 8) |buffer[1];
+				accumulator = (accumulator << 16) |buffer[2];
+				accumulator = (accumulator << 24) |buffer[3];
+				return accumulator;
+			}
+
+			static inline int64_t get64(const char* buffer){
+				int64_t accumulator=buffer[0];
+				accumulator = (accumulator << 8) |buffer[1];
+				accumulator = (accumulator << 16) |buffer[2];
+				accumulator = (accumulator << 24) |buffer[3];
+
+				accumulator = (accumulator << 32) |buffer[4];
+				accumulator = (accumulator << 40) |buffer[5];
+				accumulator = (accumulator << 48) |buffer[6];
+				accumulator = (accumulator << 56) |buffer[7];
+				return accumulator;
+			}
+
+	private:
 		std::size_t markReaderIndex_;
 		std::vector<char> buffer_;
 		std::size_t readerIndex_;
