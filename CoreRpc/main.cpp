@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 	//test
 	net::NetBuffer buffer;
 	 auto func = [] () { cout << "Hello world"; };  
-    func(); // now call the function
+    func(); // now call the functionaa
 	 cin.get();
     return 0;
 }
