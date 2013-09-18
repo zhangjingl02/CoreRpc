@@ -9,7 +9,7 @@ namespace net{
 	class NetBuffer{
 	public:
 		static const std::size_t kCheapPrepend = 8;
-		static const std::size_t kInitialSize = 1024;
+		static const std::size_t kInitialSize = 1024*5;
 		NetBuffer()
 			:buffer_(kCheapPrepend + kInitialSize),
 			readerIndex_(kCheapPrepend),
@@ -51,9 +51,10 @@ namespace net{
 			return get64(peek());
 		};
 
-		void peekString(std::string& str,size_t len)const {
+		std::string peekString(size_t len)const {
 			assert(readableBytes() >= len);
-			//memcpy(str.begin(),peek(),len);
+			std::string result(peek(),len);
+			return result;
 		};
 
 		int8_t readInt8(){
@@ -75,9 +76,10 @@ namespace net{
 		}
 
 
-		void readString(std::string &str,size_t len){
-			peekString(str,len);
+		std::string readString(size_t len){
+			std::string result=peekString(len);
 			retrieve(len);
+			return result;
 		}
 		void retrieve(size_t len)
 		{
@@ -98,11 +100,20 @@ namespace net{
 		}
 
 		void append(const char* data,size_t len){
+			ensureWritableBytes(len);
+			std::copy(data, data+len, buffer_.begin()+writerIndex_);
+			hasWritten(len);
+		}
 
+		void append(const void* /*restrict*/ data, size_t len)
+		{
+			append(static_cast<const char*>(data), len);
 		}
 
 		void append(const char data){
-			buffer_[writerIndex_++]=data;
+			ensureWritableBytes(1);
+			buffer_[writerIndex_]=data;
+			hasWritten(1);
 		}
 
 		void appendInt16(int16_t data){
@@ -117,48 +128,80 @@ namespace net{
 			append(char(data));
 		}
 
+		char* beginWrite()
+		{ return begin() + writerIndex_; }
 
-		//void prepend(const void* /*restrict*/ data, size_t len)
-		//{
-		//	assert(len <= prependableBytes());
-		//	readerIndex_ -= len;
-		//	const char* d = static_cast<const char*>(data);
-		//	std::copy(d, d+len, buffer_.begin()+readerIndex_);
-		//}
+		const char* beginWrite() const
+		{ return begin() + writerIndex_; }
+
+		void hasWritten(size_t len)
+		{ writerIndex_ += len; }
+
 
 		size_t prependableBytes() const{return readerIndex_; };
+
+		void ensureWritableBytes(size_t len)
+		{
+			if (writableBytes() < len)
+			{
+				makeSpace(len);
+			}
+			assert(writableBytes() >= len);
+		}
 
 	private:
 
 		char* begin(){ return &*buffer_.begin();};
 		const char* begin() const { return &*buffer_.begin(); }
-		private:
-			static inline int16_t get16(const char* buffer){
-				int16_t accumulator=buffer[0];
-				accumulator = (accumulator << 8) |buffer[1];
-				return accumulator;
-			}
+	private:
+		static inline int16_t get16(const char* buffer){
+			int16_t accumulator=buffer[0];
+			accumulator = (accumulator << 8) |buffer[1];
+			return accumulator;
+		}
 
-			static inline int32_t get32(const char* buffer){
-				int32_t accumulator=buffer[0];
-				accumulator = (accumulator << 8) |buffer[1];
-				accumulator = (accumulator << 16) |buffer[2];
-				accumulator = (accumulator << 24) |buffer[3];
-				return accumulator;
-			}
+		static inline int32_t get32(const char* buffer){
+			int32_t accumulator=buffer[0];
+			accumulator = (accumulator << 8) |buffer[1];
+			accumulator = (accumulator << 16) |buffer[2];
+			accumulator = (accumulator << 24) |buffer[3];
+			return accumulator;
+		}
 
-			static inline int64_t get64(const char* buffer){
-				int64_t accumulator=buffer[0];
-				accumulator = (accumulator << 8) |buffer[1];
-				accumulator = (accumulator << 16) |buffer[2];
-				accumulator = (accumulator << 24) |buffer[3];
+		static inline int64_t get64(const char* buffer){
+			int64_t accumulator=buffer[0];
+			accumulator = (accumulator << 8) |buffer[1];
+			accumulator = (accumulator << 16) |buffer[2];
+			accumulator = (accumulator << 24) |buffer[3];
 
-				accumulator = (accumulator << 32) |buffer[4];
-				accumulator = (accumulator << 40) |buffer[5];
-				accumulator = (accumulator << 48) |buffer[6];
-				accumulator = (accumulator << 56) |buffer[7];
-				return accumulator;
+			accumulator = (accumulator << 32) |buffer[4];
+			accumulator = (accumulator << 40) |buffer[5];
+			accumulator = (accumulator << 48) |buffer[6];
+			accumulator = (accumulator << 56) |buffer[7];
+			return accumulator;
+		}
+
+		void makeSpace(size_t len)
+		{
+			if (writableBytes() + prependableBytes() < len + kCheapPrepend)
+			{
+				// FIXME: move readable data
+				buffer_.resize(writerIndex_+len);
 			}
+			else
+			{
+				// move readable data to the front, make space inside buffer
+				assert(kCheapPrepend < readerIndex_);
+				size_t readable = readableBytes();
+				std::copy(begin()+readerIndex_,
+					begin()+writerIndex_,
+					buffer_.begin()+kCheapPrepend);
+				readerIndex_ = kCheapPrepend;
+				writerIndex_ = readerIndex_ + readable;
+				assert(readable == readableBytes());
+			}
+		}
+
 
 	private:
 		std::size_t markReaderIndex_;
