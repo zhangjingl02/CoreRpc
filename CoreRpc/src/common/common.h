@@ -1,6 +1,9 @@
 #ifndef _H_COMMON_H_
 #define _H_COMMON_H_
 #include <boost/thread.hpp>
+#ifdef WIN32
+#define GLOG_NO_ABBREVIATED_SEVERITIES
+#endif
 #include <glog/logging.h>
 
 #define _TID_ boost::this_thread::get_id() 

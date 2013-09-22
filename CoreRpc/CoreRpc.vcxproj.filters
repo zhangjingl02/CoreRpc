@@ -5,6 +5,9 @@
     <ClCompile Include="src\common\net\connection.cpp">
       <Filter>common\net</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\net\tcp_server.cpp">
+      <Filter>common\net</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="common">
@@ -35,6 +38,9 @@
     </ClInclude>
     <ClInclude Include="src\common\common.h">
       <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\tcp_server.h">
+      <Filter>common\net</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

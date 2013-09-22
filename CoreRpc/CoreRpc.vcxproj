@@ -49,6 +49,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\include;D:\boost\boost_1_52_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;__STL_DEBUG;GOOGLE_GLOG_DLL_DECL=;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -73,6 +74,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\common\net\connection.cpp" />
+    <ClCompile Include="src\common\net\tcp_server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h" />
@@ -80,6 +82,7 @@
     <ClInclude Include="src\common\net\net_def.h" />
     <ClInclude Include="src\common\net\net_buffer.h" />
     <ClInclude Include="src\common\net\socket_wapper.h" />
+    <ClInclude Include="src\common\net\tcp_server.h" />
     <ClInclude Include="src\common\rpc\RpcChannel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

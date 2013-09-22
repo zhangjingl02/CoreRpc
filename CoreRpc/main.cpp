@@ -12,7 +12,7 @@
 #include <boost/asio.hpp>
 #include "src/common/net/net_buffer.h"
 #include "src/common/net/connection.h"
-
+#include "src/common/net/tcp_server.h"
 #include <glog/logging.h>
 
 using namespace std;
@@ -27,8 +27,16 @@ LOG(INFO) <<"my first info";   int valueint=10;
 LOG_IF(ERROR, valueint=10)<<" valueint=10";
 boost::asio::io_service io;
 
-	net::Connection con(io);
-	con.connect("192.168.2.129","9020");
+//#ifdef WIN32
+net::TcpServer server(io);
+server.start("192.168.1.108",9898);
+	io.run();
+//#else
+	//net::Connection con(io);
+	//con.connect("192.168.1.108","9898");
+//#endif
+
+
 	net::NetBuffer buffer;
 
 	buffer.appendInt32((int32_t)65);
