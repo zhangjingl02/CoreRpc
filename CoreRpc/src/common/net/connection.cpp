@@ -1,5 +1,7 @@
-#include "../common.h"
+
+#include <cstdlib>
 #include <iostream>
+#include "../common.h"
 #include "connection.h"
 using namespace boost::asio::ip;
 namespace net {
@@ -9,10 +11,11 @@ namespace net {
 
     }
 
-	Connection::Connection(boost::asio::io_service& io_service,boost::asio::ip::tcp::socket socket) : resolver_(io_service),
-    socket_(socket) {
+	Connection::Connection(boost::asio::io_service& io_service,boost::asio::ip::tcp::socket socket) : resolver_(io_service)
+    ,socket_(io_service) 
+	{
 
-    }
+   }
 
     size_t Connection::send(const void *message, std::size_t len) {
         return 0;

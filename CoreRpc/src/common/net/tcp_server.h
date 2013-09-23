@@ -13,7 +13,7 @@
 #include "connection.h"
 using namespace boost::asio::ip;
 namespace net{
-	class TcpServer: public boost::enable_shared_from_this<TcpServer>
+	class TcpServer
 	{
 
 		public:

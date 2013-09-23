@@ -3,7 +3,7 @@
 #include <boost/asio.hpp>
 
 
-using namespace boost::asio;
+using namespace boost::asio::ip;
 /**
 **Socket Connection
 **/
@@ -20,7 +20,7 @@ namespace net{
 
 	public:
 		explicit Connection(boost::asio::io_service& io_service);
-		explicit Connection(boost::asio::io_service& io_service,boost::asio::ip::tcp::socket socket);
+		explicit Connection(boost::asio::io_service& io_service,tcp::socket socket);
 	public:
 		size_t send(const void *message,std::size_t len);
 		size_t send(const char *message,std::size_t len);
