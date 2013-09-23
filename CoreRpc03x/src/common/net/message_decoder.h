@@ -5,11 +5,10 @@
 namespace net{
 	template<typename Message>
 	class MessageDecoder{
-	//private:
-	//	MessageDecoder(){};
+
 	public:
 		template<typename Message>
-		Message decoder(const TcpConnectionPtr& connection,const NetBuffer& buffer )=0;
+		Message decoder(const TcpConnectionPtr<Message>& connection,const NetBuffer& buffer )=0;
 
 	};
 }

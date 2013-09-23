@@ -50,5 +50,11 @@
     <ClInclude Include="src\common\net\Test.h">
       <Filter>common\net</Filter>
     </ClInclude>
+    <ClInclude Include="src\common\net\message_encoder.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\message_handler.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

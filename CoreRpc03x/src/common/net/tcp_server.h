@@ -10,6 +10,7 @@
 using boost::asio::ip::tcp;
 
 namespace net{
+	template<typename Message>
 	class TcpServer
 	{
 	public:
@@ -25,16 +26,19 @@ namespace net{
 
 
 	private:
+		template<typename Message>
 		void start_accept()
 		{
 			//TcpConnectionPtr new_session(new TcpConnection(io_service_));//=new TcpConnection(io_service_);
-			TcpConnection* new_session=new TcpConnection(io_service_);
+			TcpConnection<Message>* new_session=new TcpConnection<Message>(io_service_);
+			Test * decoder=new Test();
+			new_session->decoder();
 			acceptor_.async_accept(new_session->socket(),
 				boost::bind(&TcpServer::handle_accept, this, new_session,
 				boost::asio::placeholders::error));
 		}
 
-		void handle_accept(TcpConnection* new_session,
+		void handle_accept(TcpConnection<Message>* new_session,
 			const boost::system::error_code& error)
 		{
 			if (!error)

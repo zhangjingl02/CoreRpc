@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
 	LOG_IF(ERROR, valueint=10)<<" valueint=10";
 	boost::asio::io_service service;
 	net::TcpServer s(service);
-	s.start(9989);
+	s.start(9997);
 	service.run();
 	std::cin.get();
     return 0;

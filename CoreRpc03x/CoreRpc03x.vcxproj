@@ -75,6 +75,8 @@
     <ClInclude Include="src\common\common.h" />
     <ClInclude Include="src\common\net\frame_decoder.h" />
     <ClInclude Include="src\common\net\message_decoder.h" />
+    <ClInclude Include="src\common\net\message_encoder.h" />
+    <ClInclude Include="src\common\net\message_handler.h" />
     <ClInclude Include="src\common\net\net_buffer.h" />
     <ClInclude Include="src\common\net\tcp_connection.h" />
     <ClInclude Include="src\common\net\tcp_server.h" />
