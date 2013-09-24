@@ -39,6 +39,9 @@
     <ClCompile Include="src\common\net\message_dispatcher.cpp">
       <Filter>common\net</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\rpc\rpc.pb.cc">
+      <Filter>common\rpc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -75,6 +78,9 @@
       <Filter>common\rpc</Filter>
     </ClInclude>
     <ClInclude Include="src\common\rpc\protobuf_decoder.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc.pb.h">
       <Filter>common\rpc</Filter>
     </ClInclude>
   </ItemGroup>

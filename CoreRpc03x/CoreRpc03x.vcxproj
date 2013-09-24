@@ -72,6 +72,7 @@
     <ClCompile Include="src\common\net\message_dispatcher.cpp" />
     <ClCompile Include="src\common\net\tcp_server.cpp" />
     <ClCompile Include="src\common\rpc\protobuf_decoder.cpp" />
+    <ClCompile Include="src\common\rpc\rpc.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h" />
@@ -86,6 +87,7 @@
     <ClInclude Include="src\common\net\Test.h" />
     <ClInclude Include="src\common\rpc\protobuf_decoder.h" />
     <ClInclude Include="src\common\rpc\protobuf_frame_decoder.h" />
+    <ClInclude Include="src\common\rpc\rpc.pb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
