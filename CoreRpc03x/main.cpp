@@ -11,25 +11,33 @@
 #include <iostream>
 #include <boost/asio.hpp>
 #include <glog/logging.h>
+#include "src/common/net/tcp_connection.h"
 #include "src/common/net/Test.h"
 #include "src/common/net/tcp_server.h"
 using namespace std;
+
+void test(net::MessageDecoder* test,int aa){
+
+}
 
 /*
  * 
  */
 int main(int argc, char** argv) {
 
-	net::TcpConnectionPtr ptr;
-	net::NetBuffer buffer;
-	net::Test t;
-	std::string rest=t.decoder(ptr,buffer);
-	cout<<rest<<"|======="<<endl;
+	
+	boost::asio::io_service service;
+	
+	shared_ptr<void> n(new net::TcpConnection(service));
+	
+	//net::TcpConnectionPtr ptr=(net::TcpConnectionPtr)n;
+	
+	//cout<<rest<<"|======="<<endl;
 	google::InitGoogleLogging(argv[0]);  
 	google::LogToStderr();//只输出到标准错误输出
 	LOG(INFO) <<"my first info";   int valueint=10;  
 	LOG_IF(ERROR, valueint=10)<<" valueint=10";
-	boost::asio::io_service service;
+	
 	net::TcpServer s(service);
 	s.start(9997);
 	service.run();

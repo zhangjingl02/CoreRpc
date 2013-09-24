@@ -149,6 +149,9 @@ namespace net{
 			assert(writableBytes() >= len);
 		}
 
+		bool isReadable(){
+			return (writerIndex_-readerIndex_>0);
+		}
 	private:
 
 		char* begin(){ return &*buffer_.begin();};

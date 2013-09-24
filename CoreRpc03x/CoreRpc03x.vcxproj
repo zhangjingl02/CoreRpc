@@ -49,8 +49,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\boost\boost_1_52_0\bin\vc11\lib;E:\Soft\dev\VS\glog-0.3.3\glog-0.3.3\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libglog_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Soft\dev\protobuf-2.5.0\vsprojects\Debug;D:\boost\boost_1_52_0\bin\vc11\lib;E:\Soft\dev\VS\glog-0.3.3\glog-0.3.3\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libglog_static.lib;libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -69,18 +69,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\common\net\message_dispatcher.cpp" />
     <ClCompile Include="src\common\net\tcp_server.cpp" />
+    <ClCompile Include="src\common\rpc\protobuf_decoder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h" />
     <ClInclude Include="src\common\net\frame_decoder.h" />
     <ClInclude Include="src\common\net\message_decoder.h" />
     <ClInclude Include="src\common\net\message_encoder.h" />
+    <ClInclude Include="src\common\net\message_filter.h" />
     <ClInclude Include="src\common\net\message_handler.h" />
     <ClInclude Include="src\common\net\net_buffer.h" />
     <ClInclude Include="src\common\net\tcp_connection.h" />
     <ClInclude Include="src\common\net\tcp_server.h" />
     <ClInclude Include="src\common\net\Test.h" />
+    <ClInclude Include="src\common\rpc\protobuf_decoder.h" />
+    <ClInclude Include="src\common\rpc\protobuf_frame_decoder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

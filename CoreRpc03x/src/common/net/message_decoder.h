@@ -3,13 +3,15 @@
 #include "tcp_connection.h"
 #include "net_buffer.h"
 namespace net{
-	template<typename Message>
+	
+	class TcpConnection;
 	class MessageDecoder{
-
+	
 	public:
-		template<typename Message>
-		Message decoder(const TcpConnectionPtr<Message>& connection,const NetBuffer& buffer )=0;
-
+		virtual  void decode(const TcpConnection& connection, NetBuffer& buffer)=0;
+	
+		
+	
 	};
 }
 

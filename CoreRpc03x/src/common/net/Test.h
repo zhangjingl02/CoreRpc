@@ -2,12 +2,12 @@
 #include "message_decoder.h"
 namespace net{
 
-	class Test :public MessageDecoder<std::string>{
+	class Test :public MessageDecoder{
 	
 	public :
-		std::string decoder(const TcpConnectionPtr<std::string>& connection,const NetBuffer& buffer){
+		void decoder(const TcpConnection& connection,const NetBuffer& buffer){
 			std::string test="haha  test";
-			return test;
+			
 		}
 	
 	};

@@ -19,12 +19,24 @@
     <Filter Include="common\net">
       <UniqueIdentifier>{acea8a03-2557-47d8-84ad-2d6fdef584e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="common\rpc">
+      <UniqueIdentifier>{46165c5b-1999-477a-9372-acda41645d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\buffer">
+      <UniqueIdentifier>{2f734646-1385-4fb9-a5b2-49b23db932e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\common\net\tcp_server.cpp">
+      <Filter>common\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\rpc\protobuf_decoder.cpp">
+      <Filter>common\rpc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\net\message_dispatcher.cpp">
       <Filter>common\net</Filter>
     </ClCompile>
   </ItemGroup>
@@ -55,6 +67,15 @@
     </ClInclude>
     <ClInclude Include="src\common\net\message_handler.h">
       <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\message_filter.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\protobuf_frame_decoder.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\protobuf_decoder.h">
+      <Filter>common\rpc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
