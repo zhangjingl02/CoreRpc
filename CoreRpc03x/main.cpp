@@ -14,6 +14,8 @@
 #include "src/common/net/tcp_connection.h"
 #include "src/common/net/Test.h"
 #include "src/common/net/tcp_server.h"
+#include <boost/shared_array.hpp>
+#include <boost/circular_buffer.hpp>
 using namespace std;
 
 void test(net::MessageDecoder* test,int aa){
@@ -25,10 +27,23 @@ void test(net::MessageDecoder* test,int aa){
  */
 int main(int argc, char** argv) {
 
+
+	boost::circular_buffer<int> cir(5);
 	
+	boost::shared_array<int> buffer(new int[10]);
+	buffer[4]=4;
+	buffer[5]=5;
+	buffer[6]=6;
+	buffer[7]=7;
+	buffer[8]=8;
+	
+	
+
+	cout<<buffer[0]<<"|"<<buffer[1]<<"|"<<buffer[2]<<"|"<<(11%12)<<endl;
+
 	boost::asio::io_service service;
 	
-	shared_ptr<void> n(new net::TcpConnection(service));
+	//boost::shared_ptr<void> n(new net::TcpConnection(service));
 	
 	//net::TcpConnectionPtr ptr=(net::TcpConnectionPtr)n;
 	

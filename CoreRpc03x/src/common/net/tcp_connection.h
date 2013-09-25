@@ -8,6 +8,8 @@
 #include <boost/enable_shared_from_this.hpp>
 #include "message_decoder.h"
 #include "net_buffer.h"
+#include "../buffer/shared_buffer.h"
+#include "../common.h"
 using boost::asio::ip::tcp;
 namespace net{
 	class MessageDecoder;
@@ -15,7 +17,7 @@ namespace net{
 	{
 	public:
 		TcpConnection(boost::asio::io_service& io_service)
-			: socket_(io_service)
+			: socket_(io_service),buffer(4096)
 		{
 		}
 
@@ -36,7 +38,7 @@ namespace net{
 	private:
 
 		void read(){
-			socket_.async_read_some(boost::asio::buffer(data_, max_length),
+			socket_.async_read_some(buffer::buffer(buffer),
 				boost::bind(&TcpConnection::handle_read, this,
 				boost::asio::placeholders::error,
 				boost::asio::placeholders::bytes_transferred));
@@ -47,9 +49,11 @@ namespace net{
 		{
 			if (!error)
 			{
+				if(bytes_transferred==0){read();}else{
 				
-				buffer_.append(&data_,bytes_transferred);
-				messageDecoder_->decode(*this,buffer_);
+				LOG_INF("read size:"<<buffer.capacity()<<"|"<<bytes_transferred);
+				//messageDecoder_->decode(*this,buffer_);
+				read();}
 			}
 			else
 			{
@@ -75,8 +79,9 @@ namespace net{
 		tcp::socket socket_;
 		enum { max_length = 1024 };
 		char data_[max_length];
+		buffer::uint8 data2_[max_length];
 		NetBuffer buffer_;
-		
+		buffer::shared_buffer buffer;
 		MessageDecoder* messageDecoder_;
 	};
 
