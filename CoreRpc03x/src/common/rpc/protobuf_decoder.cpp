@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "protobuf_decoder.h"
-
+#include "rpc.pb.h"
 
 namespace rpc{
 	void ProtobufDecoder::decode(const net::TcpConnection& connection, net::NetBuffer& buffer){
@@ -19,6 +19,17 @@ namespace rpc{
 				istream.ReadVarint32(&len);
 				if(buffer.readableBytes()>=len){
 					std::cout<<"read rpc buffer success!"<<std::endl;
+
+					TransferMessage tm;
+					tm.ParseFromArray(buffer.readStream(len),len);
+					std::cout<<"command:"<<tm.command()<<std::endl;
+
+					//if(tm.command()==TransferMessage_Command::TransferMessage_Command_Login){
+					//	Login login;
+					//	login.ParseFromString(tm.message());
+
+					//	std::cout<<"pwd:"<<login.password()<<"|user:"<<login.username()<<std::endl;
+					//}
 				}
 			}
 

@@ -5,7 +5,7 @@ namespace net{
 	class Test :public MessageDecoder{
 	
 	public :
-		void decoder(const TcpConnection& connection, buffer::shared_buffer& buffer){
+		void decoder(const TcpConnection& connection, NetBuffer& buffer){
 			std::string test="haha  test";
 			
 		}

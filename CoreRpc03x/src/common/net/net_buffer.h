@@ -62,7 +62,11 @@ namespace net{
 			retrieve(sizeof(int8_t));
 			return result;
 		}
-
+		const char* readStream(size_t size){
+			const char* result=peek();
+			retrieve(size);
+			return result;
+		}
 		int16_t readInt16(){
 			int16_t result=peekInt16();
 			retrieve(sizeof(int16_t));

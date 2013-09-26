@@ -45,6 +45,9 @@
     <ClCompile Include="src\common\buffer\byte_buffer.cpp">
       <Filter>common\buffer</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\rpc\rpc.pb.cc">
+      <Filter>common\rpc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="src\common\buffer\byte_buffer.h">
       <Filter>common\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc.pb.h">
+      <Filter>common\rpc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
