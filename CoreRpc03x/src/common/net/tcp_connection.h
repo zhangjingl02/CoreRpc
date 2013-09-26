@@ -13,6 +13,8 @@
 using boost::asio::ip::tcp;
 namespace net{
 	class MessageDecoder;
+
+	
 	class TcpConnection:boost::enable_shared_from_this<TcpConnection>
 	{
 	public:

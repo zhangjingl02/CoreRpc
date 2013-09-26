@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{814853EC-DBDA-49C2-8C7B-F5A3BB27E5C7}</ProjectGuid>
-    <RootNamespace>CoreRpc03x</RootNamespace>
+    <ProjectGuid>{D1882C90-D778-46CA-9F9D-2E8426795166}</ProjectGuid>
+    <RootNamespace>Test</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -44,13 +44,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\include;D:\boost\boost_1_52_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;__STL_DEBUG;GOOGLE_GLOG_DLL_DECL=;_SECURE_SCL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Soft\dev\protobuf-2.5.0\vsprojects\Debug;D:\boost\boost_1_52_0\bin\vc11\lib;E:\Soft\dev\VS\glog-0.3.3\glog-0.3.3\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libglog_static.lib;libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Soft\dev\protobuf-2.5.0\vsprojects\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -69,26 +68,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\common\net\message_dispatcher.cpp" />
-    <ClCompile Include="src\common\net\tcp_server.cpp" />
-    <ClCompile Include="src\common\rpc\protobuf_decoder.cpp" />
-    <ClCompile Include="src\common\rpc\rpc.pb.cc" />
+    <ClCompile Include="rpc.pb.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\common\common.h" />
-    <ClInclude Include="src\common\net\frame_decoder.h" />
-    <ClInclude Include="src\common\net\message_decoder.h" />
-    <ClInclude Include="src\common\net\message_encoder.h" />
-    <ClInclude Include="src\common\net\message_filter.h" />
-    <ClInclude Include="src\common\net\message_handler.h" />
-    <ClInclude Include="src\common\net\net_buffer.h" />
-    <ClInclude Include="src\common\net\net_def.h" />
-    <ClInclude Include="src\common\net\tcp_connection.h" />
-    <ClInclude Include="src\common\net\tcp_server.h" />
-    <ClInclude Include="src\common\net\Test.h" />
-    <ClInclude Include="src\common\rpc\protobuf_decoder.h" />
-    <ClInclude Include="src\common\rpc\protobuf_frame_decoder.h" />
-    <ClInclude Include="src\common\rpc\rpc.pb.h" />
+    <ClInclude Include="rpc.pb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

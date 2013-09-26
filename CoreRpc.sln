@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoreRpc", "CoreRpc\CoreRpc.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoreRpc03x", "CoreRpc03x\CoreRpc03x.vcxproj", "{814853EC-DBDA-49C2-8C7B-F5A3BB27E5C7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{D1882C90-D778-46CA-9F9D-2E8426795166}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{814853EC-DBDA-49C2-8C7B-F5A3BB27E5C7}.Debug|Win32.Build.0 = Debug|Win32
 		{814853EC-DBDA-49C2-8C7B-F5A3BB27E5C7}.Release|Win32.ActiveCfg = Release|Win32
 		{814853EC-DBDA-49C2-8C7B-F5A3BB27E5C7}.Release|Win32.Build.0 = Release|Win32
+		{D1882C90-D778-46CA-9F9D-2E8426795166}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1882C90-D778-46CA-9F9D-2E8426795166}.Debug|Win32.Build.0 = Debug|Win32
+		{D1882C90-D778-46CA-9F9D-2E8426795166}.Release|Win32.ActiveCfg = Release|Win32
+		{D1882C90-D778-46CA-9F9D-2E8426795166}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

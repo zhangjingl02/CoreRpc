@@ -11,7 +11,7 @@ namespace rpc{
 		public:
 			ProtobufDecoder(){}
 		public :
-			void decode(const net::TcpConnection& connection, net::NetBuffer& buffer);
+			int decode(const net::TcpConnection& connection, net::NetBuffer& buffer);
 		private:
 
 	};

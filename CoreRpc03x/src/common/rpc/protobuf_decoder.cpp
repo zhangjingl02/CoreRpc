@@ -2,15 +2,15 @@
 
 #include "protobuf_decoder.h"
 #include "rpc.pb.h"
-
+#include "../net/net_
 namespace rpc{
-	void ProtobufDecoder::decode(const net::TcpConnection& connection, net::NetBuffer& buffer){
+	int ProtobufDecoder::decode(const net::TcpConnection& connection, net::NetBuffer& buffer){
 		buffer.markReaderIndex();
 		google::protobuf::uint8 buf[5]={'\0','\0','\0','\0','\0'};
 		for(int i=0;i<5;i++){
 			if(!buffer.isReadable()){
 				buffer.resetReaderIndex();
-				return;
+				return NEED_DATA;
 			}
 			buf[i]=buffer.readInt8();
 			if(buf[i]>0){
@@ -24,12 +24,12 @@ namespace rpc{
 					tm.ParseFromArray(buffer.readStream(len),len);
 					std::cout<<"command:"<<tm.command()<<std::endl;
 
-					//if(tm.command()==TransferMessage_Command::TransferMessage_Command_Login){
-					//	Login login;
-					//	login.ParseFromString(tm.message());
+					if(tm.command()==::TransferMessage_Command_Login){
+						Login login;
+						login.ParseFromString(tm.message());
 
-					//	std::cout<<"pwd:"<<login.password()<<"|user:"<<login.username()<<std::endl;
-					//}
+						std::cout<<"pwd:"<<login.password()<<"|user:"<<login.username()<<std::endl;
+					}
 				}
 			}
 

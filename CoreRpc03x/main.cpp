@@ -31,6 +31,9 @@ int main(int argc, char** argv) {
 
     
 	TransferMessage tm;
+        tm.set_command(TransferMessage_Command_LoginRsp);
+       // 3
+      
         /*
 	tm.set_command(TransferMessage::Command::TransferMessage_Command_Login);
 	tm.set_message("this is a test");
