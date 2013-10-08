@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
                 */
 	boost::asio::io_service service;
 	
-	//boost::shared_ptr<void> n(new net::TcpConnection(service));
+	
 	
 	//net::TcpConnectionPtr ptr=(net::TcpConnectionPtr)n;
 	

@@ -25,6 +25,9 @@
     <Filter Include="common\buffer">
       <UniqueIdentifier>{2f734646-1385-4fb9-a5b2-49b23db932e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="common\util">
+      <UniqueIdentifier>{2a96c95e-00d3-4df7-be42-95601a66c1c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -85,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="src\common\net\net_def.h">
       <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\message_dispatcher.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\util\blocking_queue.h">
+      <Filter>common\util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

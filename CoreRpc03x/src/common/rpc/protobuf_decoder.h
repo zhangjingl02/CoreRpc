@@ -5,14 +5,18 @@
 #include "../net/tcp_connection.h"
 #include "../net/message_decoder.h"
 #include "../net/net_buffer.h"
+#include "../net/message_dispatcher.h"
+#include "rpc.pb.h"
 namespace rpc{
 	class ProtobufDecoder: public net::MessageDecoder
 	{
 		public:
 			ProtobufDecoder(){}
+			ProtobufDecoder(net::MessageDispatcher<TransferMessage>* dispatcher);
 		public :
 			int decode(const net::TcpConnection& connection, net::NetBuffer& buffer);
 		private:
+			net::MessageDispatcher<TransferMessage>* dispatcher_;
 
 	};
 }

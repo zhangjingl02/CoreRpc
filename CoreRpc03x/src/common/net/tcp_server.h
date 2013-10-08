@@ -23,7 +23,7 @@ namespace net{
 
 		void start(const char* ip_address,const short port);
 		void start(const short port);
-
+		
 
 	private:
 		void start_accept()

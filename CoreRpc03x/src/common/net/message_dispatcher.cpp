@@ -1,13 +1,5 @@
-#ifndef _H_NET_MESSAGE_DISPATCHER_H
-#define _H_NET_MESSAGE_DISPATCHER_H
+#include "message_dispatcher.h"
 namespace net{
-
-	class MessageDispatcher{
 	
-	public:
-		
-	private:
-
-	};
+	
 }
-#endif
