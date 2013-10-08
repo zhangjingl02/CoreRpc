@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\common\net\message_dispatcher.cpp" />
+    <ClCompile Include="src\common\net\service_skeleton.cpp" />
     <ClCompile Include="src\common\net\tcp_server.cpp" />
     <ClCompile Include="src\common\rpc\protobuf_decoder.cpp" />
     <ClCompile Include="src\common\rpc\rpc.pb.cc" />
@@ -84,12 +85,14 @@
     <ClInclude Include="src\common\net\message_handler.h" />
     <ClInclude Include="src\common\net\net_buffer.h" />
     <ClInclude Include="src\common\net\net_def.h" />
+    <ClInclude Include="src\common\net\service_skeleton.h" />
     <ClInclude Include="src\common\net\tcp_connection.h" />
     <ClInclude Include="src\common\net\tcp_server.h" />
     <ClInclude Include="src\common\net\Test.h" />
     <ClInclude Include="src\common\rpc\protobuf_decoder.h" />
     <ClInclude Include="src\common\rpc\protobuf_frame_decoder.h" />
     <ClInclude Include="src\common\rpc\rpc.pb.h" />
+    <ClInclude Include="src\common\rpc\rpc_service_skeleton.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

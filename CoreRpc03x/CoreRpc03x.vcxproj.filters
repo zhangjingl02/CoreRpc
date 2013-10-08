@@ -45,6 +45,9 @@
     <ClCompile Include="src\common\rpc\rpc.pb.cc">
       <Filter>common\rpc</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\net\service_skeleton.cpp">
+      <Filter>common\net</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -94,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="src\common\util\blocking_queue.h">
       <Filter>common\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\service_skeleton.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc_service_skeleton.h">
+      <Filter>common\rpc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
