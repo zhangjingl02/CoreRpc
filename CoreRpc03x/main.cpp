@@ -45,6 +45,7 @@ LOG_IF(ERROR, valueint=10)<<" valueint=10";
 	server.decoder(&decoder);
 	sk.start();
 	server.start(9997);
+	io.run();
 	cin.get();
     return 0;
 }
