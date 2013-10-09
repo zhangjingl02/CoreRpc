@@ -32,6 +32,7 @@ void test(net::MessageDecoder* test,int aa){
  * 
  */
 int main(int argc, char** argv) {
+
 	google::InitGoogleLogging(argv[0]);  
 google::LogToStderr();//只输出到标准错误输出
 LOG(INFO) <<"my first info";   int valueint=10;  
