@@ -11,10 +11,11 @@ namespace rpc{
 	class ProtobufDecoder: public net::MessageDecoder
 	{
 		public:
-			ProtobufDecoder(){}
-			ProtobufDecoder(net::MessageDispatcher<TransferMessage>* dispatcher);
+			
+			ProtobufDecoder(net::MessageDispatcher<TransferMessage>* dispatcher)
+				:dispatcher_(dispatcher){}
 		public :
-			int decode(const net::TcpConnection& connection, net::NetBuffer& buffer);
+			int decode(net::TcpConnection& connection, net::NetBuffer& buffer);
 		private:
 			net::MessageDispatcher<TransferMessage>* dispatcher_;
 

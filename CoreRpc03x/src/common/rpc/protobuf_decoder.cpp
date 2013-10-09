@@ -4,7 +4,7 @@
 #include "rpc.pb.h"
 #include "../net/net_def.h"
 namespace rpc{
-	int ProtobufDecoder::decode(const net::TcpConnection& connection, net::NetBuffer& buffer){
+	int ProtobufDecoder::decode(net::TcpConnection& connection, net::NetBuffer& buffer){
 		buffer.markReaderIndex();
 		google::protobuf::uint8 buf[5]={'\0','\0','\0','\0','\0'};
 		for(int i=0;i<5;i++){
@@ -22,7 +22,7 @@ namespace rpc{
 					boost::shared_ptr<TransferMessage> messagePtr(new TransferMessage());
 				
 					if(messagePtr->ParseFromArray(buffer.readStream(len),len)){
-						dispatcher_->pushMessage(messagePtr);
+						dispatcher_->pushMessage(net::TcpConnectionPtr(&connection),messagePtr);
 					}
 					
 				}

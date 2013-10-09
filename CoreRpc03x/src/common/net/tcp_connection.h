@@ -15,7 +15,7 @@ namespace net{
 	class MessageDecoder;
 
 	
-	class TcpConnection:boost::enable_shared_from_this<TcpConnection>
+	class TcpConnection:public boost::enable_shared_from_this<TcpConnection>
 	{
 	public:
 		TcpConnection(boost::asio::io_service& io_service)

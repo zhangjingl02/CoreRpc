@@ -23,6 +23,8 @@ namespace net{
 
 		void start(const char* ip_address,const short port);
 		void start(const short port);
+
+		void decoder(MessageDecoder* decoder){decoder_=decoder;};
 		
 
 	private:
@@ -30,7 +32,7 @@ namespace net{
 		{
 			//TcpConnectionPtr new_session(new TcpConnection(io_service_));//=new TcpConnection(io_service_);
 			TcpConnection* new_session=new TcpConnection(io_service_);
-			new_session->decoder(new rpc::ProtobufDecoder());
+			//new_session->decoder(decoder_);
 			acceptor_.async_accept(new_session->socket(),
 				boost::bind(&TcpServer::handle_accept, this, new_session,
 				boost::asio::placeholders::error));
@@ -56,6 +58,7 @@ namespace net{
 	private:
 		boost::asio::io_service& io_service_;
 		tcp::acceptor acceptor_;
+		MessageDecoder* decoder_;
 	};
 }
 #endif

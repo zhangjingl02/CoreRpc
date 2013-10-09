@@ -48,6 +48,12 @@
     <ClCompile Include="src\common\net\service_skeleton.cpp">
       <Filter>common\net</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\rpc\rpc_service_skeleton.cpp">
+      <Filter>common\rpc</Filter>
+    </ClCompile>
+    <ClCompile Include="ismp.pb.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -103,6 +109,15 @@
     </ClInclude>
     <ClInclude Include="src\common\rpc\rpc_service_skeleton.h">
       <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\RpcChannel.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="ismp.pb.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\net_package.h">
+      <Filter>common\net</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

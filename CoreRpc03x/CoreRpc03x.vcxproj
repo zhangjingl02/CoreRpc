@@ -68,14 +68,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ismp.pb.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\common\net\message_dispatcher.cpp" />
     <ClCompile Include="src\common\net\service_skeleton.cpp" />
     <ClCompile Include="src\common\net\tcp_server.cpp" />
     <ClCompile Include="src\common\rpc\protobuf_decoder.cpp" />
     <ClCompile Include="src\common\rpc\rpc.pb.cc" />
+    <ClCompile Include="src\common\rpc\rpc_service_skeleton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ismp.pb.h" />
     <ClInclude Include="src\common\common.h" />
     <ClInclude Include="src\common\net\frame_decoder.h" />
     <ClInclude Include="src\common\net\message_decoder.h" />
@@ -85,6 +88,7 @@
     <ClInclude Include="src\common\net\message_handler.h" />
     <ClInclude Include="src\common\net\net_buffer.h" />
     <ClInclude Include="src\common\net\net_def.h" />
+    <ClInclude Include="src\common\net\net_package.h" />
     <ClInclude Include="src\common\net\service_skeleton.h" />
     <ClInclude Include="src\common\net\tcp_connection.h" />
     <ClInclude Include="src\common\net\tcp_server.h" />
@@ -92,6 +96,7 @@
     <ClInclude Include="src\common\rpc\protobuf_decoder.h" />
     <ClInclude Include="src\common\rpc\protobuf_frame_decoder.h" />
     <ClInclude Include="src\common\rpc\rpc.pb.h" />
+    <ClInclude Include="src\common\rpc\RpcChannel.h" />
     <ClInclude Include="src\common\rpc\rpc_service_skeleton.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
   </ItemGroup>

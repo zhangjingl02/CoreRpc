@@ -15,7 +15,7 @@ namespace net{
 		//MessageDecoder(){};
 		//virtual MessageDecoder(MessageDecoder* other);
 	public:
-		virtual int decode(const TcpConnection& connection, NetBuffer& buffer)=0;
+		virtual int decode(TcpConnection& connection, NetBuffer& buffer)=0;
 	};
 }
 
