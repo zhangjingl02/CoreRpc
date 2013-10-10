@@ -16,6 +16,8 @@ namespace rpc{
 				:dispatcher_(dispatcher){}
 		public :
 			int decode(net::TcpConnection& connection, net::NetBuffer& buffer);
+			// int decode(net::TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size);
+			// std::size_t frameDecode(net::TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size);
 		private:
 			net::MessageDispatcher<TransferMessage>* dispatcher_;
 

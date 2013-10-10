@@ -18,8 +18,11 @@ namespace rpc{
 		RpcServiceSkeleton(net::MessageDispatcher<TransferMessage>* dispatcher)
 			:net::ServiceSkeleton<TransferMessage>(dispatcher)
 		{}
+                        ~RpcServiceSkeleton(){};
+
+		
 	public :
-		virtual void onMessage(net::TcpConnectionPtr connection,boost::shared_ptr<TransferMessage> message);
+		virtual void onMessage(net::TcpConnection& connection,boost::shared_ptr<TransferMessage> message);
 		bool registService(boost::shared_ptr<google::protobuf::Service> service);
 	private:
 		void onLogin(Login& login);
@@ -28,7 +31,7 @@ namespace rpc{
 		void onRequest(Request& request);
 		void onResponse(Response& response);
 	private:
-		std::map<std::string,boost::shared_ptr<google::protobuf::Service>> serviceMap_;
+		std::map<std::string,boost::shared_ptr<google::protobuf::Service> > serviceMap_;
 
 	};
 }

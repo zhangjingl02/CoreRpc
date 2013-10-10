@@ -1,6 +1,7 @@
 #ifndef _H_BUFFER_SHARED_BUFFER_H
 #define _H_BUFFER_SHARED_BUFFER_H
 #include <boost/shared_array.hpp>
+#include <boost/static_assert.hpp>
 #include "buffer_def.h"
 namespace buffer{
  
@@ -40,8 +41,8 @@ shared_buffer::shared_buffer(POD_TYPE (&buffer)[N])
 	: begin_(0)
 	, end_(N)
 {
-	static_assert(1 == sizeof(POD_TYPE), "invalid pod type(only 1 byte pod type)");
-
+	BOOST_STATIC_ASSERT(1 == sizeof(POD_TYPE));
+	
 	buffer_.reset(new uint8[end_]);
 	memcpy(buffer_.get(), buffer, N);
 }
@@ -51,7 +52,7 @@ shared_buffer::shared_buffer(POD_TYPE* buffer, uint32 size)
 	: begin_(0)
 	, end_(size)
 {
-	static_assert(1 == sizeof(POD_TYPE), "invalid pod type(only 1 byte pod type)");
+	BOOST_STATIC_ASSERT(1 == sizeof(POD_TYPE));
 
 	buffer_.reset(new uint8[end_]);
 	memcpy(buffer_.get(), buffer, size);

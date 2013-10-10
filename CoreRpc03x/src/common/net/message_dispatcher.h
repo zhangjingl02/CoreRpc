@@ -9,19 +9,19 @@ namespace net{
 	class MessageDispatcher{
 	
 	public:
-		template<typename T>
-		void pushMessage(TcpConnectionPtr conn,boost::shared_ptr<T> message){
-			boost::shared_ptr<NetworkPackage<T>> networkPackage(new NetworkPackage<T>());
-			networkPackage->connection=conn;
-			networkPackage->message=message;
+		//template<typename T>
+		void pushMessage(TcpConnection& conn,boost::shared_ptr<T> message){
+			boost::shared_ptr<NetworkPackage<T> > networkPackage(new NetworkPackage<T>(conn));
+			
+			networkPackage->message(message);
 			messageQueue_.put(networkPackage);
-		}
-		template<typename T>
-		bool  getMessage(boost::shared_ptr<NetworkPackage<T>>& message){
+		};
+		//template<typename T>
+		bool  getMessage(boost::shared_ptr<NetworkPackage<T> >& message){
 			return messageQueue_.take(message,5*1000);
-		}
+		};
 	private:
-		util::BlockingQueue<boost::shared_ptr<NetworkPackage<T>>> messageQueue_;
+		util::BlockingQueue<boost::shared_ptr<NetworkPackage<T> > > messageQueue_;
 	};
 
 

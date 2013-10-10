@@ -10,7 +10,7 @@ namespace rpc{
 	}
 
 
-	void RpcServiceSkeleton::onMessage(net::TcpConnectionPtr connection,boost::shared_ptr<TransferMessage> message){
+	void RpcServiceSkeleton::onMessage(net::TcpConnection& connection,boost::shared_ptr<TransferMessage> message){
 	
 		switch (message->command())
 		{

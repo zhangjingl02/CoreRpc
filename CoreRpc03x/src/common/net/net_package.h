@@ -5,10 +5,18 @@ namespace net{
 
 	template<typename T>
 	class NetworkPackage{
-	
 	public:
-		TcpConnectionPtr connection;
-		boost::shared_ptr<T> message;
+		NetworkPackage(TcpConnection& connection)
+			:connection_(connection){}
+
+		 TcpConnection& connection(){return connection_;};
+		
+		 void message(boost::shared_ptr<T> message){message_=message;};
+	
+		 boost::shared_ptr<T> message(){return message_;};
+	private:
+		TcpConnection& connection_;
+		boost::shared_ptr<T> message_;
 	
 	};
 	

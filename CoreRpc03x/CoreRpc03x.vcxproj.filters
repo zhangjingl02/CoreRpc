@@ -54,6 +54,15 @@
     <ClCompile Include="ismp.pb.cc">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\buffer\byte_buffer.cpp">
+      <Filter>common\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\buffer\shared_buffer.cpp">
+      <Filter>common\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\buffer\shared_buffer_list.cpp">
+      <Filter>common\buffer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -118,6 +127,18 @@
     </ClInclude>
     <ClInclude Include="src\common\net\net_package.h">
       <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\buffer\buffer_def.h">
+      <Filter>common\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\buffer\byte_buffer.h">
+      <Filter>common\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\buffer\shared_buffer.h">
+      <Filter>common\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\buffer\shared_buffer_list.h">
+      <Filter>common\buffer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

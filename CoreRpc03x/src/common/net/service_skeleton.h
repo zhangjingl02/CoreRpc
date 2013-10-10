@@ -9,38 +9,41 @@ namespace net{
 #define DEFAULT_THREAD_COUNT 2
 	template<typename T>
 	class ServiceSkeleton{
-	
+
 	public:
 		ServiceSkeleton(MessageDispatcher<T>* dispatcher)
 			:dispatcher_(dispatcher),threadCount_(DEFAULT_THREAD_COUNT),runFlag_(true)
 		{}
+
+
+		
 	public :
-		virtual void onMessage(TcpConnectionPtr connection,boost::shared_ptr<T> message)=0;
+		virtual void onMessage(TcpConnection& connection,boost::shared_ptr<T> message)=0;
 	public :
 		bool start(){
-		for(int i=0;i<threadCount_;i++){
-			threadGroup_.create_thread(boost::bind(&ServiceSkeleton<T>::proccess,this));
+			for(int i=0;i<threadCount_;i++){
+				threadGroup_.create_thread(boost::bind(&ServiceSkeleton<T>::proccess,this));
 
-		}
-		return false;
+			}
+			return false;
 		}
 		void stop(){runFlag_=false;};
 	private:
 		void proccess(){
-		while(runFlag_){
-			boost::shared_ptr<NetworkPackage<T>> message;
-			dispatcher_->getMessage(message);
-			if(message.get()){
-				onMessage(message->connection,message->message);
+			while(runFlag_){
+				boost::shared_ptr<NetworkPackage<T> > message;
+				dispatcher_->getMessage(message);
+				if(message.get()){
+					onMessage(message->connection(),message->message());
+				}
 			}
-		}
 		}
 	private:
 		boost::thread_group threadGroup_;
 		MessageDispatcher<T>* dispatcher_;
 		int threadCount_;
 		bool runFlag_;
-	
+
 	};
 
 

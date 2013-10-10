@@ -4,6 +4,7 @@
 #include "rpc.pb.h"
 #include "../net/net_def.h"
 namespace rpc{
+	
 	int ProtobufDecoder::decode(net::TcpConnection& connection, net::NetBuffer& buffer){
 		buffer.markReaderIndex();
 		google::protobuf::uint8 buf[5]={'\0','\0','\0','\0','\0'};
@@ -22,7 +23,7 @@ namespace rpc{
 					boost::shared_ptr<TransferMessage> messagePtr(new TransferMessage());
 				
 					if(messagePtr->ParseFromArray(buffer.readStream(len),len)){
-						dispatcher_->pushMessage(net::TcpConnectionPtr(&connection),messagePtr);
+						dispatcher_->pushMessage(connection,messagePtr);
 					}
 					
 				}
@@ -31,4 +32,30 @@ namespace rpc{
 		}
 		return 0;
 	}
+	/*
+	int ProtobufDecoder::decode(net::TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size){
+	
+		boost::shared_ptr<TransferMessage> messagePtr(new TransferMessage());
+				
+		if(messagePtr->ParseFromArray(buffer.bytes(),buffer.size())){
+						dispatcher_->pushMessage(connection,messagePtr);
+					}
+		return 0;
+	}
+
+	std::size_t ProtobufDecoder::frameDecode(net::TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size){
+		buffer.remove(size);
+		if(buffer.empty()){
+			buffer.restore();
+			google::protobuf::io::CodedInputStream istream(buffer.bytes(),5);
+				google::protobuf::uint32 len;
+				istream.ReadVarint32(&len);
+				return len;
+		}
+		return 0;
+	
+	}
+	*/
+
+
 }

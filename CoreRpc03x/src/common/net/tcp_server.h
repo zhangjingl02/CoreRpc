@@ -32,7 +32,7 @@ namespace net{
 		{
 			//TcpConnectionPtr new_session(new TcpConnection(io_service_));//=new TcpConnection(io_service_);
 			TcpConnection* new_session=new TcpConnection(io_service_);
-			//new_session->decoder(decoder_);
+			new_session->decoder(decoder_);
 			acceptor_.async_accept(new_session->socket(),
 				boost::bind(&TcpServer::handle_accept, this, new_session,
 				boost::asio::placeholders::error));
