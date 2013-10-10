@@ -7,10 +7,12 @@
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
-#include "message_decoder.h"
-#include "net_buffer.h"
 #include "../buffer/shared_buffer_list.h"
 #include "../common.h"
+#include "message_decoder.h"
+#include "message_encoder.h"
+#include "net_buffer.h"
+
 using boost::asio::ip::tcp;
 namespace net{
 	class MessageDecoder;
@@ -44,6 +46,10 @@ namespace net{
 		void write(buffer::shared_buffer& buffer){
 			service_.post(boost::bind(&TcpConnection::post_wirte,this,boost::ref(buffer)));
 		};
+		template<typename Message>
+		void write(Message& message){
+		
+		}
 
 	private:
 
@@ -130,6 +136,7 @@ namespace net{
 		boost::asio::io_service& service_;
 		NetBuffer buffer_;
 		MessageDecoder* messageDecoder_;
+		MessageEncoder* messageEncoder_;
 		buffer::shared_buffer_list bufferList_;
 		bool sending_;
 	};
