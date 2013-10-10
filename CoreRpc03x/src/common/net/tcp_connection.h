@@ -43,12 +43,20 @@ namespace net{
 			messageDecoder_=decoder;
 		}
 
+		void encoder(MessageEncoder* encoder){
+			messageEncoder_=encoder;
+		}
+
 		void write(buffer::shared_buffer& buffer){
 			service_.post(boost::bind(&TcpConnection::post_wirte,this,boost::ref(buffer)));
 		};
 		template<typename Message>
 		void write(Message& message){
-		
+			if(messageEncoder_){
+				buffer::shared_buffer& buffer=messageEncoder_->encode(*this,&message);
+				write(buffer);
+			}
+			
 		}
 
 	private:

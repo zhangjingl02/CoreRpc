@@ -140,5 +140,8 @@
     <ClInclude Include="src\common\buffer\shared_buffer_list.h">
       <Filter>common\buffer</Filter>
     </ClInclude>
+    <ClInclude Include="src\common\rpc\protobuf_encoder.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

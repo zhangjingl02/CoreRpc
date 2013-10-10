@@ -8,8 +8,8 @@ namespace net{
 	class MessageEncoder{
 	
 	public:
-		template<typename Message>
-		virtual	buffer::shared_buffer&  encode(const TcpConnectionPtr& connection,Message& message)=0;
+		
+		virtual	buffer::shared_buffer&  encode(void* message)=0;
 	};
 }
 

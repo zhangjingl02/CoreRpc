@@ -25,7 +25,7 @@ namespace net{
 		void start(const short port);
 
 		void decoder(MessageDecoder* decoder){decoder_=decoder;};
-		
+		void encoder(MessageEncoder* encoder){encoder_=encoder;};
 
 	private:
 		void start_accept()
@@ -33,6 +33,7 @@ namespace net{
 			//TcpConnectionPtr new_session(new TcpConnection(io_service_));//=new TcpConnection(io_service_);
 			TcpConnection* new_session=new TcpConnection(io_service_);
 			new_session->decoder(decoder_);
+			new_session->encoder(encoder_);
 			acceptor_.async_accept(new_session->socket(),
 				boost::bind(&TcpServer::handle_accept, this, new_session,
 				boost::asio::placeholders::error));
@@ -59,6 +60,7 @@ namespace net{
 		boost::asio::io_service& io_service_;
 		tcp::acceptor acceptor_;
 		MessageDecoder* decoder_;
+		MessageEncoder* encoder_;
 	};
 }
 #endif

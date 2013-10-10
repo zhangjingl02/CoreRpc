@@ -101,6 +101,7 @@
     <ClInclude Include="src\common\net\tcp_server.h" />
     <ClInclude Include="src\common\net\Test.h" />
     <ClInclude Include="src\common\rpc\protobuf_decoder.h" />
+    <ClInclude Include="src\common\rpc\protobuf_encoder.h" />
     <ClInclude Include="src\common\rpc\protobuf_frame_decoder.h" />
     <ClInclude Include="src\common\rpc\rpc.pb.h" />
     <ClInclude Include="src\common\rpc\RpcChannel.h" />
