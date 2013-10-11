@@ -97,6 +97,7 @@
     <ClInclude Include="src\common\net\net_def.h" />
     <ClInclude Include="src\common\net\net_package.h" />
     <ClInclude Include="src\common\net\service_skeleton.h" />
+    <ClInclude Include="src\common\net\tcp_client.h" />
     <ClInclude Include="src\common\net\tcp_connection.h" />
     <ClInclude Include="src\common\net\tcp_server.h" />
     <ClInclude Include="src\common\net\Test.h" />

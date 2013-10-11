@@ -143,5 +143,8 @@
     <ClInclude Include="src\common\rpc\protobuf_encoder.h">
       <Filter>common\rpc</Filter>
     </ClInclude>
+    <ClInclude Include="src\common\net\tcp_client.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

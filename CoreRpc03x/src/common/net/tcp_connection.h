@@ -150,6 +150,7 @@ namespace net{
 		MessageEncoder* messageEncoder_;
 		buffer::shared_buffer_list bufferList_;
 		bool sending_;
+		int id_;
 	};
 
 	typedef boost::shared_ptr<TcpConnection> TcpConnectionPtr;
