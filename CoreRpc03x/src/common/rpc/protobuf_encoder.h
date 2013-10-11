@@ -7,13 +7,21 @@ namespace rpc{
 
 	class ProtobufEncoder :public net::MessageEncoder{
 	public:
-		buffer::shared_buffer&  encode(void* message){
+		bool  encode(void* message,buffer::shared_buffer& buffer){
 			
 			google::protobuf::Message* message_p=(google::protobuf::Message*)message;
-			buffer::shared_buffer buffer(5+message_p->ByteSize());
-			buffer::uint8* stream=new buffer::uint8[(5+message_p->ByteSize())];
-			google::protobuf::io::ArrayOutputStream s;
-			return buffer;
+			int bodyLen=message_p->ByteSize();
+			int headerLen=google::protobuf::io::CodedOutputStream::VarintSize32(bodyLen);
+			buffer.resize(headerLen+bodyLen);
+			
+			google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(bodyLen,buffer.writeBytes());
+			buffer.writed(headerLen);
+			if(message_p->SerializeToArray(buffer.writeBytes(),bodyLen)){
+				buffer.writed(bodyLen);
+				return true;
+			}
+			
+			return false;
 		}
 	};
 	

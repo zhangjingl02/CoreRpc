@@ -24,8 +24,15 @@ public:
 	shared_buffer& restore();
 	shared_buffer& resize(uint32 size);
 	shared_buffer& remove(uint32 size);
+	shared_buffer& writed(uint32 size){end_+=size;return *this;};
+	shared_buffer& writeRaw(uint8 value);
+	shared_buffer& writeRaw32(uint32 value);
+
 	uint8* bytes();
 	const uint8* bytes() const;
+
+	uint8* writeBytes();
+	const uint8* writeBytes() const;
 	uint32 size() const;
 	bool empty() const;
 	uint32 capacity() const;

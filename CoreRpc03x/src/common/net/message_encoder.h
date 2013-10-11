@@ -9,7 +9,7 @@ namespace net{
 	
 	public:
 		
-		virtual	buffer::shared_buffer&  encode(void* message)=0;
+		virtual	bool encode(void* message,buffer::shared_buffer& buffer)=0;
 	};
 }
 

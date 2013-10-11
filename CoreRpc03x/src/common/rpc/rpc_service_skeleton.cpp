@@ -24,7 +24,7 @@ namespace rpc{
 		case TransferMessage_Command_Login:{
 			Login login;
 			login.ParseFromString(message->message());
-			onLogin(login);break;
+			onLogin(connection,login);break;
 										   }
 		case TransferMessage_Command_EvtBroadcastServiceList:
 		case TransferMessage_Command_EvtActiveTest:
@@ -37,8 +37,18 @@ namespace rpc{
 	}
 
 	void RpcServiceSkeleton::onRequest(Request& request){}
-	void RpcServiceSkeleton::onLogin(Login& login){
+	void RpcServiceSkeleton::onLogin(net::TcpConnection& connection,Login& login){
 		LOG_INF(_KV_("on Login",login.username()));
+
+		TransferMessage tm;
+		tm.set_command(TransferMessage_Command_LoginRsp);
+		LoginRsp loginRsp;
+		loginRsp.set_status("0");
+		std::string str;
+		loginRsp.SerializeToString(&str);
+		tm.set_message(str);
+		connection.write(tm);
+
 	}
 
 

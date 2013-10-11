@@ -4,6 +4,7 @@
 #include <iostream>
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
+#include 
 #include <boost/enable_shared_from_this.hpp>
 
 #include "tcp_connection.h"
@@ -57,6 +58,7 @@ namespace net{
 			
 		}
 	private:
+		
 		boost::asio::io_service& io_service_;
 		tcp::acceptor acceptor_;
 		MessageDecoder* decoder_;

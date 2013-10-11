@@ -25,7 +25,7 @@ namespace rpc{
 		virtual void onMessage(net::TcpConnection& connection,boost::shared_ptr<TransferMessage> message);
 		bool registService(boost::shared_ptr<google::protobuf::Service> service);
 	private:
-		void onLogin(Login& login);
+		void onLogin(net::TcpConnection& connection,Login& login);
 		void onLoginRsp(LoginRsp& loginRsp);
 		void onEvtBroadcastServiceList(EvtBroadcastServiceList& serviceList);
 		void onRequest(Request& request);

@@ -55,9 +55,9 @@ namespace buffer{
 			buffer_.reset(buffer);
 
 			capacity_ = size;
-			end_ = size;
+			//end_ = size;
 		} else {
-			end_ = size;
+			//end_ = size;
 		}
 		return *this;
 	}
@@ -72,6 +72,23 @@ namespace buffer{
 		return *this;
 	}
 
+	shared_buffer& shared_buffer::writeRaw(uint8 value){
+		buffer_[end_++]=value;
+		return *this;
+	}
+	shared_buffer& shared_buffer::writeRaw32(uint32 value){
+		while (true) {
+			if ((value & ~0x7F) == 0) {
+				writeRaw(value);
+				return *this;
+			} else {
+				writeRaw((value & 0x7F) | 0x80);
+				//value >> >= 7;
+			}
+		}
+		return *this;
+	}
+
 	uint8* shared_buffer::bytes()
 	{
 		return buffer_.get() + begin_;
@@ -80,6 +97,16 @@ namespace buffer{
 	const uint8* shared_buffer::bytes() const
 	{
 		return buffer_.get() + begin_;
+	}
+
+	uint8* shared_buffer::writeBytes()
+	{
+		return buffer_.get() + end_;
+	}
+
+	const uint8* shared_buffer::writeBytes() const
+	{
+		return buffer_.get() + end_;
 	}
 
 	uint32 shared_buffer::size() const
