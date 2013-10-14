@@ -48,7 +48,7 @@ buffer::shared_buffer_list list;
 	rpc::RpcServiceSkeleton sk(&dispatcher);
 	rpc::ProtobufDecoder decoder(&dispatcher);
 	rpc::ProtobufEncoder encoder;
-	net::TcpServer server(io);
+	net::TcpServer server(3);
 	server.decoder(&decoder);
 	server.encoder(&encoder);
 	sk.start();

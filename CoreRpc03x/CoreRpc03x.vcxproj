@@ -73,6 +73,7 @@
     <ClCompile Include="src\common\buffer\byte_buffer.cpp" />
     <ClCompile Include="src\common\buffer\shared_buffer.cpp" />
     <ClCompile Include="src\common\buffer\shared_buffer_list.cpp" />
+    <ClCompile Include="src\common\net\io_service_pool.cpp" />
     <ClCompile Include="src\common\net\message_dispatcher.cpp" />
     <ClCompile Include="src\common\net\service_skeleton.cpp" />
     <ClCompile Include="src\common\net\tcp_server.cpp" />
@@ -88,6 +89,7 @@
     <ClInclude Include="src\common\buffer\shared_buffer_list.h" />
     <ClInclude Include="src\common\common.h" />
     <ClInclude Include="src\common\net\frame_decoder.h" />
+    <ClInclude Include="src\common\net\io_service_pool.h" />
     <ClInclude Include="src\common\net\message_decoder.h" />
     <ClInclude Include="src\common\net\message_dispatcher.h" />
     <ClInclude Include="src\common\net\message_encoder.h" />

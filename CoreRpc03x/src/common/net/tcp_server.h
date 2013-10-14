@@ -6,20 +6,24 @@
 #include <boost/asio.hpp>
 
 #include <boost/enable_shared_from_this.hpp>
-
-#include "tcp_connection.h"
 #include "../rpc/protobuf_decoder.h"
+#include "io_service_pool.h"
+#include "tcp_connection.h"
+
 using boost::asio::ip::tcp;
 
 namespace net{
 	class TcpServer
 	{
 	public:
-		TcpServer(boost::asio::io_service& io_service)
-			: io_service_(io_service),
-			acceptor_(io_service)
+		TcpServer(std::size_t pool_size)
+			: 
+			acceptor_(ioServicePool_.get_io_service()),ioServicePool_(pool_size)
 		{
-			//start_accept();
+			ioServicePool_.run();
+		}
+		~TcpServer(){
+			ioServicePool_.stop();
 		}
 
 		void start(const char* ip_address,const short port);
@@ -32,7 +36,7 @@ namespace net{
 		void start_accept()
 		{
 			//TcpConnectionPtr new_session(new TcpConnection(io_service_));//=new TcpConnection(io_service_);
-			TcpConnection* new_session=new TcpConnection(io_service_);
+			TcpConnection* new_session=new TcpConnection(ioServicePool_.get_io_service());
 			new_session->decoder(decoder_);
 			new_session->encoder(encoder_);
 			acceptor_.async_accept(new_session->socket(),
@@ -59,10 +63,12 @@ namespace net{
 		}
 	private:
 		
-		boost::asio::io_service& io_service_;
+		//boost::asio::io_service& io_service_;
 		tcp::acceptor acceptor_;
 		MessageDecoder* decoder_;
 		MessageEncoder* encoder_;
+		IoServicePool ioServicePool_;
+		
 	};
 }
 #endif

@@ -63,6 +63,9 @@
     <ClCompile Include="src\common\buffer\shared_buffer_list.cpp">
       <Filter>common\buffer</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\net\io_service_pool.cpp">
+      <Filter>common\net</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -144,6 +147,9 @@
       <Filter>common\rpc</Filter>
     </ClInclude>
     <ClInclude Include="src\common\net\tcp_client.h">
+      <Filter>common\net</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\io_service_pool.h">
       <Filter>common\net</Filter>
     </ClInclude>
   </ItemGroup>

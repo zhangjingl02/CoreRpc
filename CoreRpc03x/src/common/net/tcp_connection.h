@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <boost/bind.hpp>
+#include <boost/function.hpp>
 #include <boost/ref.hpp>
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
@@ -15,6 +16,9 @@
 
 using boost::asio::ip::tcp;
 namespace net{
+
+	// typedef boost::function<void (const TcpConnectionPtr&,const boost::system::error_code&) > CloseCallback;
+	 typedef boost::function<void (const boost::system::error_code&) > ConnectdCallback;
 	class MessageDecoder;
 
 	#define DEFAULT_HEADE_SIZE 5
@@ -61,6 +65,20 @@ namespace net{
 			}
 			
 		}
+
+		void connect(const short port){
+			socket_.async_connect(tcp::endpoint(boost::asio::ip::tcp::v4(),port),
+				boost::bind(&TcpConnection::handle_connected,this,boost::asio::placeholders::error)
+				
+				);
+		}
+
+		void connect(const char* ip_address,const short port){
+			socket_.async_connect(tcp::endpoint(boost::asio::ip::address_v4::from_string(ip_address),port),
+				boost::bind(&TcpConnection::handle_connected,this,boost::asio::placeholders::error));
+		}
+
+
 
 	private:
 
@@ -140,6 +158,12 @@ namespace net{
 				delete this;
 			}
 		}
+
+		void handle_connected(const boost::system::error_code& error){
+			if(!error){
+			
+			}
+		}
 	private:
 		tcp::socket socket_;
 		enum { max_length = 1024 };
@@ -151,6 +175,7 @@ namespace net{
 		buffer::shared_buffer_list bufferList_;
 		bool sending_;
 		int id_;
+		ConnectdCallback connect;
 	};
 
 	typedef boost::shared_ptr<TcpConnection> TcpConnectionPtr;
