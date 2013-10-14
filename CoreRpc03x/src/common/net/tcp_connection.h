@@ -18,7 +18,7 @@ using boost::asio::ip::tcp;
 namespace net{
 
 	// typedef boost::function<void (const TcpConnectionPtr&,const boost::system::error_code&) > CloseCallback;
-	 typedef boost::function<void (const boost::system::error_code&) > ConnectdCallback;
+	typedef boost::function<void (const boost::system::error_code&) > ConnectedCallback;
 	class MessageDecoder;
 
 	#define DEFAULT_HEADE_SIZE 5
@@ -77,7 +77,7 @@ namespace net{
 			socket_.async_connect(tcp::endpoint(boost::asio::ip::address_v4::from_string(ip_address),port),
 				boost::bind(&TcpConnection::handle_connected,this,boost::asio::placeholders::error));
 		}
-
+		
 
 
 	private:
@@ -160,8 +160,29 @@ namespace net{
 		}
 
 		void handle_connected(const boost::system::error_code& error){
+
 			if(!error){
-			
+				
+				LOG_INF(_KV_("message","connected to server")
+					<<"["<<socket_.local_endpoint().address().to_string()
+					<<":"<<socket_.local_endpoint().port()
+					<<"=>"
+					<<socket_.remote_endpoint().address().to_string()
+					<<":"
+					<<socket_.remote_endpoint().port()
+					<<"]"
+					);
+			}else{
+				LOG_INF(_KV_("message","connect to server failed")
+					<<"["
+					<<socket_.remote_endpoint().address().to_string()
+					<<":"
+					<<socket_.remote_endpoint().port()
+					<<"]"
+					);
+			}
+			if(connected_callback_){
+				connected_callback_(error);
 			}
 		}
 	private:
@@ -175,7 +196,7 @@ namespace net{
 		buffer::shared_buffer_list bufferList_;
 		bool sending_;
 		int id_;
-		ConnectdCallback connect;
+		ConnectedCallback connected_callback_;
 	};
 
 	typedef boost::shared_ptr<TcpConnection> TcpConnectionPtr;
