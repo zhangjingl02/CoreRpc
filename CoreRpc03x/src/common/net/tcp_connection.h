@@ -77,6 +77,10 @@ namespace net{
 			socket_.async_connect(tcp::endpoint(boost::asio::ip::address_v4::from_string(ip_address),port),
 				boost::bind(&TcpConnection::handle_connected,this,boost::asio::placeholders::error));
 		}
+
+		void set_connected_callback(ConnectedCallback& connected_callback){
+			connected_callback_=connected_callback;
+		}
 		
 
 

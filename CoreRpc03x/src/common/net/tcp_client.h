@@ -7,11 +7,19 @@ namespace net{
 
 	class TcpClient{
 	public:
-		TcpClient(boost::asio::io_service);
-		bool connect(const short port);
-		bool connect(const char* ip_address,const short port);
+		TcpClient(boost::asio::io_service& io_service):connection_(io_service){
+			
+		}
+		void connect(const short port);
+		void connect(const char* ip_address,const short port);
 		void decoder(MessageDecoder* decoder){decoder_=decoder;};
 		void encoder(MessageEncoder* encoder){encoder_=encoder;};
+
+		void handle_connected(const boost::system::error_code& error);
+		template<typename Message>
+		void write(Message& message){
+			connection_.write(message);
+		}
 	private:
 		TcpConnection connection_;
 		MessageDecoder* decoder_;

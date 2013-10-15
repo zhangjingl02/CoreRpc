@@ -66,6 +66,9 @@
     <ClCompile Include="src\common\net\io_service_pool.cpp">
       <Filter>common\net</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\net\tcp_client.cpp">
+      <Filter>common\net</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">

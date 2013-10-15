@@ -76,6 +76,7 @@
     <ClCompile Include="src\common\net\io_service_pool.cpp" />
     <ClCompile Include="src\common\net\message_dispatcher.cpp" />
     <ClCompile Include="src\common\net\service_skeleton.cpp" />
+    <ClCompile Include="src\common\net\tcp_client.cpp" />
     <ClCompile Include="src\common\net\tcp_server.cpp" />
     <ClCompile Include="src\common\rpc\protobuf_decoder.cpp" />
     <ClCompile Include="src\common\rpc\rpc.pb.cc" />

@@ -17,13 +17,27 @@ namespace net{
 	{
 	public:
 		TcpServer(std::size_t pool_size)
-			: 
-			acceptor_(ioServicePool_.get_io_service()),ioServicePool_(pool_size)
+			:ioServicePool_(pool_size)
+			//,acceptor_(ioServicePool_.get_io_service())
 		{
+			acceptor_=new tcp::acceptor(ioServicePool_.get_io_service());
 			ioServicePool_.run();
 		}
+
+
+
+
+		//TcpServer(IoServicePool& service_pool)
+		//	: 
+		//	ioServicePool_(service_pool),acceptor_(ioServicePool_.get_io_service())
+		//{
+		//	ioServicePool_.run();
+		//}
+
+
 		~TcpServer(){
 			ioServicePool_.stop();
+			delete acceptor_;
 		}
 
 		void start(const char* ip_address,const short port);
@@ -39,7 +53,7 @@ namespace net{
 			TcpConnection* new_session=new TcpConnection(ioServicePool_.get_io_service());
 			new_session->decoder(decoder_);
 			new_session->encoder(encoder_);
-			acceptor_.async_accept(new_session->socket(),
+			acceptor_->async_accept(new_session->socket(),
 				boost::bind(&TcpServer::handle_accept, this, new_session,
 				boost::asio::placeholders::error));
 		}
@@ -64,7 +78,7 @@ namespace net{
 	private:
 		
 		//boost::asio::io_service& io_service_;
-		tcp::acceptor acceptor_;
+		tcp::acceptor* acceptor_;
 		MessageDecoder* decoder_;
 		MessageEncoder* encoder_;
 		IoServicePool ioServicePool_;

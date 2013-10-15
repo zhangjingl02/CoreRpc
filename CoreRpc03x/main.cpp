@@ -26,6 +26,8 @@
 #include "src/common/buffer/shared_buffer.h"
 #include "src/common/buffer/shared_buffer_list.h"
 #include "src/common/rpc/protobuf_encoder.h"
+#include "src/common/net/tcp_client.h"
+
 using namespace std;
 
 
@@ -48,11 +50,16 @@ buffer::shared_buffer_list list;
 	rpc::RpcServiceSkeleton sk(&dispatcher);
 	rpc::ProtobufDecoder decoder(&dispatcher);
 	rpc::ProtobufEncoder encoder;
+
+	//net::IoServicePool pool(5);
 	net::TcpServer server(3);
 	server.decoder(&decoder);
 	server.encoder(&encoder);
 	sk.start();
-	server.start(9997);
+	//server.start(9997);
+
+	net::TcpClient client(io);
+	client.connect((short)9890);
 	io.run();
  
 	cin.get();

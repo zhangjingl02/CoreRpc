@@ -4,18 +4,18 @@ namespace net{
 
 	void TcpServer::start(const char* ip_address,const short port){
 		boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(ip_address),port);
-		acceptor_.open(endpoint.protocol());
-		acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(false));
-		acceptor_.bind(endpoint);
-		acceptor_.listen();
+		acceptor_->open(endpoint.protocol());
+		acceptor_->set_option(boost::asio::ip::tcp::acceptor::reuse_address(false));
+		acceptor_->bind(endpoint);
+		acceptor_->listen();
 		start_accept();
 	}
 	void TcpServer::start(const short port){
 		boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(),port);
-		acceptor_.open(endpoint.protocol());
-		acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(false));
-		acceptor_.bind(endpoint);
-		acceptor_.listen();
+		acceptor_->open(endpoint.protocol());
+		acceptor_->set_option(boost::asio::ip::tcp::acceptor::reuse_address(false));
+		acceptor_->bind(endpoint);
+		acceptor_->listen();
 		start_accept();
 	}
 
