@@ -110,6 +110,8 @@
     <ClInclude Include="src\common\rpc\rpc.pb.h" />
     <ClInclude Include="src\common\rpc\RpcChannel.h" />
     <ClInclude Include="src\common\rpc\rpc_service_skeleton.h" />
+    <ClInclude Include="src\common\rpc\rpc_tcp_client.h" />
+    <ClInclude Include="src\common\rpc\rpc_tcp_server.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

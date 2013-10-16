@@ -48,19 +48,19 @@ buffer::shared_buffer_list list;
 	boost::asio::io_service io;
 	net::MessageDispatcher<TransferMessage> dispatcher;
 	rpc::RpcServiceSkeleton sk(&dispatcher);
-	rpc::ProtobufDecoder decoder(&dispatcher);
-	rpc::ProtobufEncoder encoder;
+	rpc::protobuf_decoder decoder(&dispatcher);
+	rpc::protobuf_encoder encoder;
 
 	//net::IoServicePool pool(5);
-	net::TcpServer server(3);
+	net::tcp_server server(3);
 	server.decoder(&decoder);
 	server.encoder(&encoder);
 	sk.start();
-	//server.start(9997);
+	server.start(9997);
 
-	net::TcpClient client(io);
-	client.connect((short)9890);
-	io.run();
+	//net::TcpClient client(io);
+	//client.connect("127.0.0.1",(short)9800);
+	//io.run();
  
 	cin.get();
     return 0;

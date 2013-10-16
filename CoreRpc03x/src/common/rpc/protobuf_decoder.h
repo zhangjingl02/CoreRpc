@@ -8,14 +8,14 @@
 #include "../net/message_dispatcher.h"
 #include "rpc.pb.h"
 namespace rpc{
-	class ProtobufDecoder: public net::MessageDecoder
+	class protobuf_decoder: public net::message_decoder
 	{
 		public:
 			
-			ProtobufDecoder(net::MessageDispatcher<TransferMessage>* dispatcher)
+			protobuf_decoder(net::MessageDispatcher<TransferMessage>* dispatcher)
 				:dispatcher_(dispatcher){}
 		public :
-			int decode(net::TcpConnection& connection, net::NetBuffer& buffer);
+			int decode(net::tcp_connection& connection, net::NetBuffer& buffer);
 			// int decode(net::TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size);
 			// std::size_t frameDecode(net::TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size);
 		private:

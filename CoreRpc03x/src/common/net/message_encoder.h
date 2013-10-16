@@ -5,7 +5,7 @@
 
 namespace net{
 	
-	class MessageEncoder{
+	class message_encoder{
 	
 	public:
 		

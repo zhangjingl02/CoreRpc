@@ -22,10 +22,10 @@ namespace rpc{
 
 		
 	public :
-		virtual void onMessage(net::TcpConnection& connection,boost::shared_ptr<TransferMessage> message);
+		virtual void onMessage(net::tcp_connection& connection,boost::shared_ptr<TransferMessage> message);
 		bool registService(boost::shared_ptr<google::protobuf::Service> service);
 	private:
-		void onLogin(net::TcpConnection& connection,Login& login);
+		void onLogin(net::tcp_connection& connection,Login& login);
 		void onLoginRsp(LoginRsp& loginRsp);
 		void onEvtBroadcastServiceList(EvtBroadcastServiceList& serviceList);
 		void onRequest(Request& request);

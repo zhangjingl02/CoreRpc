@@ -6,11 +6,11 @@
 #include <boost/shared_ptr.hpp>
 namespace net{
 
-	class IoServicePool:public boost::noncopyable{
+	class io_service_pool:public boost::noncopyable{
 
 	public:
 		/// Construct the io_service pool.
-		explicit IoServicePool(std::size_t pool_size);
+		explicit io_service_pool(std::size_t pool_size);
 
 		/// Run all io_service objects in the pool.
 		void run();

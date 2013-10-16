@@ -5,7 +5,7 @@
 #include "io_service_pool.h"
 namespace net{
 
-	IoServicePool::IoServicePool(std::size_t pool_size)
+	io_service_pool::io_service_pool(std::size_t pool_size)
   : next_io_service_(0)
 {
   if (pool_size == 0)
@@ -22,7 +22,7 @@ namespace net{
   }
 }
 
-void IoServicePool::run()
+void io_service_pool::run()
 {
   // Create a pool of threads to run all of the io_services.
   std::vector<boost::shared_ptr<boost::thread> > threads;
@@ -34,18 +34,18 @@ void IoServicePool::run()
   }
 
   // Wait for all threads in the pool to exit.
-  for (std::size_t i = 0; i < threads.size(); ++i)
-    threads[i]->join();
+  //for (std::size_t i = 0; i < threads.size(); ++i)
+   // threads[i]->join();
 }
 
-void IoServicePool::stop()
+void io_service_pool::stop()
 {
   // Explicitly stop all io_services.
   for (std::size_t i = 0; i < io_services_.size(); ++i)
     io_services_[i]->stop();
 }
 
-boost::asio::io_service& IoServicePool::get_io_service()
+boost::asio::io_service& io_service_pool::get_io_service()
 {
   // Use a round-robin scheme to choose the next io_service to use.
   boost::asio::io_service& io_service = *io_services_[next_io_service_];

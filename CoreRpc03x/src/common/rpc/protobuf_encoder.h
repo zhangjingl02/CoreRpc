@@ -5,7 +5,7 @@
 #include "../net/message_encoder.h"
 namespace rpc{
 
-	class ProtobufEncoder :public net::MessageEncoder{
+	class protobuf_encoder :public net::message_encoder{
 	public:
 		bool  encode(void* message,buffer::shared_buffer& buffer){
 			

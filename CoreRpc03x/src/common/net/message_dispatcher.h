@@ -10,7 +10,7 @@ namespace net{
 	
 	public:
 		//template<typename T>
-		void pushMessage(TcpConnection& conn,boost::shared_ptr<T> message){
+		void pushMessage(tcp_connection& conn,boost::shared_ptr<T> message){
 			boost::shared_ptr<NetworkPackage<T> > networkPackage(new NetworkPackage<T>(conn));
 			
 			networkPackage->message(message);

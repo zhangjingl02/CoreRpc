@@ -5,7 +5,7 @@
 #include "../net/net_def.h"
 namespace rpc{
 	
-	int ProtobufDecoder::decode(net::TcpConnection& connection, net::NetBuffer& buffer){
+	int protobuf_decoder::decode(net::tcp_connection& connection, net::NetBuffer& buffer){
 		buffer.markReaderIndex();
 		google::protobuf::uint8 buf[5]={'\0','\0','\0','\0','\0'};
 		for(int i=0;i<5;i++){

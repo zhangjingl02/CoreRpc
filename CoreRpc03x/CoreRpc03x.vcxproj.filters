@@ -155,5 +155,11 @@
     <ClInclude Include="src\common\net\io_service_pool.h">
       <Filter>common\net</Filter>
     </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc_tcp_server.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc_tcp_client.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

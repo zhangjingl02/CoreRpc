@@ -13,15 +13,15 @@
 using boost::asio::ip::tcp;
 
 namespace net{
-	class TcpServer
+	class tcp_server:public boost::enable_shared_from_this<tcp_server>
 	{
 	public:
-		TcpServer(std::size_t pool_size)
-			:ioServicePool_(pool_size)
+		tcp_server(std::size_t pool_size)
+			:io_service_pool_(pool_size)
 			//,acceptor_(ioServicePool_.get_io_service())
 		{
-			acceptor_=new tcp::acceptor(ioServicePool_.get_io_service());
-			ioServicePool_.run();
+			acceptor_=new tcp::acceptor(io_service_pool_.get_io_service());
+			io_service_pool_.run();
 		}
 
 
@@ -35,42 +35,54 @@ namespace net{
 		//}
 
 
-		~TcpServer(){
-			ioServicePool_.stop();
+		~tcp_server(){
+			io_service_pool_.stop();
 			delete acceptor_;
 		}
 
 		void start(const char* ip_address,const short port);
 		void start(const short port);
 
-		void decoder(MessageDecoder* decoder){decoder_=decoder;};
-		void encoder(MessageEncoder* encoder){encoder_=encoder;};
-
+		void decoder(message_decoder* decoder){decoder_=decoder;};
+		void encoder(message_encoder* encoder){encoder_=encoder;};
+		virtual void on_accepted(tcp_connection_ptr& new_session){};
 	private:
 		void start_accept()
 		{
-			//TcpConnectionPtr new_session(new TcpConnection(io_service_));//=new TcpConnection(io_service_);
-			TcpConnection* new_session=new TcpConnection(ioServicePool_.get_io_service());
+			tcp_connection_ptr new_session(new tcp_connection(io_service_pool_.get_io_service()));//=new TcpConnection(io_service_);
+			//TcpConnection* new_session=new TcpConnection(ioServicePool_.get_io_service());
 			new_session->decoder(decoder_);
 			new_session->encoder(encoder_);
 			acceptor_->async_accept(new_session->socket(),
-				boost::bind(&TcpServer::handle_accept, this, new_session,
+				boost::bind(&tcp_server::handle_accept, this, new_session,
 				boost::asio::placeholders::error));
 		}
 
-		void handle_accept(TcpConnection* new_session,
+		void handle_accept(tcp_connection_ptr& new_session,
 			const boost::system::error_code& error)
 		{
 			if (!error)
 			{
-				std::cout<<"accepted new session"<<std::endl;
+				LOG_INF(_KV_("message","accepted new session [")
+					<<new_session->remote_endpoint().address().to_string()
+					<<":"
+					<<new_session->remote_endpoint().port()
+					<<"=>"
+					<<new_session->local_endpoint().address().to_string()
+					<<":"
+					<<new_session->local_endpoint().port()
+					<<"]"
+					);
 				new_session->start();
-				
+				on_accepted(new_session);
 			}
 			else
 			{
-				std::cout<<"accept new session failed"<<std::endl;
-				//delete new_session;
+				LOG_INF(_KV_("message","accepted new session [")
+					<<error.value()
+					<<":"<<error.message()
+					<<"]"
+					);
 			}
 			start_accept();
 			
@@ -79,9 +91,9 @@ namespace net{
 		
 		//boost::asio::io_service& io_service_;
 		tcp::acceptor* acceptor_;
-		MessageDecoder* decoder_;
-		MessageEncoder* encoder_;
-		IoServicePool ioServicePool_;
+		message_decoder* decoder_;
+		message_encoder* encoder_;
+		io_service_pool io_service_pool_;
 		
 	};
 }

@@ -22,10 +22,10 @@ namespace net{
 	class MessageDecoder;
 
 	#define DEFAULT_HEADE_SIZE 5
-	class TcpConnection:public boost::enable_shared_from_this<TcpConnection>
+	class tcp_connection:public boost::enable_shared_from_this<tcp_connection>
 	{
 	public:
-		TcpConnection(boost::asio::io_service& io_service)
+		tcp_connection(boost::asio::io_service& io_service)
 			: socket_(io_service),service_(io_service),sending_(false)
 		{
 
@@ -43,16 +43,16 @@ namespace net{
 
 		void stop(){};
 		
-		void decoder(MessageDecoder* decoder){
+		void decoder(message_decoder* decoder){
 			messageDecoder_=decoder;
 		}
 
-		void encoder(MessageEncoder* encoder){
+		void encoder(message_encoder* encoder){
 			messageEncoder_=encoder;
 		}
 
 		void write(buffer::shared_buffer& buffer){
-			service_.post(boost::bind(&TcpConnection::post_wirte,this,buffer));
+			service_.post(boost::bind(&tcp_connection::post_wirte,this,buffer));
 		};
 		template<typename Message>
 		void write(Message& message){
@@ -68,18 +68,26 @@ namespace net{
 
 		void connect(const short port){
 			socket_.async_connect(tcp::endpoint(boost::asio::ip::tcp::v4(),port),
-				boost::bind(&TcpConnection::handle_connected,this,boost::asio::placeholders::error)
+				boost::bind(&tcp_connection::handle_connected,this,boost::asio::placeholders::error)
 				
 				);
 		}
 
 		void connect(const char* ip_address,const short port){
 			socket_.async_connect(tcp::endpoint(boost::asio::ip::address_v4::from_string(ip_address),port),
-				boost::bind(&TcpConnection::handle_connected,this,boost::asio::placeholders::error));
+				boost::bind(&tcp_connection::handle_connected,this,boost::asio::placeholders::error));
 		}
 
 		void set_connected_callback(ConnectedCallback& connected_callback){
 			connected_callback_=connected_callback;
+		}
+
+		tcp::endpoint& local_endpoint(){
+			return socket_.local_endpoint();
+		}
+
+		tcp::endpoint& remote_endpoint(){
+			return socket_.remote_endpoint();
 		}
 		
 
@@ -88,7 +96,7 @@ namespace net{
 
 		void read(){
 			socket_.async_read_some(boost::asio::buffer(data_, max_length),
-				boost::bind(&TcpConnection::handle_read, this,
+				boost::bind(&tcp_connection::handle_read, this,
 				boost::asio::placeholders::error,
 				boost::asio::placeholders::bytes_transferred));
 		}
@@ -97,7 +105,7 @@ namespace net{
 			//boost::asio::async_read
 			//socket_.async_receive();
 		socket_.async_receive(buffer::buffer(buffer),
-				boost::bind(&TcpConnection::handle_read_body, this,
+				boost::bind(&tcp_connection::handle_read_body, this,
 				boost::asio::placeholders::error,boost::ref(buffer),
 				boost::asio::placeholders::bytes_transferred));
 		}
@@ -111,7 +119,7 @@ namespace net{
 		
 			if(!sending_&& !bufferList_.empty()){
 				socket_.async_write_some(buffer::buffer(bufferList_),
-					boost::bind(&TcpConnection::handle_write,this,
+					boost::bind(&tcp_connection::handle_write,this,
 					boost::asio::placeholders::error,
 					boost::asio::placeholders::bytes_transferred));
 			}
@@ -153,7 +161,7 @@ namespace net{
 			if (!error)
 			{
 				socket_.async_read_some(boost::asio::buffer(data_, max_length),
-					boost::bind(&TcpConnection::handle_read, this,
+					boost::bind(&tcp_connection::handle_read, this,
 					boost::asio::placeholders::error,
 					boost::asio::placeholders::bytes_transferred));
 			}
@@ -164,7 +172,7 @@ namespace net{
 		}
 
 		void handle_connected(const boost::system::error_code& error){
-
+			
 			if(!error){
 				
 				LOG_INF(_KV_("message","connected to server")
@@ -179,9 +187,9 @@ namespace net{
 			}else{
 				LOG_INF(_KV_("message","connect to server failed")
 					<<"["
-					<<socket_.remote_endpoint().address().to_string()
+					<<error.value()
 					<<":"
-					<<socket_.remote_endpoint().port()
+					<<error.message()
 					<<"]"
 					);
 			}
@@ -195,14 +203,14 @@ namespace net{
 		char data_[max_length];
 		boost::asio::io_service& service_;
 		NetBuffer buffer_;
-		MessageDecoder* messageDecoder_;
-		MessageEncoder* messageEncoder_;
+		message_decoder* messageDecoder_;
+		message_encoder* messageEncoder_;
 		buffer::shared_buffer_list bufferList_;
 		bool sending_;
 		int id_;
 		ConnectedCallback connected_callback_;
 	};
 
-	typedef boost::shared_ptr<TcpConnection> TcpConnectionPtr;
+	typedef boost::shared_ptr<tcp_connection> tcp_connection_ptr;
 }
 #endif

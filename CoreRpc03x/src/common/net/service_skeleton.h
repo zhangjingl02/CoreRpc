@@ -18,7 +18,7 @@ namespace net{
 
 		
 	public :
-		virtual void onMessage(TcpConnection& connection,boost::shared_ptr<T> message)=0;
+		virtual void onMessage(tcp_connection& connection,boost::shared_ptr<T> message)=0;
 	public :
 		bool start(){
 			for(int i=0;i<threadCount_;i++){

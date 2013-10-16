@@ -10,7 +10,7 @@ namespace rpc{
 	}
 
 
-	void RpcServiceSkeleton::onMessage(net::TcpConnection& connection,boost::shared_ptr<TransferMessage> message){
+	void RpcServiceSkeleton::onMessage(net::tcp_connection& connection,boost::shared_ptr<TransferMessage> message){
 	
 		switch (message->command())
 		{
@@ -37,7 +37,7 @@ namespace rpc{
 	}
 
 	void RpcServiceSkeleton::onRequest(Request& request){}
-	void RpcServiceSkeleton::onLogin(net::TcpConnection& connection,Login& login){
+	void RpcServiceSkeleton::onLogin(net::tcp_connection& connection,Login& login){
 		LOG_INF(_KV_("on Login",login.username()));
 
 		TransferMessage tm;

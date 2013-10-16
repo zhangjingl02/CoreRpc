@@ -6,9 +6,9 @@ namespace net{
 	class MessageHanlder{
 	
 	public:
-		void connectionActive(const TcpConnectionPtr& connection)=0;
+		void connectionActive(const tcp_connection_ptr& connection)=0;
 		template<typename Message>
-		void messageReceived(const TcpConnectionPtr& connection,Message& message)=0;
+		void messageReceived(const tcp_connection_ptr& connection,Message& message)=0;
 		
 
 	

@@ -6,16 +6,16 @@
 #include "../buffer/shared_buffer.h"
 namespace net{
 	
-	class TcpConnection;
+	class tcp_connection;
 	
-	class MessageDecoder{
+	class message_decoder{
 
 		
 	public:
 		//MessageDecoder(){};
 		//virtual MessageDecoder(MessageDecoder* other);
 	public:
-		virtual int decode(TcpConnection& connection, net::NetBuffer& buffer)=0;
+		virtual int decode(tcp_connection& connection, net::NetBuffer& buffer)=0;
 		//virtual int decode(TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size)=0;
 		//virtual std::size_t frameDecode(TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size)=0;
 	};
