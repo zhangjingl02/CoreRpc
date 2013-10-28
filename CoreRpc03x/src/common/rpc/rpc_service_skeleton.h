@@ -11,25 +11,47 @@
 namespace rpc{
 
 
+	class RpcCallBack:public google::protobuf::Closure{
+		public:
+			~RpcCallBack();
 
+			 void Run() ;
+	};
+
+	//public static final int SUCCESS=0;
+	//public static final int ERR_NOT_FOUND_SERVICE=1;
+	//public static final int ERR_NOT_FOUND_METHOD=2;
+	//public static final int ERR_PARAM=3;
+	//public static final int ERR_SERVICE_EXCEPTION=4;
+	//public static final int ERR_TIME_OUT=5;
+	//public static final int ERR_CLIENT_NOT_LOGIN=6;
+	enum RpcError{
+		SUCCESS=0,
+		ERR_NOT_FOUND_SERVICE=1,
+		ERR_NOT_FOUND_METHOD=2,
+		ERR_PARAM=3,
+		ERR_SERVICE_EXCEPTION=4,
+		ERR_TIME_OUT=5,
+		ERR_CLIENT_NOT_LOGIN=6
+	};
 
 	class RpcServiceSkeleton :public  net::ServiceSkeleton<TransferMessage>{
 	public:
 		RpcServiceSkeleton(net::MessageDispatcher<TransferMessage>* dispatcher)
 			:net::ServiceSkeleton<TransferMessage>(dispatcher)
 		{}
-                        ~RpcServiceSkeleton(){};
+		~RpcServiceSkeleton(){};
 
-		
+
 	public :
 		virtual void onMessage(net::tcp_connection& connection,boost::shared_ptr<TransferMessage> message);
 		bool registService(boost::shared_ptr<google::protobuf::Service> service);
 	private:
 		void onLogin(net::tcp_connection& connection,Login& login);
-		void onLoginRsp(LoginRsp& loginRsp);
-		void onEvtBroadcastServiceList(EvtBroadcastServiceList& serviceList);
-		void onRequest(Request& request);
-		void onResponse(Response& response);
+		void onLoginRsp(net::tcp_connection& connection,LoginRsp& loginRsp);
+		void onEvtBroadcastServiceList(net::tcp_connection& connection,EvtBroadcastServiceList& serviceList);
+		void onRequest(net::tcp_connection& connection,Request& request);
+		void onResponse(net::tcp_connection& connection,Response& response);
 	private:
 		std::map<std::string,boost::shared_ptr<google::protobuf::Service> > serviceMap_;
 

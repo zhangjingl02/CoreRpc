@@ -5,9 +5,11 @@ namespace rpc{
 
 
 	bool RpcServiceSkeleton::registService(boost::shared_ptr<google::protobuf::Service> service){
-		//serviceMap_.insert(std::make_pair(service.GetDescriptor()->full_name(),service));
-		return false;
+		serviceMap_.insert(std::make_pair(service->GetDescriptor()->full_name(),service));
+		return true;
 	}
+
+
 
 
 	void RpcServiceSkeleton::onMessage(net::tcp_connection& connection,boost::shared_ptr<TransferMessage> message){
@@ -16,7 +18,7 @@ namespace rpc{
 		{
 		case TransferMessage_Command_Request:{
 			Request request=message->request();
-			onRequest(request);
+			onRequest(connection,request);
 			break;
 											 }
 			
@@ -36,7 +38,24 @@ namespace rpc{
 	
 	}
 
-	void RpcServiceSkeleton::onRequest(Request& request){}
+	void RpcServiceSkeleton::onRequest(net::tcp_connection& connection,Request& request){
+		boost::shared_ptr<google::protobuf::Service> service_ptr=serviceMap_[request.servicename()];
+		if(service_ptr){
+			const google::protobuf::MethodDescriptor* method=service_ptr->GetDescriptor()->FindMethodByName(request.methodname());
+			if(method){
+				google::protobuf::Message* message=service_ptr->GetRequestPrototype(method).New();
+				if(message->ParseFromString(request.message())){
+					 google::protobuf::Message* response=service_ptr->GetResponsePrototype(method).New();
+					 service_ptr->CallMethod
+				}else{
+				}
+			}else{
+			
+			}
+		}else{
+		
+		}
+	}
 	void RpcServiceSkeleton::onLogin(net::tcp_connection& connection,Login& login){
 		LOG_INF(_KV_("on Login",login.username()));
 
