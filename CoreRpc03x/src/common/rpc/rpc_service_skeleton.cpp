@@ -39,6 +39,12 @@ namespace rpc{
 	}
 
 	void RpcServiceSkeleton::onRequest(net::tcp_connection& connection,Request& request){
+		TransferMessage tm;
+		
+		Response rsp;
+		rsp.set_id(request.id());
+		tm.set_command(TransferMessage_Command_Response);
+	
 		boost::shared_ptr<google::protobuf::Service> service_ptr=serviceMap_[request.servicename()];
 		if(service_ptr){
 			const google::protobuf::MethodDescriptor* method=service_ptr->GetDescriptor()->FindMethodByName(request.methodname());
@@ -46,15 +52,24 @@ namespace rpc{
 				google::protobuf::Message* message=service_ptr->GetRequestPrototype(method).New();
 				if(message->ParseFromString(request.message())){
 					 google::protobuf::Message* response=service_ptr->GetResponsePrototype(method).New();
-					 service_ptr->CallMethod
+					 service_ptr->CallMethod(method,NULL,message,response,NULL);
+					 rsp.set_errorcode(RpcError::SUCCESS);
+					 rsp.set_errormessage("success");
+					 rsp.set_message(response->SerializeAsString());
 				}else{
+					rsp.set_errorcode(RpcError::ERR_PARAM);
+					rsp.set_errormessage("param error");
 				}
 			}else{
-			
+				rsp.set_errorcode(RpcError::ERR_NOT_FOUND_METHOD);
+				rsp.set_errormessage("not found method");
 			}
 		}else{
-		
+			rsp.set_errorcode(RpcError::ERR_NOT_FOUND_SERVICE);
+			rsp.set_errormessage("not found service");
 		}
+		tm.set_allocated_response(&rsp);
+		connection.write(tm);
 	}
 	void RpcServiceSkeleton::onLogin(net::tcp_connection& connection,Login& login){
 		LOG_INF(_KV_("on Login",login.username()));

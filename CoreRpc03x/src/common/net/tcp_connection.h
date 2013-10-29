@@ -2,6 +2,7 @@
 #define _H_NET_TCP_CONNECTION_H
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 #include <boost/ref.hpp>
@@ -19,6 +20,7 @@ namespace net{
 
 	// typedef boost::function<void (const TcpConnectionPtr&,const boost::system::error_code&) > CloseCallback;
 	typedef boost::function<void (const boost::system::error_code&) > ConnectedCallback;
+	typedef boost::function<void (const boost::system::error_code&) > CloseCallback;
 	class MessageDecoder;
 
 	#define DEFAULT_HEADE_SIZE 5
@@ -28,7 +30,7 @@ namespace net{
 		tcp_connection(boost::asio::io_service& io_service)
 			: socket_(io_service),service_(io_service),sending_(false)
 		{
-
+			
 		}
 
 		tcp::socket& socket()
@@ -69,7 +71,6 @@ namespace net{
 		void connect(const short port){
 			socket_.async_connect(tcp::endpoint(boost::asio::ip::tcp::v4(),port),
 				boost::bind(&tcp_connection::handle_connected,this,boost::asio::placeholders::error)
-				
 				);
 		}
 
@@ -88,6 +89,10 @@ namespace net{
 
 		tcp::endpoint& remote_endpoint(){
 			return socket_.remote_endpoint();
+		}
+
+		void add_close_callback(CloseCallback& callback){
+			close_callbacks.push_back(callback);
 		}
 		
 
@@ -208,6 +213,7 @@ namespace net{
 		buffer::shared_buffer_list bufferList_;
 		bool sending_;
 		int id_;
+		std::vector<CloseCallback> close_callbacks;
 		ConnectedCallback connected_callback_;
 	};
 

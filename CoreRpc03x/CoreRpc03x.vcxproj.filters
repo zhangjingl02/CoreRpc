@@ -69,6 +69,9 @@
     <ClCompile Include="src\common\net\tcp_client.cpp">
       <Filter>common\net</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\rpc\rpc_channel.cpp">
+      <Filter>common\rpc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -125,9 +128,6 @@
     <ClInclude Include="src\common\rpc\rpc_service_skeleton.h">
       <Filter>common\rpc</Filter>
     </ClInclude>
-    <ClInclude Include="src\common\rpc\RpcChannel.h">
-      <Filter>common\rpc</Filter>
-    </ClInclude>
     <ClInclude Include="ismp.pb.h">
       <Filter>源文件</Filter>
     </ClInclude>
@@ -160,6 +160,15 @@
     </ClInclude>
     <ClInclude Include="src\common\rpc\rpc_tcp_client.h">
       <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc_channel.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\util\sequence_generator.h">
+      <Filter>common\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\net\cache_manager.h">
+      <Filter>common\net</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

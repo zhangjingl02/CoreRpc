@@ -80,6 +80,7 @@
     <ClCompile Include="src\common\net\tcp_server.cpp" />
     <ClCompile Include="src\common\rpc\protobuf_decoder.cpp" />
     <ClCompile Include="src\common\rpc\rpc.pb.cc" />
+    <ClCompile Include="src\common\rpc\rpc_channel.cpp" />
     <ClCompile Include="src\common\rpc\rpc_service_skeleton.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +90,7 @@
     <ClInclude Include="src\common\buffer\shared_buffer.h" />
     <ClInclude Include="src\common\buffer\shared_buffer_list.h" />
     <ClInclude Include="src\common\common.h" />
+    <ClInclude Include="src\common\net\cache_manager.h" />
     <ClInclude Include="src\common\net\frame_decoder.h" />
     <ClInclude Include="src\common\net\io_service_pool.h" />
     <ClInclude Include="src\common\net\message_decoder.h" />
@@ -108,11 +110,12 @@
     <ClInclude Include="src\common\rpc\protobuf_encoder.h" />
     <ClInclude Include="src\common\rpc\protobuf_frame_decoder.h" />
     <ClInclude Include="src\common\rpc\rpc.pb.h" />
-    <ClInclude Include="src\common\rpc\RpcChannel.h" />
+    <ClInclude Include="src\common\rpc\rpc_channel.h" />
     <ClInclude Include="src\common\rpc\rpc_service_skeleton.h" />
     <ClInclude Include="src\common\rpc\rpc_tcp_client.h" />
     <ClInclude Include="src\common\rpc\rpc_tcp_server.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
+    <ClInclude Include="src\common\util\sequence_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

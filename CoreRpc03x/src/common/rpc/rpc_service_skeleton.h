@@ -7,6 +7,7 @@
 #include "../net/tcp_connection.h"
 #include "../net/service_skeleton.h"
 #include "../net/message_dispatcher.h"
+#include "../net/cache_manager.h"
 #include "rpc.pb.h"
 namespace rpc{
 
@@ -54,6 +55,8 @@ namespace rpc{
 		void onResponse(net::tcp_connection& connection,Response& response);
 	private:
 		std::map<std::string,boost::shared_ptr<google::protobuf::Service> > serviceMap_;
+
+		net::cache_manager<int,Response> cache_manager_;
 
 	};
 }
