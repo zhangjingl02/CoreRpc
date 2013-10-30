@@ -3,7 +3,6 @@
 
 #ifndef PROTOBUF_rpc_2eproto__INCLUDED
 #define PROTOBUF_rpc_2eproto__INCLUDED
-
 #ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable: 4127 4244 4267 4996)
@@ -30,6 +29,8 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
+
+namespace rpc {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rpc_2eproto();
@@ -156,30 +157,30 @@ class TransferMessage : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .TransferMessage.Command command = 1 [default = Request];
+  // required .rpc.TransferMessage.Command command = 1 [default = Request];
   inline bool has_command() const;
   inline void clear_command();
   static const int kCommandFieldNumber = 1;
-  inline ::TransferMessage_Command command() const;
-  inline void set_command(::TransferMessage_Command value);
+  inline ::rpc::TransferMessage_Command command() const;
+  inline void set_command(::rpc::TransferMessage_Command value);
 
-  // optional .Request request = 2;
+  // optional .rpc.Request request = 2;
   inline bool has_request() const;
   inline void clear_request();
   static const int kRequestFieldNumber = 2;
-  inline const ::Request& request() const;
-  inline ::Request* mutable_request();
-  inline ::Request* release_request();
-  inline void set_allocated_request(::Request* request);
+  inline const ::rpc::Request& request() const;
+  inline ::rpc::Request* mutable_request();
+  inline ::rpc::Request* release_request();
+  inline void set_allocated_request(::rpc::Request* request);
 
-  // optional .Response response = 3;
+  // optional .rpc.Response response = 3;
   inline bool has_response() const;
   inline void clear_response();
   static const int kResponseFieldNumber = 3;
-  inline const ::Response& response() const;
-  inline ::Response* mutable_response();
-  inline ::Response* release_response();
-  inline void set_allocated_response(::Response* response);
+  inline const ::rpc::Response& response() const;
+  inline ::rpc::Response* mutable_response();
+  inline ::rpc::Response* release_response();
+  inline void set_allocated_response(::rpc::Response* response);
 
   // optional bytes message = 4;
   inline bool has_message() const;
@@ -193,7 +194,7 @@ class TransferMessage : public ::google::protobuf::Message {
   inline ::std::string* release_message();
   inline void set_allocated_message(::std::string* message);
 
-  // @@protoc_insertion_point(class_scope:TransferMessage)
+  // @@protoc_insertion_point(class_scope:rpc.TransferMessage)
  private:
   inline void set_has_command();
   inline void clear_has_command();
@@ -206,8 +207,8 @@ class TransferMessage : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::Request* request_;
-  ::Response* response_;
+  ::rpc::Request* request_;
+  ::rpc::Response* response_;
   ::std::string* message_;
   int command_;
 
@@ -327,7 +328,7 @@ class Request : public ::google::protobuf::Message {
   inline ::std::string* release_message();
   inline void set_allocated_message(::std::string* message);
 
-  // @@protoc_insertion_point(class_scope:Request)
+  // @@protoc_insertion_point(class_scope:rpc.Request)
  private:
   inline void set_has_id();
   inline void clear_has_id();
@@ -452,7 +453,7 @@ class Response : public ::google::protobuf::Message {
   inline ::std::string* release_errormessage();
   inline void set_allocated_errormessage(::std::string* errormessage);
 
-  // @@protoc_insertion_point(class_scope:Response)
+  // @@protoc_insertion_point(class_scope:rpc.Response)
  private:
   inline void set_has_id();
   inline void clear_has_id();
@@ -560,7 +561,7 @@ class ServiceInfo : public ::google::protobuf::Message {
   inline ::std::string* release_methodname();
   inline void set_allocated_methodname(::std::string* methodname);
 
-  // @@protoc_insertion_point(class_scope:ServiceInfo)
+  // @@protoc_insertion_point(class_scope:rpc.ServiceInfo)
  private:
   inline void set_has_servicename();
   inline void clear_has_servicename();
@@ -638,24 +639,24 @@ class EvtBroadcastServiceList : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .ServiceInfo service = 1;
+  // repeated .rpc.ServiceInfo service = 1;
   inline int service_size() const;
   inline void clear_service();
   static const int kServiceFieldNumber = 1;
-  inline const ::ServiceInfo& service(int index) const;
-  inline ::ServiceInfo* mutable_service(int index);
-  inline ::ServiceInfo* add_service();
-  inline const ::google::protobuf::RepeatedPtrField< ::ServiceInfo >&
+  inline const ::rpc::ServiceInfo& service(int index) const;
+  inline ::rpc::ServiceInfo* mutable_service(int index);
+  inline ::rpc::ServiceInfo* add_service();
+  inline const ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo >&
       service() const;
-  inline ::google::protobuf::RepeatedPtrField< ::ServiceInfo >*
+  inline ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo >*
       mutable_service();
 
-  // @@protoc_insertion_point(class_scope:EvtBroadcastServiceList)
+  // @@protoc_insertion_point(class_scope:rpc.EvtBroadcastServiceList)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::ServiceInfo > service_;
+  ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo > service_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -723,24 +724,24 @@ class ServiceList : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .ServiceInfo list = 1;
+  // repeated .rpc.ServiceInfo list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::ServiceInfo& list(int index) const;
-  inline ::ServiceInfo* mutable_list(int index);
-  inline ::ServiceInfo* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::ServiceInfo >&
+  inline const ::rpc::ServiceInfo& list(int index) const;
+  inline ::rpc::ServiceInfo* mutable_list(int index);
+  inline ::rpc::ServiceInfo* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::ServiceInfo >*
+  inline ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:ServiceList)
+  // @@protoc_insertion_point(class_scope:rpc.ServiceList)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::ServiceInfo > list_;
+  ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -815,7 +816,7 @@ class EvtClientActive : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 channelid() const;
   inline void set_channelid(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:EvtClientActive)
+  // @@protoc_insertion_point(class_scope:rpc.EvtClientActive)
  private:
   inline void set_has_channelid();
   inline void clear_has_channelid();
@@ -902,7 +903,7 @@ class EvtActiveTest : public ::google::protobuf::Message {
   inline ::std::string* release_message();
   inline void set_allocated_message(::std::string* message);
 
-  // @@protoc_insertion_point(class_scope:EvtActiveTest)
+  // @@protoc_insertion_point(class_scope:rpc.EvtActiveTest)
  private:
   inline void set_has_message();
   inline void clear_has_message();
@@ -1001,7 +1002,7 @@ class Login : public ::google::protobuf::Message {
   inline ::std::string* release_password();
   inline void set_allocated_password(::std::string* password);
 
-  // @@protoc_insertion_point(class_scope:Login)
+  // @@protoc_insertion_point(class_scope:rpc.Login)
  private:
   inline void set_has_username();
   inline void clear_has_username();
@@ -1091,7 +1092,7 @@ class LoginRsp : public ::google::protobuf::Message {
   inline ::std::string* release_status();
   inline void set_allocated_status(::std::string* status);
 
-  // @@protoc_insertion_point(class_scope:LoginRsp)
+  // @@protoc_insertion_point(class_scope:rpc.LoginRsp)
  private:
   inline void set_has_status();
   inline void clear_has_status();
@@ -1117,7 +1118,7 @@ class LoginRsp : public ::google::protobuf::Message {
 
 // TransferMessage
 
-// required .TransferMessage.Command command = 1 [default = Request];
+// required .rpc.TransferMessage.Command command = 1 [default = Request];
 inline bool TransferMessage::has_command() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1131,16 +1132,16 @@ inline void TransferMessage::clear_command() {
   command_ = 1;
   clear_has_command();
 }
-inline ::TransferMessage_Command TransferMessage::command() const {
-  return static_cast< ::TransferMessage_Command >(command_);
+inline ::rpc::TransferMessage_Command TransferMessage::command() const {
+  return static_cast< ::rpc::TransferMessage_Command >(command_);
 }
-inline void TransferMessage::set_command(::TransferMessage_Command value) {
-  assert(::TransferMessage_Command_IsValid(value));
+inline void TransferMessage::set_command(::rpc::TransferMessage_Command value) {
+  assert(::rpc::TransferMessage_Command_IsValid(value));
   set_has_command();
   command_ = value;
 }
 
-// optional .Request request = 2;
+// optional .rpc.Request request = 2;
 inline bool TransferMessage::has_request() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1151,24 +1152,24 @@ inline void TransferMessage::clear_has_request() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void TransferMessage::clear_request() {
-  if (request_ != NULL) request_->::Request::Clear();
+  if (request_ != NULL) request_->::rpc::Request::Clear();
   clear_has_request();
 }
-inline const ::Request& TransferMessage::request() const {
+inline const ::rpc::Request& TransferMessage::request() const {
   return request_ != NULL ? *request_ : *default_instance_->request_;
 }
-inline ::Request* TransferMessage::mutable_request() {
+inline ::rpc::Request* TransferMessage::mutable_request() {
   set_has_request();
-  if (request_ == NULL) request_ = new ::Request;
+  if (request_ == NULL) request_ = new ::rpc::Request;
   return request_;
 }
-inline ::Request* TransferMessage::release_request() {
+inline ::rpc::Request* TransferMessage::release_request() {
   clear_has_request();
-  ::Request* temp = request_;
+  ::rpc::Request* temp = request_;
   request_ = NULL;
   return temp;
 }
-inline void TransferMessage::set_allocated_request(::Request* request) {
+inline void TransferMessage::set_allocated_request(::rpc::Request* request) {
   delete request_;
   request_ = request;
   if (request) {
@@ -1178,7 +1179,7 @@ inline void TransferMessage::set_allocated_request(::Request* request) {
   }
 }
 
-// optional .Response response = 3;
+// optional .rpc.Response response = 3;
 inline bool TransferMessage::has_response() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1189,24 +1190,24 @@ inline void TransferMessage::clear_has_response() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void TransferMessage::clear_response() {
-  if (response_ != NULL) response_->::Response::Clear();
+  if (response_ != NULL) response_->::rpc::Response::Clear();
   clear_has_response();
 }
-inline const ::Response& TransferMessage::response() const {
+inline const ::rpc::Response& TransferMessage::response() const {
   return response_ != NULL ? *response_ : *default_instance_->response_;
 }
-inline ::Response* TransferMessage::mutable_response() {
+inline ::rpc::Response* TransferMessage::mutable_response() {
   set_has_response();
-  if (response_ == NULL) response_ = new ::Response;
+  if (response_ == NULL) response_ = new ::rpc::Response;
   return response_;
 }
-inline ::Response* TransferMessage::release_response() {
+inline ::rpc::Response* TransferMessage::release_response() {
   clear_has_response();
-  ::Response* temp = response_;
+  ::rpc::Response* temp = response_;
   response_ = NULL;
   return temp;
 }
-inline void TransferMessage::set_allocated_response(::Response* response) {
+inline void TransferMessage::set_allocated_response(::rpc::Response* response) {
   delete response_;
   response_ = response;
   if (response) {
@@ -1880,27 +1881,27 @@ inline void ServiceInfo::set_allocated_methodname(::std::string* methodname) {
 
 // EvtBroadcastServiceList
 
-// repeated .ServiceInfo service = 1;
+// repeated .rpc.ServiceInfo service = 1;
 inline int EvtBroadcastServiceList::service_size() const {
   return service_.size();
 }
 inline void EvtBroadcastServiceList::clear_service() {
   service_.Clear();
 }
-inline const ::ServiceInfo& EvtBroadcastServiceList::service(int index) const {
+inline const ::rpc::ServiceInfo& EvtBroadcastServiceList::service(int index) const {
   return service_.Get(index);
 }
-inline ::ServiceInfo* EvtBroadcastServiceList::mutable_service(int index) {
+inline ::rpc::ServiceInfo* EvtBroadcastServiceList::mutable_service(int index) {
   return service_.Mutable(index);
 }
-inline ::ServiceInfo* EvtBroadcastServiceList::add_service() {
+inline ::rpc::ServiceInfo* EvtBroadcastServiceList::add_service() {
   return service_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::ServiceInfo >&
+inline const ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo >&
 EvtBroadcastServiceList::service() const {
   return service_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::ServiceInfo >*
+inline ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo >*
 EvtBroadcastServiceList::mutable_service() {
   return &service_;
 }
@@ -1909,27 +1910,27 @@ EvtBroadcastServiceList::mutable_service() {
 
 // ServiceList
 
-// repeated .ServiceInfo list = 1;
+// repeated .rpc.ServiceInfo list = 1;
 inline int ServiceList::list_size() const {
   return list_.size();
 }
 inline void ServiceList::clear_list() {
   list_.Clear();
 }
-inline const ::ServiceInfo& ServiceList::list(int index) const {
+inline const ::rpc::ServiceInfo& ServiceList::list(int index) const {
   return list_.Get(index);
 }
-inline ::ServiceInfo* ServiceList::mutable_list(int index) {
+inline ::rpc::ServiceInfo* ServiceList::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::ServiceInfo* ServiceList::add_list() {
+inline ::rpc::ServiceInfo* ServiceList::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::ServiceInfo >&
+inline const ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo >&
 ServiceList::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::ServiceInfo >*
+inline ::google::protobuf::RepeatedPtrField< ::rpc::ServiceInfo >*
 ServiceList::mutable_list() {
   return &list_;
 }
@@ -2255,21 +2256,24 @@ inline void LoginRsp::set_allocated_status(::std::string* status) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace rpc
+
 #ifndef SWIG
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::TransferMessage_Command>() {
-  return ::TransferMessage_Command_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rpc::TransferMessage_Command>() {
+  return ::rpc::TransferMessage_Command_descriptor();
 }
 
 }  // namespace google
 }  // namespace protobuf
 #endif  // SWIG
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
+
 // @@protoc_insertion_point(global_scope)
 
 #endif  // PROTOBUF_rpc_2eproto__INCLUDED

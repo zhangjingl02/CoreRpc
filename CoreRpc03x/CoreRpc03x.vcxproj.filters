@@ -170,5 +170,11 @@
     <ClInclude Include="src\common\net\cache_manager.h">
       <Filter>common\net</Filter>
     </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc_call_back.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc_common.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

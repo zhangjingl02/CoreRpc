@@ -46,7 +46,7 @@ buffer::shared_buffer buffer1();
 
 buffer::shared_buffer_list list;
 	boost::asio::io_service io;
-	net::MessageDispatcher<TransferMessage> dispatcher;
+	net::MessageDispatcher<rpc::TransferMessage> dispatcher;
 	rpc::RpcServiceSkeleton sk(&dispatcher);
 	rpc::protobuf_decoder decoder(&dispatcher);
 	rpc::protobuf_encoder encoder;

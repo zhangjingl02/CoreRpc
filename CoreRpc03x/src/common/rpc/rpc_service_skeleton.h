@@ -9,6 +9,7 @@
 #include "../net/message_dispatcher.h"
 #include "../net/cache_manager.h"
 #include "rpc.pb.h"
+#include "rpc_common.h"
 namespace rpc{
 
 
@@ -26,20 +27,12 @@ namespace rpc{
 	//public static final int ERR_SERVICE_EXCEPTION=4;
 	//public static final int ERR_TIME_OUT=5;
 	//public static final int ERR_CLIENT_NOT_LOGIN=6;
-	enum RpcError{
-		SUCCESS=0,
-		ERR_NOT_FOUND_SERVICE=1,
-		ERR_NOT_FOUND_METHOD=2,
-		ERR_PARAM=3,
-		ERR_SERVICE_EXCEPTION=4,
-		ERR_TIME_OUT=5,
-		ERR_CLIENT_NOT_LOGIN=6
-	};
+	
 
 	class RpcServiceSkeleton :public  net::ServiceSkeleton<TransferMessage>{
 	public:
-		RpcServiceSkeleton(net::MessageDispatcher<TransferMessage>* dispatcher)
-			:net::ServiceSkeleton<TransferMessage>(dispatcher)
+		RpcServiceSkeleton(net::MessageDispatcher<TransferMessage>* dispatcher,net::cache_manager<int,Response>& cache_manager)
+			:net::ServiceSkeleton<TransferMessage>(dispatcher),cache_manager_(cache_manager)
 		{}
 		~RpcServiceSkeleton(){};
 
@@ -56,7 +49,7 @@ namespace rpc{
 	private:
 		std::map<std::string,boost::shared_ptr<google::protobuf::Service> > serviceMap_;
 
-		net::cache_manager<int,Response> cache_manager_;
+		net::cache_manager<int,Response>& cache_manager_;
 
 	};
 }

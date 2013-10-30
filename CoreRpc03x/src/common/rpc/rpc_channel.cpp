@@ -1,6 +1,7 @@
 #include "rpc_channel.h"
 #include "rpc.pb.h"
-
+#include "rpc_call_back.h"
+#include "rpc_common.h"
 namespace rpc{
 
 
@@ -26,7 +27,19 @@ namespace rpc{
 				return;
 			}
 
+
+
+			rpc_call_back call_back;
+			net::cache_message<Response> cacheMessage(call_back);
+			cache_manager_.put(req.id(),&cacheMessage);
 			connection_ptr->write(tm);
+			cacheMessage.wait();
+			Response* rsp=cacheMessage.response();
+			if(rsp){
+				if(rsp->errorcode()==RpcError::SUCCESS){
+					response->ParseFromString(rsp->message());
+				}
+			}
 
 
 
@@ -38,7 +51,7 @@ namespace rpc{
 	}
 
 	net::tcp_connection_ptr RpcChannel::get_connection(){
-		if(connections_.size==0){
+		if(connections_.size()==0){
 			return net::tcp_connection_ptr();
 		}
 		return connections_[0];

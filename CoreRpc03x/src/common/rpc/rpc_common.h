@@ -1,0 +1,14 @@
+#ifndef _H_COMMON_RPC_COMMON_H
+#define _H_COMMON_RPC_COMMON_H
+namespace rpc{
+	enum RpcError{
+		SUCCESS=0,
+		ERR_NOT_FOUND_SERVICE=1,
+		ERR_NOT_FOUND_METHOD=2,
+		ERR_PARAM=3,
+		ERR_SERVICE_EXCEPTION=4,
+		ERR_TIME_OUT=5,
+		ERR_CLIENT_NOT_LOGIN=6
+	};
+}
+#endif

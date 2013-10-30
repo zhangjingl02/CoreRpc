@@ -16,6 +16,8 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
+namespace rpc {
+
 namespace {
 
 const ::google::protobuf::Descriptor* TransferMessage_descriptor_ = NULL;
@@ -288,27 +290,27 @@ void protobuf_AddDesc_rpc_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\trpc.proto\"\223\002\n\017TransferMessage\0222\n\007comma"
-    "nd\030\001 \002(\0162\030.TransferMessage.Command:\007Requ"
-    "est\022\031\n\007request\030\002 \001(\0132\010.Request\022\033\n\010respon"
-    "se\030\003 \001(\0132\t.Response\022\017\n\007message\030\004 \001(\014\"\202\001\n"
-    "\007Command\022\013\n\007Request\020\001\022\014\n\010Response\020\002\022\023\n\017E"
-    "vtClientActive\020\003\022\033\n\027EvtBroadcastServiceL"
-    "ist\020\004\022\021\n\rEvtActiveTest\020\005\022\t\n\005Login\020\006\022\014\n\010L"
-    "oginRsp\020\007\"h\n\007Request\022\n\n\002id\030\001 \002(\005\022\023\n\013serv"
-    "iceName\030\002 \002(\t\022\022\n\nmethodName\030\003 \002(\t\022\027\n\017blo"
-    "ckingService\030\004 \001(\010\022\017\n\007message\030\005 \001(\014\"P\n\010R"
-    "esponse\022\n\n\002id\030\001 \002(\005\022\021\n\terrorCode\030\002 \001(\005\022\017"
-    "\n\007message\030\003 \001(\014\022\024\n\014errorMessage\030\004 \001(\t\"6\n"
-    "\013ServiceInfo\022\023\n\013serviceName\030\001 \002(\t\022\022\n\nmet"
-    "hodName\030\002 \002(\t\"8\n\027EvtBroadcastServiceList"
-    "\022\035\n\007service\030\001 \003(\0132\014.ServiceInfo\")\n\013Servi"
-    "ceList\022\032\n\004list\030\001 \003(\0132\014.ServiceInfo\"$\n\017Ev"
-    "tClientActive\022\021\n\tchannelId\030\001 \002(\005\" \n\rEvtA"
-    "ctiveTest\022\017\n\007message\030\001 \001(\t\"+\n\005Login\022\020\n\010u"
-    "serName\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"\032\n\010Login"
-    "Rsp\022\016\n\006status\030\001 \002(\tB\037\n\021com.unioncast.rpc"
-    "B\nRpcMessage", 812);
+    "\n\trpc.proto\022\003rpc\"\237\002\n\017TransferMessage\0226\n\007"
+    "command\030\001 \002(\0162\034.rpc.TransferMessage.Comm"
+    "and:\007Request\022\035\n\007request\030\002 \001(\0132\014.rpc.Requ"
+    "est\022\037\n\010response\030\003 \001(\0132\r.rpc.Response\022\017\n\007"
+    "message\030\004 \001(\014\"\202\001\n\007Command\022\013\n\007Request\020\001\022\014"
+    "\n\010Response\020\002\022\023\n\017EvtClientActive\020\003\022\033\n\027Evt"
+    "BroadcastServiceList\020\004\022\021\n\rEvtActiveTest\020"
+    "\005\022\t\n\005Login\020\006\022\014\n\010LoginRsp\020\007\"h\n\007Request\022\n\n"
+    "\002id\030\001 \002(\005\022\023\n\013serviceName\030\002 \002(\t\022\022\n\nmethod"
+    "Name\030\003 \002(\t\022\027\n\017blockingService\030\004 \001(\010\022\017\n\007m"
+    "essage\030\005 \001(\014\"P\n\010Response\022\n\n\002id\030\001 \002(\005\022\021\n\t"
+    "errorCode\030\002 \001(\005\022\017\n\007message\030\003 \001(\014\022\024\n\014erro"
+    "rMessage\030\004 \001(\t\"6\n\013ServiceInfo\022\023\n\013service"
+    "Name\030\001 \002(\t\022\022\n\nmethodName\030\002 \002(\t\"<\n\027EvtBro"
+    "adcastServiceList\022!\n\007service\030\001 \003(\0132\020.rpc"
+    ".ServiceInfo\"-\n\013ServiceList\022\036\n\004list\030\001 \003("
+    "\0132\020.rpc.ServiceInfo\"$\n\017EvtClientActive\022\021"
+    "\n\tchannelId\030\001 \002(\005\" \n\rEvtActiveTest\022\017\n\007me"
+    "ssage\030\001 \001(\t\"+\n\005Login\022\020\n\010userName\030\001 \002(\t\022\020"
+    "\n\010password\030\002 \002(\t\"\032\n\010LoginRsp\022\016\n\006status\030\001"
+    " \002(\tB\037\n\021com.unioncast.rpcB\nRpcMessage", 837);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rpc.proto", &protobuf_RegisterTypes);
   TransferMessage::default_instance_ = new TransferMessage();
@@ -387,8 +389,8 @@ TransferMessage::TransferMessage()
 }
 
 void TransferMessage::InitAsDefaultInstance() {
-  request_ = const_cast< ::Request*>(&::Request::default_instance());
-  response_ = const_cast< ::Response*>(&::Response::default_instance());
+  request_ = const_cast< ::rpc::Request*>(&::rpc::Request::default_instance());
+  response_ = const_cast< ::rpc::Response*>(&::rpc::Response::default_instance());
 }
 
 TransferMessage::TransferMessage(const TransferMessage& from)
@@ -445,10 +447,10 @@ void TransferMessage::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     command_ = 1;
     if (has_request()) {
-      if (request_ != NULL) request_->::Request::Clear();
+      if (request_ != NULL) request_->::rpc::Request::Clear();
     }
     if (has_response()) {
-      if (response_ != NULL) response_->::Response::Clear();
+      if (response_ != NULL) response_->::rpc::Response::Clear();
     }
     if (has_message()) {
       if (message_ != &::google::protobuf::internal::kEmptyString) {
@@ -466,7 +468,7 @@ bool TransferMessage::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .TransferMessage.Command command = 1 [default = Request];
+      // required .rpc.TransferMessage.Command command = 1 [default = Request];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -474,8 +476,8 @@ bool TransferMessage::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::TransferMessage_Command_IsValid(value)) {
-            set_command(static_cast< ::TransferMessage_Command >(value));
+          if (::rpc::TransferMessage_Command_IsValid(value)) {
+            set_command(static_cast< ::rpc::TransferMessage_Command >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -486,7 +488,7 @@ bool TransferMessage::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Request request = 2;
+      // optional .rpc.Request request = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -500,7 +502,7 @@ bool TransferMessage::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Response response = 3;
+      // optional .rpc.Response response = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -546,19 +548,19 @@ bool TransferMessage::MergePartialFromCodedStream(
 
 void TransferMessage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .TransferMessage.Command command = 1 [default = Request];
+  // required .rpc.TransferMessage.Command command = 1 [default = Request];
   if (has_command()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->command(), output);
   }
 
-  // optional .Request request = 2;
+  // optional .rpc.Request request = 2;
   if (has_request()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->request(), output);
   }
 
-  // optional .Response response = 3;
+  // optional .rpc.Response response = 3;
   if (has_response()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->response(), output);
@@ -578,20 +580,20 @@ void TransferMessage::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* TransferMessage::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .TransferMessage.Command command = 1 [default = Request];
+  // required .rpc.TransferMessage.Command command = 1 [default = Request];
   if (has_command()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->command(), target);
   }
 
-  // optional .Request request = 2;
+  // optional .rpc.Request request = 2;
   if (has_request()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->request(), target);
   }
 
-  // optional .Response response = 3;
+  // optional .rpc.Response response = 3;
   if (has_response()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -616,20 +618,20 @@ int TransferMessage::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .TransferMessage.Command command = 1 [default = Request];
+    // required .rpc.TransferMessage.Command command = 1 [default = Request];
     if (has_command()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->command());
     }
 
-    // optional .Request request = 2;
+    // optional .rpc.Request request = 2;
     if (has_request()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->request());
     }
 
-    // optional .Response response = 3;
+    // optional .rpc.Response response = 3;
     if (has_response()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -674,10 +676,10 @@ void TransferMessage::MergeFrom(const TransferMessage& from) {
       set_command(from.command());
     }
     if (from.has_request()) {
-      mutable_request()->::Request::MergeFrom(from.request());
+      mutable_request()->::rpc::Request::MergeFrom(from.request());
     }
     if (from.has_response()) {
-      mutable_response()->::Response::MergeFrom(from.response());
+      mutable_response()->::rpc::Response::MergeFrom(from.response());
     }
     if (from.has_message()) {
       set_message(from.message());
@@ -1844,7 +1846,7 @@ bool EvtBroadcastServiceList::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .ServiceInfo service = 1;
+      // repeated .rpc.ServiceInfo service = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1877,7 +1879,7 @@ bool EvtBroadcastServiceList::MergePartialFromCodedStream(
 
 void EvtBroadcastServiceList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .ServiceInfo service = 1;
+  // repeated .rpc.ServiceInfo service = 1;
   for (int i = 0; i < this->service_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->service(i), output);
@@ -1891,7 +1893,7 @@ void EvtBroadcastServiceList::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* EvtBroadcastServiceList::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .ServiceInfo service = 1;
+  // repeated .rpc.ServiceInfo service = 1;
   for (int i = 0; i < this->service_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1908,7 +1910,7 @@ void EvtBroadcastServiceList::SerializeWithCachedSizes(
 int EvtBroadcastServiceList::ByteSize() const {
   int total_size = 0;
 
-  // repeated .ServiceInfo service = 1;
+  // repeated .rpc.ServiceInfo service = 1;
   total_size += 1 * this->service_size();
   for (int i = 0; i < this->service_size(); i++) {
     total_size +=
@@ -2050,7 +2052,7 @@ bool ServiceList::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .ServiceInfo list = 1;
+      // repeated .rpc.ServiceInfo list = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2083,7 +2085,7 @@ bool ServiceList::MergePartialFromCodedStream(
 
 void ServiceList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .ServiceInfo list = 1;
+  // repeated .rpc.ServiceInfo list = 1;
   for (int i = 0; i < this->list_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->list(i), output);
@@ -2097,7 +2099,7 @@ void ServiceList::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* ServiceList::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .ServiceInfo list = 1;
+  // repeated .rpc.ServiceInfo list = 1;
   for (int i = 0; i < this->list_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -2114,7 +2116,7 @@ void ServiceList::SerializeWithCachedSizes(
 int ServiceList::ByteSize() const {
   int total_size = 0;
 
-  // repeated .ServiceInfo list = 1;
+  // repeated .rpc.ServiceInfo list = 1;
   total_size += 1 * this->list_size();
   for (int i = 0; i < this->list_size(); i++) {
     total_size +=
@@ -3133,5 +3135,7 @@ void LoginRsp::Swap(LoginRsp* other) {
 
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace rpc
 
 // @@protoc_insertion_point(global_scope)

@@ -23,6 +23,9 @@ namespace rpc{
 											 }
 			
 		case TransferMessage_Command_Response:
+			Response rsp_message=message->response();
+			onResponse(connection,rsp_message);
+			break;
 		case TransferMessage_Command_Login:{
 			Login login;
 			login.ParseFromString(message->message());
@@ -85,5 +88,7 @@ namespace rpc{
 
 	}
 
-
+	void RpcServiceSkeleton::onResponse(net::tcp_connection& connection,Response& response){
+	
+	}
 }
