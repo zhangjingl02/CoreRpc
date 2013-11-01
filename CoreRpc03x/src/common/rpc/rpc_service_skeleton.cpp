@@ -22,9 +22,10 @@ namespace rpc{
 			break;
 											 }
 			
-		case TransferMessage_Command_Response:
-			Response rsp_message=message->response();
-			onResponse(connection,rsp_message);
+		case TransferMessage_Command_Response:{
+			Response rsp_message_1=message->response();
+			onResponse(connection,rsp_message_1);
+											  }
 			break;
 		case TransferMessage_Command_Login:{
 			Login login;

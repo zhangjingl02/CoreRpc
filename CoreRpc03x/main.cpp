@@ -27,7 +27,7 @@
 #include "src/common/buffer/shared_buffer_list.h"
 #include "src/common/rpc/protobuf_encoder.h"
 #include "src/common/net/tcp_client.h"
-
+#include "src/common/rpc/rpc_factory.h"
 using namespace std;
 
 
@@ -41,6 +41,11 @@ int main(int argc, char** argv) {
 google::LogToStderr();//只输出到标准错误输出
 LOG(INFO) <<"my first info";   int valueint=10;  
 LOG_IF(ERROR, valueint=10)<<" valueint=10";
+
+rpc::rpc_fatory factory;
+
+
+/*
 unsigned int a=2;
 buffer::shared_buffer buffer1();
 
@@ -57,7 +62,7 @@ buffer::shared_buffer_list list;
 	server.encoder(&encoder);
 	sk.start();
 	server.start(9997);
-
+	*/
 	//net::TcpClient client(io);
 	//client.connect("127.0.0.1",(short)9800);
 	//io.run();

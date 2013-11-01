@@ -16,7 +16,9 @@ namespace rpc{
 		void connect(const char* ip_address,short port);
 		void start(const char* ip_address,short port);
 		void start(short port);
-		void get_blocking_interface();
+		void regedist_service(boost::shared_ptr<google::protobuf::Service> service);
+
+		const RpcChannel* channel(){return &channel_;};
 		
 
 	private:

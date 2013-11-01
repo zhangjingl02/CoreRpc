@@ -8,6 +8,8 @@ namespace rpc{
 	public:
 		rpc_tcp_client(boost::asio::io_service& io_service):
 			tpc_client(io_service){}
+
+		virtual void on_connected(const boost::system::error_code& error){};
 	private:
 
 	};

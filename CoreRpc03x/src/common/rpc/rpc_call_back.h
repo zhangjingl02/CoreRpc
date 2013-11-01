@@ -20,7 +20,7 @@ namespace rpc{
 
 		void wait(int timeout){
 			 UniqueLock lg(m_mutex);
-			 m_notRsp.wait(lg, boost::posix_time::milliseconds(timeout));
+			 //m_notRsp.wait(lg, boost::posix_time::milliseconds(timeout));
 		}
 	private:
 		boost::mutex m_mutex;

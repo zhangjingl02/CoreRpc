@@ -7,8 +7,9 @@ namespace rpc{
 	
 		void test(){
 		
-			rpc::test::TestService::Service::
+			rpc::test::TestService_Stub stub();
+
 		}
 	};
 }
-#define
+#endif

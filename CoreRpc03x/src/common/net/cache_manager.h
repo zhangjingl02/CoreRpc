@@ -5,9 +5,9 @@ namespace net{
 
 	class call_back{
 	public:
-		virtual void run()=0;
-		virtual void wait()=0;
-		virtual void wait(int time);
+		virtual void run(){};
+		virtual void wait(){};
+		virtual void wait(int time){};
 	};
 
 	template<typename T>
