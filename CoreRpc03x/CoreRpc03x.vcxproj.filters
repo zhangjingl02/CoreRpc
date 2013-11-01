@@ -28,6 +28,9 @@
     <Filter Include="common\util">
       <UniqueIdentifier>{2a96c95e-00d3-4df7-be42-95601a66c1c7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="common\rpc\test">
+      <UniqueIdentifier>{3a03f034-5cb3-4a78-8046-0697a9cc2a21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -71,6 +74,12 @@
     </ClCompile>
     <ClCompile Include="src\common\rpc\rpc_channel.cpp">
       <Filter>common\rpc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\rpc\rpc_factory.cpp">
+      <Filter>common\rpc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\rpc\test\RpcTest.pb.cc">
+      <Filter>common\rpc\test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +184,15 @@
     </ClInclude>
     <ClInclude Include="src\common\rpc\rpc_common.h">
       <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\rpc_factory.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\test\RpcTest.pb.h">
+      <Filter>common\rpc\test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\rpc\test\test.h">
+      <Filter>common\rpc\test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

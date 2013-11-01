@@ -81,7 +81,9 @@
     <ClCompile Include="src\common\rpc\protobuf_decoder.cpp" />
     <ClCompile Include="src\common\rpc\rpc.pb.cc" />
     <ClCompile Include="src\common\rpc\rpc_channel.cpp" />
+    <ClCompile Include="src\common\rpc\rpc_factory.cpp" />
     <ClCompile Include="src\common\rpc\rpc_service_skeleton.cpp" />
+    <ClCompile Include="src\common\rpc\test\RpcTest.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ismp.pb.h" />
@@ -113,9 +115,12 @@
     <ClInclude Include="src\common\rpc\rpc_call_back.h" />
     <ClInclude Include="src\common\rpc\rpc_channel.h" />
     <ClInclude Include="src\common\rpc\rpc_common.h" />
+    <ClInclude Include="src\common\rpc\rpc_factory.h" />
     <ClInclude Include="src\common\rpc\rpc_service_skeleton.h" />
     <ClInclude Include="src\common\rpc\rpc_tcp_client.h" />
     <ClInclude Include="src\common\rpc\rpc_tcp_server.h" />
+    <ClInclude Include="src\common\rpc\test\RpcTest.pb.h" />
+    <ClInclude Include="src\common\rpc\test\test.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
     <ClInclude Include="src\common\util\sequence_generator.h" />
   </ItemGroup>
