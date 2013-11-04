@@ -14,7 +14,7 @@
 #include "message_decoder.h"
 #include "message_encoder.h"
 #include "net_buffer.h"
-
+#include "../util/sequence_generator.h"
 using boost::asio::ip::tcp;
 namespace net{
 
@@ -28,7 +28,7 @@ namespace net{
 	{
 	public:
 		tcp_connection(boost::asio::io_service& io_service)
-			: socket_(io_service),service_(io_service),sending_(false)
+			: socket_(io_service),service_(io_service),sending_(false),id_( kConnectionId.next())
 		{
 			
 		}
@@ -79,7 +79,7 @@ namespace net{
 				boost::bind(&tcp_connection::handle_connected,this,boost::asio::placeholders::error));
 		}
 
-		void set_connected_callback(ConnectedCallback& connected_callback){
+		void set_connected_callback(const ConnectedCallback& connected_callback){
 			connected_callback_=connected_callback;
 		}
 
@@ -95,7 +95,7 @@ namespace net{
 			close_callbacks.push_back(callback);
 		}
 		
-
+		int id(){return id_;}
 
 	private:
 
@@ -136,7 +136,7 @@ namespace net{
 			{
 				buffer_.append(data_,bytes_transferred);
 				if(messageDecoder_){
-					messageDecoder_->decode(*this,buffer_);
+					messageDecoder_->decode(shared_from_this(),buffer_);
 				}
 				read();
 			}
@@ -189,6 +189,9 @@ namespace net{
 					<<socket_.remote_endpoint().port()
 					<<"]"
 					);
+				if(!connected_callback_){
+					connected_callback_(error);
+				}
 			}else{
 				LOG_INF(_KV_("message","connect to server failed")
 					<<"["
@@ -202,6 +205,8 @@ namespace net{
 				connected_callback_(error);
 			}
 		}
+
+		
 	private:
 		tcp::socket socket_;
 		enum { max_length = 1024 };
@@ -215,7 +220,10 @@ namespace net{
 		int id_;
 		std::vector<CloseCallback> close_callbacks;
 		ConnectedCallback connected_callback_;
+		public:
+		static util::SequenceGenerator kConnectionId;
 	};
+	 
 
 	typedef boost::shared_ptr<tcp_connection> tcp_connection_ptr;
 }

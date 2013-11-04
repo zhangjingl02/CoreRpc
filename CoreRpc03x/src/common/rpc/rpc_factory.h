@@ -12,14 +12,17 @@ namespace rpc{
 	class rpc_fatory{
 	public:
 		rpc_fatory():service_pool_(5),skeleton_(&dispatcher_,cache_manager_),channel_(cache_manager_)
-		{}
+		{
+			service_pool_.run();
+			skeleton_.start();
+		}
 		void connect(const char* ip_address,short port);
 		void start(const char* ip_address,short port);
 		void start(short port);
 		void regedist_service(boost::shared_ptr<google::protobuf::Service> service);
 
-		const RpcChannel* channel(){return &channel_;};
-		
+		const RpcChannel* channel() const{return &channel_;} ;
+		RpcChannel* channel(){return &channel_;};
 
 	private:
 		net::MessageDispatcher<TransferMessage> dispatcher_;

@@ -29,7 +29,7 @@ public:
     };
 
     unsigned int next() {
-        boost::mutex::scoped_lock lock(the_mutex);
+       // boost::mutex::scoped_lock lock(the_mutex);
         if (++m_idseq >= m_max)
             m_idseq = m_min;
         return m_idseq;
@@ -39,7 +39,7 @@ private:
     unsigned int m_min;
     unsigned int m_max;
     unsigned int m_idseq;
-    mutable boost::mutex the_mutex;
+    //mutable boost::mutex the_mutex;
 };
 }
 #endif

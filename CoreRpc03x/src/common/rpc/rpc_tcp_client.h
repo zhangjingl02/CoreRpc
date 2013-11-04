@@ -1,17 +1,40 @@
 #ifndef _H_COMMON_RPC_TCP_CLIENT_H
 #define _H_COMMON_RPC_TCP_CLIENT_H
+#include <string>
 #include <boost/shared_ptr.hpp>
-
+#include "protobuf_decoder.h"
+#include "protobuf_encoder.h"
+#include "rpc.pb.h"
 #include "../net/tcp_client.h"
+#include "../net/message_dispatcher.h"
 namespace rpc{
+
+#define RPC_USER_NAME "unioncast#rpc%&(*568jsdf234"
+#define RPC_PASSWORD "zdf(|)wer5234&*&123unioncast"
 	class rpc_tcp_client:public net::tpc_client{
 	public:
-		rpc_tcp_client(boost::asio::io_service& io_service):
-			tpc_client(io_service){}
+		rpc_tcp_client(net::MessageDispatcher<TransferMessage>* dispatcher,boost::asio::io_service& io_service):
+			pb_decoder_(dispatcher),tpc_client(io_service){
+				encoder(&pb_encoder_);
+				decoder(&pb_decoder_);
+		}
 
-		virtual void on_connected(const boost::system::error_code& error){};
+		virtual void on_connected(const boost::system::error_code& error){
+			if(!error){
+				TransferMessage tm;
+				tm.set_command(TransferMessage_Command_Login);
+				Login login;
+				login.set_username(RPC_USER_NAME);
+				login.set_password(RPC_PASSWORD);
+				std::string login_message;
+				login.SerializeToString(&login_message);
+				tm.set_message(login_message);
+				write(tm);
+			}
+		};
 	private:
-
+		protobuf_encoder pb_encoder_;
+		protobuf_decoder pb_decoder_;
 	};
 
 	typedef boost::shared_ptr<rpc_tcp_client> rpc_tcp_client_ptr;

@@ -4,7 +4,7 @@
 namespace rpc{
 
 	void rpc_fatory::connect(const char* ip_address,short port){
-		rpc_tcp_client_ptr client_ptr(new rpc_tcp_client(service_pool_.get_io_service()));
+		rpc_tcp_client_ptr client_ptr(new rpc_tcp_client(&dispatcher_,service_pool_.get_io_service()));
 		client_list_.push_back(client_ptr);
 		client_ptr->connect(ip_address,port);
 	}
