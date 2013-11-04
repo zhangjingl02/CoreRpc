@@ -136,7 +136,7 @@ namespace net{
 			{
 				buffer_.append(data_,bytes_transferred);
 				if(messageDecoder_){
-					messageDecoder_->decode(shared_from_this(),buffer_);
+					messageDecoder_->decode(*this,buffer_);
 				}
 				read();
 			}

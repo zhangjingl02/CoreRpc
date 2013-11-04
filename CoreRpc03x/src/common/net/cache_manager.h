@@ -14,11 +14,12 @@ namespace net{
 	class cache_message{
 
 	public:
-		cache_message(call_back& callback):call_back_(callback){}
+		cache_message(call_back& callback):call_back_(callback),is_done_(false){}
 		~cache_message(){
 			delete rsp;
 		}
 		void run(){
+			is_done_=true;
 			call_back_.run();
 		}
 
@@ -35,9 +36,13 @@ namespace net{
 		T* response(){
 			return rsp;
 		}
+		bool is_done(){
+			return is_done_;
+		}
 	private:
 		call_back& call_back_;
 		T* rsp;
+		bool is_done_;
 	};
 
 	template<typename K,typename Rsp>

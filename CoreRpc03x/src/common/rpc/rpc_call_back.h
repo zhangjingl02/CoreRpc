@@ -5,22 +5,24 @@
 #include "rpc.pb.h"
 namespace rpc{
 	 typedef boost::unique_lock<boost::mutex> UniqueLock;
+	 typedef boost::mutex::scoped_lock ScopedLock;
 	class rpc_call_back :public net::call_back{
 	public:
 		void run(){
-			 UniqueLock lg(m_mutex);
+			 ScopedLock lg(m_mutex);
 			m_notRsp.notify_one();
 		}
 
 		void wait(){
-			 UniqueLock lg(m_mutex);
+			 ScopedLock lg(m_mutex);
 			 m_notRsp.wait(lg);
 		}
 
 
 		void wait(int timeout){
-			 UniqueLock lg(m_mutex);
-			 //m_notRsp.wait(lg, boost::posix_time::milliseconds(timeout));
+			 ScopedLock lg(m_mutex);
+			 m_notRsp.timed_wait(lg, boost::posix_time::milliseconds(timeout));
+			//m_notRsp.wait(lg, boost::posix_time::milliseconds(timeout));
 		}
 	private:
 		boost::mutex m_mutex;

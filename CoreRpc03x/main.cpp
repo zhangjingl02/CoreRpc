@@ -53,8 +53,12 @@ while(true){
 	req.set_pid("123");
 	req.set_version(3);
 	rpc::test::Response rsp;
-
+	try{
 	stub.subscribe(NULL,&req,&rsp,NULL);
+	}
+	catch(void* v){
+		printf("rsp:%s\n","exception");
+	}
 	printf("rsp:%s",rsp.desc());
 }
 /*

@@ -123,6 +123,7 @@
     <ClInclude Include="src\common\rpc\test\RpcTest.pb.h" />
     <ClInclude Include="src\common\rpc\test\test.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
+    <ClInclude Include="src\common\util\concurrent_queue  .h" />
     <ClInclude Include="src\common\util\sequence_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

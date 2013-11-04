@@ -15,7 +15,7 @@
 #include <assert.h>
 namespace util {
     typedef boost::unique_lock<boost::mutex> UniqueLock;
-
+	typedef boost::mutex::scoped_lock ScopedLock;
     template<typename T>
     class BlockingQueue : boost::noncopyable {
     public:
@@ -24,7 +24,7 @@ namespace util {
         }
 
         void put(const T& t) {
-            UniqueLock lg(m_mutex);
+            ScopedLock lg(m_mutex);
             if (m_buffer.full()) {
                 m_notFull.wait(lg);
             }
@@ -34,7 +34,7 @@ namespace util {
         }
 
         bool put(const T& t, int timeout) {
-            UniqueLock lg(m_mutex);
+            ScopedLock lg(m_mutex);
             if (m_buffer.full()) {
                 if (!m_notFull.timed_wait(lg, boost::posix_time::milliseconds(timeout))) {
                     return false;
@@ -47,7 +47,7 @@ namespace util {
         }
 
         bool take(T& t, int timeout) {
-            UniqueLock lg(m_mutex);
+            ScopedLock lg(m_mutex);
             if (m_buffer.empty()) {
                 if (!m_notEmpty.timed_wait(lg, boost::posix_time::milliseconds(timeout))) {
                     return false;
@@ -62,7 +62,7 @@ namespace util {
         // bool put(const T& t)
 
         void take(T& t) {
-            UniqueLock lg(m_mutex);
+            ScopedLock lg(m_mutex);
             if (m_buffer.empty()) {
                 m_notEmpty.wait(lg);
             }

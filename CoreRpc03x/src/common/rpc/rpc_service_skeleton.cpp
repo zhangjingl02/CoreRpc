@@ -41,7 +41,12 @@ namespace rpc{
 			}
 
 		case TransferMessage_Command_EvtBroadcastServiceList:
-
+			{
+				EvtBroadcastServiceList serviceList;
+				serviceList.ParseFromString(message->message());
+				onEvtBroadcastServiceList(connection,serviceList);
+				break;
+			}
 		case TransferMessage_Command_EvtActiveTest:		
 		default:
 			break;
@@ -102,12 +107,17 @@ namespace rpc{
 	
 	}
 	void RpcServiceSkeleton::onResponse(net::tcp_connection& connection,Response& response){
-	
+			LOG_INF(_KV_("message","onResponse"));
 	}
 
 	void RpcServiceSkeleton::onEvtBroadcastServiceList(net::tcp_connection& connection,EvtBroadcastServiceList& serviceList){
 		LOG_INF(_KV_("message","onEvtBroadcastServiceList")
 			<<_KV_("id:",connection.id())
 			);
+		for(int i=0;i<serviceList.service_size();i++){
+			ServiceInfo info=serviceList.service().Get(i);
+			rpc_channel_->addConnection(info.servicename(),net::tcp_connection_ptr(&connection));
+		}
+
 	}
 }

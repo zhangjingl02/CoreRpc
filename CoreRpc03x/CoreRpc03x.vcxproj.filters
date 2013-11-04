@@ -197,5 +197,8 @@
     <ClInclude Include="src\common\rpc\test\test.h">
       <Filter>common\rpc\test</Filter>
     </ClInclude>
+    <ClInclude Include="src\common\util\concurrent_queue  .h">
+      <Filter>common\util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

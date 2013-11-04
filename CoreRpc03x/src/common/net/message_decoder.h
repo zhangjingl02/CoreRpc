@@ -15,7 +15,7 @@ namespace net{
 		//MessageDecoder(){};
 		//virtual MessageDecoder(MessageDecoder* other);
 	public:
-		virtual int decode(tcp_connection_ptr& connection, net::NetBuffer& buffer)=0;
+		virtual int decode(tcp_connection& connection, net::NetBuffer& buffer)=0;
 		//virtual int decode(TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size)=0;
 		//virtual std::size_t frameDecode(TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size)=0;
 	};

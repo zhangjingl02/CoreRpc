@@ -11,7 +11,7 @@
 namespace rpc{
 	class rpc_fatory{
 	public:
-		rpc_fatory():service_pool_(5),skeleton_(&dispatcher_,cache_manager_),channel_(cache_manager_)
+		rpc_fatory():service_pool_(5),skeleton_(&channel_,&dispatcher_,cache_manager_),channel_(cache_manager_)
 		{
 			service_pool_.run();
 			skeleton_.start();

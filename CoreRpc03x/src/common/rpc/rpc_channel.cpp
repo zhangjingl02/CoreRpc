@@ -20,7 +20,7 @@ namespace rpc{
 			req.set_message(request->SerializeAsString());
 			tm.set_allocated_request(&req);
 
-			net::tcp_connection_ptr connection_ptr=	get_connection();
+			net::tcp_connection_ptr connection_ptr=	get_connection(method->service()->full_name());
 			if(!connection_ptr)
 			{
 				LOG_INF(_KV_("message","not found rpc connection"));
@@ -33,7 +33,10 @@ namespace rpc{
 			net::cache_message<Response> cacheMessage(call_back);
 			cache_manager_.put(req.id(),&cacheMessage);
 			connection_ptr->write(tm);
-			cacheMessage.wait();
+			while(!cacheMessage.is_done()){
+				cacheMessage.wait(30000);
+			}
+			
 			Response* rsp=cacheMessage.response();
 			if(rsp){
 				if(rsp->errorcode()==RpcError::SUCCESS){
@@ -50,10 +53,11 @@ namespace rpc{
 	
 	}
 
-	net::tcp_connection_ptr RpcChannel::get_connection(){
-		if(connections_.size()==0){
-			return net::tcp_connection_ptr();
+	net::tcp_connection_ptr RpcChannel::get_connection(const std::string& service_name){
+		connections_map::iterator it=connections_map_.find("TestService");
+		if(it!=connections_map_.end()){
+			return it->second.front();
 		}
-		return connections_[0];
+		return net::tcp_connection_ptr();
 	}
 }

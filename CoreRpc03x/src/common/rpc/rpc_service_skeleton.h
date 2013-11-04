@@ -10,6 +10,7 @@
 #include "../net/cache_manager.h"
 #include "rpc.pb.h"
 #include "rpc_common.h"
+#include "rpc_channel.h"
 namespace rpc{
 
 
@@ -31,8 +32,8 @@ namespace rpc{
 
 	class RpcServiceSkeleton :public  net::ServiceSkeleton<TransferMessage>{
 	public:
-		RpcServiceSkeleton(net::MessageDispatcher<TransferMessage>* dispatcher,net::cache_manager<int,Response>& cache_manager)
-			:net::ServiceSkeleton<TransferMessage>(dispatcher),cache_manager_(cache_manager)
+		RpcServiceSkeleton(RpcChannel* rpc_channel,net::MessageDispatcher<TransferMessage>* dispatcher,net::cache_manager<int,Response>& cache_manager)
+			:net::ServiceSkeleton<TransferMessage>(dispatcher),cache_manager_(cache_manager),rpc_channel_(rpc_channel)
 		{}
 		~RpcServiceSkeleton(){};
 
@@ -48,8 +49,8 @@ namespace rpc{
 		void onResponse(net::tcp_connection& connection,Response& response);
 	private:
 		std::map<std::string,boost::shared_ptr<google::protobuf::Service> > serviceMap_;
-
 		net::cache_manager<int,Response>& cache_manager_;
+		RpcChannel* rpc_channel_;
 
 	};
 }
