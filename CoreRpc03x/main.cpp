@@ -47,6 +47,7 @@ rpc::rpc_fatory factory;
 factory.connect("127.0.0.1",9997);
 rpc::test::TestService_Stub stub(factory.channel());
 cin.get();
+//TEST
 while(true){
 	rpc::test::Request req;
 	req.set_phone("187777777");
