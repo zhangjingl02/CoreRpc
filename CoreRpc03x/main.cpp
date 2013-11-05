@@ -29,6 +29,7 @@
 #include "src/common/net/tcp_client.h"
 #include "src/common/rpc/rpc_factory.h"
 #include "src/common/rpc/test/RpcTest.pb.h"
+#include <boost/locale.hpp>
 using namespace std;
 
 
@@ -60,7 +61,8 @@ while(true){
 		printf("rsp:%s\n","exception");
 	}
 
-	printf("rsp:%s",rsp.desc());
+	//std::string dst=boost::locale::conv::from_utf(rsp.desc(),"GB2312");
+	printf("rsp:%s",rsp.desc().c_str());
 }
 /*
 

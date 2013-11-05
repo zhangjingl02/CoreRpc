@@ -1,5 +1,6 @@
 #include "rpc_channel.h"
 #include <boost/date_time.hpp>
+#include <boost/locale.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include "rpc.pb.h"
 #include "rpc_call_back.h"
@@ -42,7 +43,8 @@ namespace rpc{
 			boost::shared_ptr<Response> rsp=cacheMessage.response();
 			if(rsp){
 				if(rsp->errorcode()==RpcError::SUCCESS){
-					response->ParseFromString(rsp->message());
+					std::string dst=boost::locale::conv::from_utf(rsp->message(),"GB2312");
+					response->ParseFromString(dst);
 				}
 			}
 	}
