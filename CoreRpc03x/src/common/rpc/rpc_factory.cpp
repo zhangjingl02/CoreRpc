@@ -11,11 +11,13 @@ namespace rpc{
 
 	void rpc_fatory::start(const char* ip_address,short port){
 		rpc_tcp_server_ptr server_ptr(new rpc_tcp_server(&dispatcher_));
+		server_list_.push_back(server_ptr);
 		server_ptr->start(ip_address,port);
 	}
 
 	void rpc_fatory::start(short port){
 		rpc_tcp_server_ptr server_ptr(new rpc_tcp_server(&dispatcher_));
+		server_list_.push_back(server_ptr);
 		server_ptr->start(port);
 	}
 
