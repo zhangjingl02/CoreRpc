@@ -101,13 +101,21 @@ namespace rpc{
 
 	}
 	void RpcServiceSkeleton::onLoginRsp(net::tcp_connection& connection,LoginRsp& loginRsp){
+		LOG_INF(_KV_("message","onLoginRsp"));
 		if(loginRsp.status()=="0"){
 		
 		}
 	
 	}
 	void RpcServiceSkeleton::onResponse(net::tcp_connection& connection,Response& response){
-			LOG_INF(_KV_("message","onResponse"));
+		LOG_INF(_KV_("message","onResponse"));
+		net::cache_message<Response>* cache_message=cache_manager_.find(response.id());
+		if(cache_message){
+			cache_message->run(response);
+		}else{
+			LOG_INF(_KV_("message","onResponse,but miss request message:")<<response.id());
+		}
+		
 	}
 
 	void RpcServiceSkeleton::onEvtBroadcastServiceList(net::tcp_connection& connection,EvtBroadcastServiceList& serviceList){

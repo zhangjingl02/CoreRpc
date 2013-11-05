@@ -123,11 +123,13 @@ namespace net{
 		void do_write(){
 		
 			if(!sending_&& !bufferList_.empty()){
+				sending_=true;
 				socket_.async_write_some(buffer::buffer(bufferList_),
 					boost::bind(&tcp_connection::handle_write,this,
 					boost::asio::placeholders::error,
 					boost::asio::placeholders::bytes_transferred));
 			}
+			
 		}
 		void handle_read(const boost::system::error_code& error,
 			size_t bytes_transferred)
@@ -165,10 +167,9 @@ namespace net{
 		{
 			if (!error)
 			{
-				socket_.async_read_some(boost::asio::buffer(data_, max_length),
-					boost::bind(&tcp_connection::handle_read, this,
-					boost::asio::placeholders::error,
-					boost::asio::placeholders::bytes_transferred));
+				sending_ = false;
+				bufferList_.remove(bytes_transferred);
+				do_write();
 			}
 			else
 			{
@@ -179,7 +180,7 @@ namespace net{
 		void handle_connected(const boost::system::error_code& error){
 			
 			if(!error){
-				
+				start();
 				LOG_INF(_KV_("message","connected to server")
 					<<"["<<socket_.local_endpoint().address().to_string()
 					<<":"<<socket_.local_endpoint().port()

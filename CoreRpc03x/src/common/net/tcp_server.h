@@ -38,6 +38,9 @@ namespace net{
 		~tcp_server(){
 			io_service_pool_.stop();
 			delete acceptor_;
+				
+		delete decoder_;
+		delete encoder_;
 		}
 
 		void start(const char* ip_address,const short port);

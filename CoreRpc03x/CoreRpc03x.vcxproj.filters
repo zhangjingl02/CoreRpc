@@ -173,9 +173,6 @@
     <ClInclude Include="src\common\rpc\rpc_tcp_client.h">
       <Filter>common\rpc</Filter>
     </ClInclude>
-    <ClInclude Include="src\common\rpc\rpc_channel.h">
-      <Filter>common\rpc</Filter>
-    </ClInclude>
     <ClInclude Include="src\common\util\sequence_generator.h">
       <Filter>common\util</Filter>
     </ClInclude>
@@ -197,7 +194,10 @@
     <ClInclude Include="src\common\rpc\test\test.h">
       <Filter>common\rpc\test</Filter>
     </ClInclude>
-    <ClInclude Include="src\common\util\concurrent_queue  .h">
+    <ClInclude Include="src\common\rpc\rpc_channel.h">
+      <Filter>common\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\util\concurrent_queue.h">
       <Filter>common\util</Filter>
     </ClInclude>
   </ItemGroup>

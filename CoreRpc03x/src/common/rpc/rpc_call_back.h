@@ -9,7 +9,7 @@ namespace rpc{
 	class rpc_call_back :public net::call_back{
 	public:
 		void run(){
-			 ScopedLock lg(m_mutex);
+			ScopedLock lg(m_mutex);
 			m_notRsp.notify_one();
 		}
 

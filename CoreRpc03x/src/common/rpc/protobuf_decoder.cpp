@@ -19,13 +19,13 @@ namespace rpc{
 				google::protobuf::uint32 len;
 				istream.ReadVarint32(&len);
 				if(buffer.readableBytes()>=len){
-					std::cout<<"read rpc buffer success!"<<std::endl;
+					std::cout<<"read rpc buffer success!"<<len<<std::endl;
 					boost::shared_ptr<TransferMessage> messagePtr(new TransferMessage());
 				
 					if(messagePtr->ParseFromArray(buffer.readStream(len),len)){
 						dispatcher_->pushMessage(connection,messagePtr);
 					}else{
-						std::cout<<"read rpc buffer success! but parse failed"<<std::endl;
+						std::cout<<"read rpc buffer success! but parse failed:"<<len<<std::endl;
 					}
 					
 				}

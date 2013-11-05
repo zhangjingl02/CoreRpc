@@ -62,6 +62,8 @@ while(true){
 	printf("rsp:%s",rsp.desc());
 }
 /*
+
+
 unsigned int a=2;
 buffer::shared_buffer buffer1();
 

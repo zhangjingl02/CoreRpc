@@ -18,8 +18,9 @@ namespace net{
 		~cache_message(){
 			delete rsp;
 		}
-		void run(){
+		void run(T& t){
 			is_done_=true;
+			*rsp=t;
 			call_back_.run();
 		}
 
@@ -56,10 +57,16 @@ namespace net{
 
 		
 		cache_message<Rsp>* find(K key){
-			std::map<K,cache_message>::iterator it=std::map<K,cache_message<Rsp>> cache_map_.find(key);
-			return it->second;
+			std::map<K,cache_message<Rsp>* >::iterator it= cache_map_.find(key);
+			if(it!=cache_map_.end()){
+				return it->second;
+			}
+			return NULL;
 		}
-		
+
+		void remove(){
+			
+		}
 		
 	private:
 		std::map<K,cache_message<Rsp>*> cache_map_;
