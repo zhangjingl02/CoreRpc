@@ -16,11 +16,11 @@ namespace net{
 	public:
 		cache_message(call_back& callback):call_back_(callback),is_done_(false){}
 		~cache_message(){
-			delete rsp;
+			
 		}
-		void run(T& t){
+		void run(boost::shared_ptr<T> t){
 			is_done_=true;
-			*rsp=t;
+			rsp=t;
 			call_back_.run();
 		}
 
@@ -30,11 +30,11 @@ namespace net{
 		 void wait(int time){
 			 call_back_.wait(time);
 		}
-		void response(T& t){
-			*rsp=t;
+		void response(boost::shared_ptr<T> t){
+			rsp=t;
 		}
 
-		T* response(){
+		boost::shared_ptr<T> response(){
 			return rsp;
 		}
 		bool is_done(){
@@ -42,7 +42,7 @@ namespace net{
 		}
 	private:
 		call_back& call_back_;
-		T* rsp;
+		boost::shared_ptr<T> rsp;
 		bool is_done_;
 	};
 

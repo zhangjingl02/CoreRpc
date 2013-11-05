@@ -57,7 +57,7 @@ namespace net{
 			service_.post(boost::bind(&tcp_connection::post_wirte,this,buffer));
 		};
 		template<typename Message>
-		void write(Message& message){
+		void write(Message message){
 			if(messageEncoder_){
 				buffer::shared_buffer buffer(0);
 				if(messageEncoder_->encode(&message,buffer)){

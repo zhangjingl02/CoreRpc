@@ -164,28 +164,10 @@ class TransferMessage : public ::google::protobuf::Message {
   inline ::rpc::TransferMessage_Command command() const;
   inline void set_command(::rpc::TransferMessage_Command value);
 
-  // optional .rpc.Request request = 2;
-  inline bool has_request() const;
-  inline void clear_request();
-  static const int kRequestFieldNumber = 2;
-  inline const ::rpc::Request& request() const;
-  inline ::rpc::Request* mutable_request();
-  inline ::rpc::Request* release_request();
-  inline void set_allocated_request(::rpc::Request* request);
-
-  // optional .rpc.Response response = 3;
-  inline bool has_response() const;
-  inline void clear_response();
-  static const int kResponseFieldNumber = 3;
-  inline const ::rpc::Response& response() const;
-  inline ::rpc::Response* mutable_response();
-  inline ::rpc::Response* release_response();
-  inline void set_allocated_response(::rpc::Response* response);
-
-  // optional bytes message = 4;
+  // optional bytes message = 2;
   inline bool has_message() const;
   inline void clear_message();
-  static const int kMessageFieldNumber = 4;
+  static const int kMessageFieldNumber = 2;
   inline const ::std::string& message() const;
   inline void set_message(const ::std::string& value);
   inline void set_message(const char* value);
@@ -198,22 +180,16 @@ class TransferMessage : public ::google::protobuf::Message {
  private:
   inline void set_has_command();
   inline void clear_has_command();
-  inline void set_has_request();
-  inline void clear_has_request();
-  inline void set_has_response();
-  inline void clear_has_response();
   inline void set_has_message();
   inline void clear_has_message();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::rpc::Request* request_;
-  ::rpc::Response* response_;
   ::std::string* message_;
   int command_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_rpc_2eproto();
   friend void protobuf_AssignDesc_rpc_2eproto();
@@ -1141,91 +1117,15 @@ inline void TransferMessage::set_command(::rpc::TransferMessage_Command value) {
   command_ = value;
 }
 
-// optional .rpc.Request request = 2;
-inline bool TransferMessage::has_request() const {
+// optional bytes message = 2;
+inline bool TransferMessage::has_message() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void TransferMessage::set_has_request() {
+inline void TransferMessage::set_has_message() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void TransferMessage::clear_has_request() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void TransferMessage::clear_request() {
-  if (request_ != NULL) request_->::rpc::Request::Clear();
-  clear_has_request();
-}
-inline const ::rpc::Request& TransferMessage::request() const {
-  return request_ != NULL ? *request_ : *default_instance_->request_;
-}
-inline ::rpc::Request* TransferMessage::mutable_request() {
-  set_has_request();
-  if (request_ == NULL) request_ = new ::rpc::Request;
-  return request_;
-}
-inline ::rpc::Request* TransferMessage::release_request() {
-  clear_has_request();
-  ::rpc::Request* temp = request_;
-  request_ = NULL;
-  return temp;
-}
-inline void TransferMessage::set_allocated_request(::rpc::Request* request) {
-  delete request_;
-  request_ = request;
-  if (request) {
-    set_has_request();
-  } else {
-    clear_has_request();
-  }
-}
-
-// optional .rpc.Response response = 3;
-inline bool TransferMessage::has_response() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void TransferMessage::set_has_response() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void TransferMessage::clear_has_response() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void TransferMessage::clear_response() {
-  if (response_ != NULL) response_->::rpc::Response::Clear();
-  clear_has_response();
-}
-inline const ::rpc::Response& TransferMessage::response() const {
-  return response_ != NULL ? *response_ : *default_instance_->response_;
-}
-inline ::rpc::Response* TransferMessage::mutable_response() {
-  set_has_response();
-  if (response_ == NULL) response_ = new ::rpc::Response;
-  return response_;
-}
-inline ::rpc::Response* TransferMessage::release_response() {
-  clear_has_response();
-  ::rpc::Response* temp = response_;
-  response_ = NULL;
-  return temp;
-}
-inline void TransferMessage::set_allocated_response(::rpc::Response* response) {
-  delete response_;
-  response_ = response;
-  if (response) {
-    set_has_response();
-  } else {
-    clear_has_response();
-  }
-}
-
-// optional bytes message = 4;
-inline bool TransferMessage::has_message() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void TransferMessage::set_has_message() {
-  _has_bits_[0] |= 0x00000008u;
-}
 inline void TransferMessage::clear_has_message() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void TransferMessage::clear_message() {
   if (message_ != &::google::protobuf::internal::kEmptyString) {
@@ -2259,9 +2159,6 @@ inline void LoginRsp::set_allocated_status(::std::string* status) {
 }  // namespace rpc
 
 #ifndef SWIG
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
 namespace google {
 namespace protobuf {
 
@@ -2273,7 +2170,9 @@ inline const EnumDescriptor* GetEnumDescriptor< ::rpc::TransferMessage_Command>(
 }  // namespace google
 }  // namespace protobuf
 #endif  // SWIG
-
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 // @@protoc_insertion_point(global_scope)
 
 #endif  // PROTOBUF_rpc_2eproto__INCLUDED

@@ -46,7 +46,7 @@ namespace rpc{
 		void onLoginRsp(net::tcp_connection& connection,LoginRsp& loginRsp);
 		void onEvtBroadcastServiceList(net::tcp_connection& connection,EvtBroadcastServiceList& serviceList);
 		void onRequest(net::tcp_connection& connection,Request& request);
-		void onResponse(net::tcp_connection& connection,Response& response);
+		void onResponse(net::tcp_connection& connection,boost::shared_ptr<Response>& rsp_ptr);
 	private:
 		std::map<std::string,boost::shared_ptr<google::protobuf::Service> > serviceMap_;
 		net::cache_manager<int,Response>& cache_manager_;

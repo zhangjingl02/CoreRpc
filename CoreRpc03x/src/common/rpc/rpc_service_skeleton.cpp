@@ -17,14 +17,16 @@ namespace rpc{
 		switch (message->command())
 		{
 		case TransferMessage_Command_Request:{
-			Request request=message->request();
+			Request request;
+			request.ParseFromString(message->message());
 			onRequest(connection,request);
 			break;
 											 }
 			
 		case TransferMessage_Command_Response:{
-			Response rsp_message=message->response();
-			onResponse(connection,rsp_message);
+			boost::shared_ptr<Response> rsp_ptr(new Response());
+			rsp_ptr->ParseFromString(message->message());
+			onResponse(connection,rsp_ptr);
 											  }
 			break;
 		case TransferMessage_Command_Login:{
@@ -84,7 +86,7 @@ namespace rpc{
 			rsp.set_errorcode(RpcError::ERR_NOT_FOUND_SERVICE);
 			rsp.set_errormessage("not found service");
 		}
-		tm.set_allocated_response(&rsp);
+		tm.set_message(rsp.SerializeAsString());
 		connection.write(tm);
 	}
 	void RpcServiceSkeleton::onLogin(net::tcp_connection& connection,Login& login){
@@ -107,13 +109,13 @@ namespace rpc{
 		}
 	
 	}
-	void RpcServiceSkeleton::onResponse(net::tcp_connection& connection,Response& response){
+	void RpcServiceSkeleton::onResponse(net::tcp_connection& connection,boost::shared_ptr<Response>& response){
 		LOG_INF(_KV_("message","onResponse"));
-		net::cache_message<Response>* cache_message=cache_manager_.find(response.id());
+		net::cache_message<Response>* cache_message=cache_manager_.find(response->id());
 		if(cache_message){
 			cache_message->run(response);
 		}else{
-			LOG_INF(_KV_("message","onResponse,but miss request message:")<<response.id());
+			LOG_INF(_KV_("message","onResponse,but miss request message:")<<response->id());
 		}
 		
 	}

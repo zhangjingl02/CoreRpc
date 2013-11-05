@@ -62,10 +62,8 @@ void protobuf_AssignDesc_rpc_2eproto() {
       "rpc.proto");
   GOOGLE_CHECK(file != NULL);
   TransferMessage_descriptor_ = file->message_type(0);
-  static const int TransferMessage_offsets_[4] = {
+  static const int TransferMessage_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TransferMessage, command_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TransferMessage, request_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TransferMessage, response_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TransferMessage, message_),
   };
   TransferMessage_reflection_ =
@@ -290,27 +288,26 @@ void protobuf_AddDesc_rpc_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\trpc.proto\022\003rpc\"\237\002\n\017TransferMessage\0226\n\007"
+    "\n\trpc.proto\022\003rpc\"\337\001\n\017TransferMessage\0226\n\007"
     "command\030\001 \002(\0162\034.rpc.TransferMessage.Comm"
-    "and:\007Request\022\035\n\007request\030\002 \001(\0132\014.rpc.Requ"
-    "est\022\037\n\010response\030\003 \001(\0132\r.rpc.Response\022\017\n\007"
-    "message\030\004 \001(\014\"\202\001\n\007Command\022\013\n\007Request\020\001\022\014"
-    "\n\010Response\020\002\022\023\n\017EvtClientActive\020\003\022\033\n\027Evt"
-    "BroadcastServiceList\020\004\022\021\n\rEvtActiveTest\020"
-    "\005\022\t\n\005Login\020\006\022\014\n\010LoginRsp\020\007\"h\n\007Request\022\n\n"
-    "\002id\030\001 \002(\005\022\023\n\013serviceName\030\002 \002(\t\022\022\n\nmethod"
-    "Name\030\003 \002(\t\022\027\n\017blockingService\030\004 \001(\010\022\017\n\007m"
-    "essage\030\005 \001(\014\"P\n\010Response\022\n\n\002id\030\001 \002(\005\022\021\n\t"
-    "errorCode\030\002 \001(\005\022\017\n\007message\030\003 \001(\014\022\024\n\014erro"
-    "rMessage\030\004 \001(\t\"6\n\013ServiceInfo\022\023\n\013service"
-    "Name\030\001 \002(\t\022\022\n\nmethodName\030\002 \002(\t\"<\n\027EvtBro"
-    "adcastServiceList\022!\n\007service\030\001 \003(\0132\020.rpc"
-    ".ServiceInfo\"-\n\013ServiceList\022\036\n\004list\030\001 \003("
-    "\0132\020.rpc.ServiceInfo\"$\n\017EvtClientActive\022\021"
-    "\n\tchannelId\030\001 \002(\005\" \n\rEvtActiveTest\022\017\n\007me"
-    "ssage\030\001 \001(\t\"+\n\005Login\022\020\n\010userName\030\001 \002(\t\022\020"
-    "\n\010password\030\002 \002(\t\"\032\n\010LoginRsp\022\016\n\006status\030\001"
-    " \002(\tB\037\n\021com.unioncast.rpcB\nRpcMessage", 837);
+    "and:\007Request\022\017\n\007message\030\002 \001(\014\"\202\001\n\007Comman"
+    "d\022\013\n\007Request\020\001\022\014\n\010Response\020\002\022\023\n\017EvtClien"
+    "tActive\020\003\022\033\n\027EvtBroadcastServiceList\020\004\022\021"
+    "\n\rEvtActiveTest\020\005\022\t\n\005Login\020\006\022\014\n\010LoginRsp"
+    "\020\007\"h\n\007Request\022\n\n\002id\030\001 \002(\005\022\023\n\013serviceName"
+    "\030\002 \002(\t\022\022\n\nmethodName\030\003 \002(\t\022\027\n\017blockingSe"
+    "rvice\030\004 \001(\010\022\017\n\007message\030\005 \001(\014\"P\n\010Response"
+    "\022\n\n\002id\030\001 \002(\005\022\021\n\terrorCode\030\002 \001(\005\022\017\n\007messa"
+    "ge\030\003 \001(\014\022\024\n\014errorMessage\030\004 \001(\t\"6\n\013Servic"
+    "eInfo\022\023\n\013serviceName\030\001 \002(\t\022\022\n\nmethodName"
+    "\030\002 \002(\t\"<\n\027EvtBroadcastServiceList\022!\n\007ser"
+    "vice\030\001 \003(\0132\020.rpc.ServiceInfo\"-\n\013ServiceL"
+    "ist\022\036\n\004list\030\001 \003(\0132\020.rpc.ServiceInfo\"$\n\017E"
+    "vtClientActive\022\021\n\tchannelId\030\001 \002(\005\" \n\rEvt"
+    "ActiveTest\022\017\n\007message\030\001 \001(\t\"+\n\005Login\022\020\n\010"
+    "userName\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"\032\n\010Logi"
+    "nRsp\022\016\n\006status\030\001 \002(\tB\037\n\021com.unioncast.rp"
+    "cB\nRpcMessage", 773);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rpc.proto", &protobuf_RegisterTypes);
   TransferMessage::default_instance_ = new TransferMessage();
@@ -378,8 +375,6 @@ const int TransferMessage::Command_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int TransferMessage::kCommandFieldNumber;
-const int TransferMessage::kRequestFieldNumber;
-const int TransferMessage::kResponseFieldNumber;
 const int TransferMessage::kMessageFieldNumber;
 #endif  // !_MSC_VER
 
@@ -389,8 +384,6 @@ TransferMessage::TransferMessage()
 }
 
 void TransferMessage::InitAsDefaultInstance() {
-  request_ = const_cast< ::rpc::Request*>(&::rpc::Request::default_instance());
-  response_ = const_cast< ::rpc::Response*>(&::rpc::Response::default_instance());
 }
 
 TransferMessage::TransferMessage(const TransferMessage& from)
@@ -402,8 +395,6 @@ TransferMessage::TransferMessage(const TransferMessage& from)
 void TransferMessage::SharedCtor() {
   _cached_size_ = 0;
   command_ = 1;
-  request_ = NULL;
-  response_ = NULL;
   message_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -417,8 +408,6 @@ void TransferMessage::SharedDtor() {
     delete message_;
   }
   if (this != default_instance_) {
-    delete request_;
-    delete response_;
   }
 }
 
@@ -446,12 +435,6 @@ TransferMessage* TransferMessage::New() const {
 void TransferMessage::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     command_ = 1;
-    if (has_request()) {
-      if (request_ != NULL) request_->::rpc::Request::Clear();
-    }
-    if (has_response()) {
-      if (response_ != NULL) response_->::rpc::Response::Clear();
-    }
     if (has_message()) {
       if (message_ != &::google::protobuf::internal::kEmptyString) {
         message_->clear();
@@ -484,40 +467,12 @@ bool TransferMessage::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_request;
+        if (input->ExpectTag(18)) goto parse_message;
         break;
       }
 
-      // optional .rpc.Request request = 2;
+      // optional bytes message = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_request:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_request()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_response;
-        break;
-      }
-
-      // optional .rpc.Response response = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_response:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_response()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_message;
-        break;
-      }
-
-      // optional bytes message = 4;
-      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_message:
@@ -554,22 +509,10 @@ void TransferMessage::SerializeWithCachedSizes(
       1, this->command(), output);
   }
 
-  // optional .rpc.Request request = 2;
-  if (has_request()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->request(), output);
-  }
-
-  // optional .rpc.Response response = 3;
-  if (has_response()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->response(), output);
-  }
-
-  // optional bytes message = 4;
+  // optional bytes message = 2;
   if (has_message()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      4, this->message(), output);
+      2, this->message(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -586,25 +529,11 @@ void TransferMessage::SerializeWithCachedSizes(
       1, this->command(), target);
   }
 
-  // optional .rpc.Request request = 2;
-  if (has_request()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->request(), target);
-  }
-
-  // optional .rpc.Response response = 3;
-  if (has_response()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->response(), target);
-  }
-
-  // optional bytes message = 4;
+  // optional bytes message = 2;
   if (has_message()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        4, this->message(), target);
+        2, this->message(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -624,21 +553,7 @@ int TransferMessage::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->command());
     }
 
-    // optional .rpc.Request request = 2;
-    if (has_request()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->request());
-    }
-
-    // optional .rpc.Response response = 3;
-    if (has_response()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->response());
-    }
-
-    // optional bytes message = 4;
+    // optional bytes message = 2;
     if (has_message()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -675,12 +590,6 @@ void TransferMessage::MergeFrom(const TransferMessage& from) {
     if (from.has_command()) {
       set_command(from.command());
     }
-    if (from.has_request()) {
-      mutable_request()->::rpc::Request::MergeFrom(from.request());
-    }
-    if (from.has_response()) {
-      mutable_response()->::rpc::Response::MergeFrom(from.response());
-    }
     if (from.has_message()) {
       set_message(from.message());
     }
@@ -703,20 +612,12 @@ void TransferMessage::CopyFrom(const TransferMessage& from) {
 bool TransferMessage::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_request()) {
-    if (!this->request().IsInitialized()) return false;
-  }
-  if (has_response()) {
-    if (!this->response().IsInitialized()) return false;
-  }
   return true;
 }
 
 void TransferMessage::Swap(TransferMessage* other) {
   if (other != this) {
     std::swap(command_, other->command_);
-    std::swap(request_, other->request_);
-    std::swap(response_, other->response_);
     std::swap(message_, other->message_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

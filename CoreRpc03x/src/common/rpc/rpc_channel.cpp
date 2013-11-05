@@ -17,10 +17,10 @@ namespace rpc{
 			tm.set_command(TransferMessage_Command_Request);
 			Request req;
 			req.set_servicename(method->service()->full_name());
-			req.set_methodname(method->full_name());
+			req.set_methodname(method->name());
 			req.set_id(sequence_gen_.next());
 			req.set_message(request->SerializeAsString());
-			tm.set_allocated_request(&req);
+			tm.set_message(req.SerializeAsString());
 
 			net::tcp_connection_ptr connection_ptr=	get_connection(method->service()->full_name());
 			if(!connection_ptr)
@@ -35,31 +35,20 @@ namespace rpc{
 			net::cache_message<Response> cacheMessage(call_back);
 			cache_manager_.put(req.id(),&cacheMessage);
 			connection_ptr->write(tm);
-			while(!cacheMessage.is_done()){
-
-				
-				cacheMessage.wait(5000);
-				
+			while(!cacheMessage.is_done()){	
+				cacheMessage.wait(5000);		
 			}
 			
-			Response* rsp=cacheMessage.response();
+			boost::shared_ptr<Response> rsp=cacheMessage.response();
 			if(rsp){
 				if(rsp->errorcode()==RpcError::SUCCESS){
 					response->ParseFromString(rsp->message());
 				}
 			}
-
-
-
-			
-
-
-
-	
 	}
 
 	net::tcp_connection_ptr RpcChannel::get_connection(const std::string& service_name){
-		connections_map::iterator it=connections_map_.find("TestService");
+		connections_map::iterator it=connections_map_.find(service_name);
 		if(it!=connections_map_.end()){
 			return it->second.front();
 		}
