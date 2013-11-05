@@ -29,6 +29,7 @@
 #include "src/common/net/tcp_client.h"
 #include "src/common/rpc/rpc_factory.h"
 #include "src/common/rpc/test/RpcTest.pb.h"
+#include "src/common/rpc/test/test.h"
 #include <boost/locale.hpp>
 using namespace std;
 
@@ -45,9 +46,16 @@ LOG(INFO) <<"my first info";   int valueint=10;
 LOG_IF(ERROR, valueint=10)<<" valueint=10";
 
 rpc::rpc_fatory factory;
+factory.start(9997);
+boost::shared_ptr<rpc::Test> test(new rpc::Test());
+factory.regedist_service(test);
+
+
+
+/*
 factory.connect("127.0.0.1",9997);
 rpc::test::TestService_Stub stub(factory.channel());
-cin.get();
+
 while(true){
 	rpc::test::Request req;
 	req.set_phone("187777777");
@@ -64,16 +72,17 @@ while(true){
 	//std::string dst=boost::locale::conv::from_utf(rsp.desc(),"GB2312");
 	printf("rsp:%s",rsp.desc().c_str());
 }
+*/
+
+
 /*
-
-
 unsigned int a=2;
 buffer::shared_buffer buffer1();
 
 buffer::shared_buffer_list list;
 	boost::asio::io_service io;
 	net::MessageDispatcher<rpc::TransferMessage> dispatcher;
-	rpc::RpcServiceSkeleton sk(&dispatcher);
+	//rpc::RpcServiceSkeleton sk(&dispatcher);
 	rpc::protobuf_decoder decoder(&dispatcher);
 	rpc::protobuf_encoder encoder;
 
@@ -81,14 +90,14 @@ buffer::shared_buffer_list list;
 	net::tcp_server server(3);
 	server.decoder(&decoder);
 	server.encoder(&encoder);
-	sk.start();
+	//sk.start();
 	server.start(9997);
-	*/
+
 	//net::TcpClient client(io);
 	//client.connect("127.0.0.1",(short)9800);
 	//io.run();
- 
-	
+ */
+cin.get();
     return 0;
 }
 

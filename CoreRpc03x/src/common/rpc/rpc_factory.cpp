@@ -15,7 +15,8 @@ namespace rpc{
 	}
 
 	void rpc_fatory::start(short port){
-	
+		rpc_tcp_server_ptr server_ptr(new rpc_tcp_server(&dispatcher_));
+		server_ptr->start(port);
 	}
 
 	void rpc_fatory::regedist_service(boost::shared_ptr<google::protobuf::Service> service){

@@ -53,7 +53,7 @@ namespace net{
 		void start_accept()
 		{
 			tcp_connection_ptr new_session(new tcp_connection(io_service_pool_.get_io_service()));//=new TcpConnection(io_service_);
-			//TcpConnection* new_session=new TcpConnection(ioServicePool_.get_io_service());
+			//tcp_connection* new_session=new tcp_connection(io_service_pool_.get_io_service());
 			new_session->decoder(decoder_);
 			new_session->encoder(encoder_);
 			acceptor_->async_accept(new_session->socket(),
