@@ -14,13 +14,14 @@
 #include "message_decoder.h"
 #include "message_encoder.h"
 #include "net_buffer.h"
+#include "net_def.h"
 #include "../util/sequence_generator.h"
 using boost::asio::ip::tcp;
 namespace net{
 
 	// typedef boost::function<void (const TcpConnectionPtr&,const boost::system::error_code&) > CloseCallback;
 	typedef boost::function<void (const boost::system::error_code&) > ConnectedCallback;
-	typedef boost::function<void (const boost::system::error_code&) > CloseCallback;
+	typedef boost::function<void (int id,const boost::system::error_code&) > CloseCallback;
 	class MessageDecoder;
 
 	#define DEFAULT_HEADE_SIZE 5
@@ -28,7 +29,7 @@ namespace net{
 	{
 	public:
 		tcp_connection(boost::asio::io_service& io_service)
-			: socket_(io_service),service_(io_service),sending_(false),id_( kConnectionId.next())
+			: socket_(io_service),service_(io_service),sending_(false),id_( kConnectionId.next()),buffer_(new NetBuffer())
 		{
 			
 		}
@@ -91,7 +92,7 @@ namespace net{
 			return socket_.remote_endpoint();
 		}
 
-		void add_close_callback(CloseCallback& callback){
+		void add_close_callback(const CloseCallback& callback){
 			close_callbacks.push_back(callback);
 		}
 		
@@ -106,15 +107,7 @@ namespace net{
 				boost::asio::placeholders::bytes_transferred));
 		}
 
-		void read_body(buffer::shared_buffer& buffer){
-			//boost::asio::async_read
-			//socket_.async_receive();
-		socket_.async_receive(buffer::buffer(buffer),
-				boost::bind(&tcp_connection::handle_read_body, this,
-				boost::asio::placeholders::error,boost::ref(buffer),
-				boost::asio::placeholders::bytes_transferred));
-		}
-		
+	
 		void post_wirte(buffer::shared_buffer& buffer){
 			bufferList_.push(buffer);
 			do_write();
@@ -136,32 +129,22 @@ namespace net{
 		{
 			if (!error)
 			{
-				buffer_.append(data_,bytes_transferred);
+				buffer_->append(data_,bytes_transferred);
 				if(messageDecoder_){
-					messageDecoder_->decode(*this,buffer_);
+					if(net::RECV_SUCCESS== messageDecoder_->decode(*this,*buffer_)){
+					
+						buffer_->retrieveAll();
+					}
 				}
 				read();
 			}
 			else
 			{
+				handle_error(error);
 				//delete this;
 			}
 		}
-		void handle_read_body(const boost::system::error_code& error,buffer::shared_buffer& buffer,
-			size_t bytes_transferred){
 		
-				if(!error){
-					buffer.remove(bytes_transferred);
-					if(0<buffer.size()){
-						read_body(buffer);
-						return;
-					}
-
-					buffer.restore();
-					//messageDecoder_->decode(*this,buffer,bytes_transferred);
-					read();
-				}
-		}
 
 		void handle_write(const boost::system::error_code& error, std::size_t bytes_transferred  )
 		{
@@ -173,6 +156,7 @@ namespace net{
 			}
 			else
 			{
+				handle_error(error);
 				delete this;
 			}
 		}
@@ -207,13 +191,28 @@ namespace net{
 			}
 		}
 
+		void handle_error(const boost::system::error_code& error){
+			if(error){
+				LOG_INF(_KV_("message","handler socket error")
+					<<_KV_("error:",error.value())
+					<<"|"<<error.message()
+					);
+				for(int i=0;i<close_callbacks.size();i++){
+					if(close_callbacks[i]){
+						close_callbacks[i](id_,error);
+					}
+				}
+
+			}
+		}
+
 		
 	private:
 		tcp::socket socket_;
 		enum { max_length = 1024 };
 		char data_[max_length];
 		boost::asio::io_service& service_;
-		NetBuffer buffer_;
+		NetBuffer* buffer_;
 		message_decoder* messageDecoder_;
 		message_encoder* messageEncoder_;
 		buffer::shared_buffer_list bufferList_;

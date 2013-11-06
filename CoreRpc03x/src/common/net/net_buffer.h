@@ -8,14 +8,15 @@
 namespace net{
 	class NetBuffer{
 	public:
-		static const std::size_t kCheapPrepend = 8;
+		static const std::size_t kCheapPrepend = 0;
 		static const std::size_t kInitialSize = 1024*5;
 		NetBuffer()
 			:buffer_(kCheapPrepend + kInitialSize),
-			readerIndex_(kCheapPrepend),
-			writerIndex_(kCheapPrepend),
+			readerIndex_(0),
+			writerIndex_(0),
 			markReaderIndex_(0)
 		{
+			NetBuffer* t=this;
 			assert(readableBytes() == 0);
 			assert(writableBytes() == kInitialSize);
 
@@ -104,6 +105,7 @@ namespace net{
 		}
 
 		void append(const char* data,size_t len){
+			NetBuffer* t=this;
 			ensureWritableBytes(len);
 			std::copy(data, data+len, buffer_.begin()+writerIndex_);
 			hasWritten(len);
@@ -211,10 +213,10 @@ namespace net{
 
 
 	private:
-		std::size_t markReaderIndex_;
+		unsigned int markReaderIndex_;
 		std::vector<char> buffer_;
-		std::size_t readerIndex_;
-		std::size_t writerIndex_;
+		unsigned int readerIndex_;
+		unsigned int writerIndex_;
 	};
 }
 #endif

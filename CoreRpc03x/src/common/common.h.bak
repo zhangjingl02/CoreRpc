@@ -10,10 +10,10 @@
 #define _LOG_HEAD_(logLevel) LOG(logLevel)<<"\"T\":"<<_TID_<<"\",\"M\":"<<__FUNCTION__<<"\",\"P\":{"
 #define _LOG_END "}"
 #define _KV_(key,value) "\""<<key<<"\":\""<<value<<"\"," 
-    /**
-     **  use log_info example:
-     **  LOG_INFO(_KV_("test","testvalue")
-     **       <<_KV_("test2","value2")
+   /**
+    **  use log_info example:
+    **  LOG_INFO(_KV_("test","testvalue")
+    **       <<_KV_("test2","value2")
     **      <<_KV_("test3",3)
     **      <<_KV_("test3",boost:this_thread::get_id())
     **   );

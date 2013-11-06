@@ -1,6 +1,7 @@
 #ifndef _H_NET_TCP_SERVER_H
 #define _H_NET_TCP_SERVER_H
 #include <cstdlib>
+#include <vector>
 #include <iostream>
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
@@ -13,6 +14,8 @@
 using boost::asio::ip::tcp;
 
 namespace net{
+
+	typedef std::vector<tcp_connection_ptr> session_list;
 	class tcp_server:public boost::enable_shared_from_this<tcp_server>
 	{
 	public:
@@ -23,17 +26,6 @@ namespace net{
 			acceptor_=new tcp::acceptor(io_service_pool_.get_io_service());
 			io_service_pool_.run();
 		}
-
-
-
-
-		//TcpServer(IoServicePool& service_pool)
-		//	: 
-		//	ioServicePool_(service_pool),acceptor_(ioServicePool_.get_io_service())
-		//{
-		//	ioServicePool_.run();
-		//}
-
 
 		~tcp_server(){
 			io_service_pool_.stop();
@@ -52,10 +44,13 @@ namespace net{
 	private:
 		void start_accept()
 		{
+			//new_session_.reset(new tcp_connection(io_service_pool_.get_io_service()));
 			tcp_connection_ptr new_session(new tcp_connection(io_service_pool_.get_io_service()));//=new TcpConnection(io_service_);
+			new_session->add_close_callback(boost::bind(&tcp_server::on_client_close,this,_1,_2));
 			//tcp_connection* new_session=new tcp_connection(io_service_pool_.get_io_service());
 			new_session->decoder(decoder_);
 			new_session->encoder(encoder_);
+			session_list_.push_back(new_session);
 			acceptor_->async_accept(new_session->socket(),
 				boost::bind(&tcp_server::handle_accept, this, new_session,
 				boost::asio::placeholders::error));
@@ -90,6 +85,18 @@ namespace net{
 			start_accept();
 			
 		}
+
+		void on_client_close(int id,const boost::system::error_code& error){
+		
+			session_list::iterator it=	session_list_.begin();
+			for(;it!=session_list_.end();it++){
+				if(it->get()->id()==id){
+					session_list_.erase(it);
+					return;
+				}
+			}
+		
+		}
 	private:
 		
 		//boost::asio::io_service& io_service_;
@@ -97,6 +104,8 @@ namespace net{
 		message_decoder* decoder_;
 		message_encoder* encoder_;
 		io_service_pool io_service_pool_;
+		session_list session_list_;
+		
 		
 	};
 }

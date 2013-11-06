@@ -29,7 +29,7 @@ namespace rpc{
 	//public static final int ERR_TIME_OUT=5;
 	//public static final int ERR_CLIENT_NOT_LOGIN=6;
 	
-
+	typedef std::map<std::string,boost::shared_ptr<google::protobuf::Service> > service_map;
 	class RpcServiceSkeleton :public  net::ServiceSkeleton<TransferMessage>{
 	public:
 		RpcServiceSkeleton(RpcChannel* rpc_channel,net::MessageDispatcher<TransferMessage>* dispatcher,net::cache_manager<int,Response>& cache_manager)
@@ -47,8 +47,10 @@ namespace rpc{
 		void onEvtBroadcastServiceList(net::tcp_connection& connection,EvtBroadcastServiceList& serviceList);
 		void onRequest(net::tcp_connection& connection,Request& request);
 		void onResponse(net::tcp_connection& connection,boost::shared_ptr<Response>& rsp_ptr);
+		std::string getServiceList();
+
 	private:
-		std::map<std::string,boost::shared_ptr<google::protobuf::Service> > serviceMap_;
+		service_map serviceMap_;
 		net::cache_manager<int,Response>& cache_manager_;
 		RpcChannel* rpc_channel_;
 

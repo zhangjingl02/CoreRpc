@@ -32,7 +32,7 @@ namespace rpc{
 			}
 			
 		}
-		return 0;
+		return net::RECV_SUCCESS;
 	}
 	/*
 	int ProtobufDecoder::decode(net::TcpConnection& connection, buffer::shared_buffer& buffer,std::size_t size){

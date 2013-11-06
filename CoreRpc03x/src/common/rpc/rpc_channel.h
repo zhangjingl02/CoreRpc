@@ -2,6 +2,7 @@
 #define _H_COMMON_RPC_RPC_CHANNEL_H
 #include <vector>
 #include <map>
+#include <boost/bind.hpp>
 #include <google/protobuf/service.h>
 #include "../util/sequence_generator.h"
 #include "../net/tcp_connection.h"
@@ -42,8 +43,20 @@ namespace rpc{
 			}
 
 			it->second.push_back(connection);
+			connection->add_close_callback(boost::bind(&RpcChannel::on_connection_close,this,_1,_2));
 		}
-
+	private:
+		void on_connection_close(int id,const boost::system::error_code& error){
+			for(connections_map::iterator it=connections_map_.begin();it!=connections_map_.end();it++){
+				
+				for(std::vector<net::tcp_connection_ptr>::iterator connection_it=it->second.begin();connection_it!=it->second.end();connection_it++){
+				
+					if(connection_it->get()->id()==id){
+						it->second.erase(connection_it);
+					}
+				}
+			}
+		}
 	private:
 		net::tcp_connection_ptr get_connection(const std::string& service_name);
 		

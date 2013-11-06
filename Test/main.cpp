@@ -7,23 +7,39 @@
 #ifdef WIN32
 #define GLOG_NO_ABBREVIATED_SEVERITIES
 #endif
+#include <map>
+#include <vector>
+#include <boost/shared_ptr.hpp>
 #include <cstdlib>
 #include <iostream>
-#include "rpc.pb.h"
+
 using namespace std;
 
+class Test{
+
+public:
+	int a;
+	std::string b;
+};
+
+typedef boost::shared_ptr<Test> test_ptr;
 /*
  * 
  */
 int main(int argc, char** argv) {
+	std::map<int,int> map_;
+	std::map<int,int>::iterator it=map_.find(1);
+	
+
+	vector<Test> v;
+	Test t;
+	v.push_back(t);
+	t.a=4;
 
 	
-	TransferMessage tm;
-	tm.set_command(TransferMessage::Command::TransferMessage_Command_Login);
-	tm.set_message("hahahah");
 
-	cout<<tm.message()<<endl;
-	cin.get();
+	cout<<t.a<<"|"<<v[0].a<<endl;
+	
     return 0;
 }
 

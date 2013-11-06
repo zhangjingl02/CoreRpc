@@ -101,6 +101,11 @@ namespace rpc{
 		tm.set_message(str);
 		connection.write(tm);
 
+		TransferMessage tmBoastServiceList;
+		tmBoastServiceList.set_command(TransferMessage_Command_EvtBroadcastServiceList);
+		tmBoastServiceList.set_message(getServiceList());
+		connection.write(tmBoastServiceList);
+
 	}
 	void RpcServiceSkeleton::onLoginRsp(net::tcp_connection& connection,LoginRsp& loginRsp){
 		LOG_INF(_KV_("message","onLoginRsp"));
@@ -129,5 +134,16 @@ namespace rpc{
 			rpc_channel_->addConnection(info.servicename(),net::tcp_connection_ptr(&connection));
 		}
 
+	}
+
+	std::string RpcServiceSkeleton::getServiceList(){
+		
+		EvtBroadcastServiceList serviceList;
+		for(service_map::iterator it=serviceMap_.begin();it!=serviceMap_.end();it++){
+			ServiceInfo* s_info=serviceList.add_service();
+			s_info->set_servicename(it->second.get()->GetDescriptor()->full_name());
+			s_info->set_methodname("");
+		}
+		return  serviceList.SerializePartialAsString();
 	}
 }

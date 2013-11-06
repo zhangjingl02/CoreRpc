@@ -46,7 +46,7 @@ LOG(INFO) <<"my first info";   int valueint=10;
 LOG_IF(ERROR, valueint=10)<<" valueint=10";
 
 rpc::rpc_fatory factory;
-factory.start(9997);
+factory.start("127.0.0.1",9997);
 boost::shared_ptr<rpc::Test> test(new rpc::Test());
 factory.regedist_service(test);
 
