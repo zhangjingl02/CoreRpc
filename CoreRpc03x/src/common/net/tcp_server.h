@@ -98,8 +98,6 @@ namespace net{
 		
 		}
 	private:
-		
-		//boost::asio::io_service& io_service_;
 		tcp::acceptor* acceptor_;
 		message_decoder* decoder_;
 		message_encoder* encoder_;

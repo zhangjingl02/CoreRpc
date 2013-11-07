@@ -51,7 +51,7 @@ std::vector<mutable_buffer> buffer(shared_buffer_list& bl)
 	for(std::deque<shared_buffer>::iterator iter = bl.buffer_list_.begin(); iter != bl.buffer_list_.end(); ++iter) {
 		result.push_back(buffer::buffer(*iter));
 	}
-
-	return std::move(result);
+	return result;
+	//return std::move(result);
 }
 }

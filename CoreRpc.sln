@@ -5,6 +5,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoreRpc03x", "CoreRpc03x\Co
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{D1882C90-D778-46CA-9F9D-2E8426795166}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoreDaemon", "CoreDaemon\CoreDaemon.vcxproj", "{80BA5170-8FA9-4775-921D-8E7263B35330}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "daemontest", "daemontest\daemontest.vcxproj", "{0064FDCE-7409-4D01-AF36-D33B44AE0D17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +23,14 @@ Global
 		{D1882C90-D778-46CA-9F9D-2E8426795166}.Debug|Win32.Build.0 = Debug|Win32
 		{D1882C90-D778-46CA-9F9D-2E8426795166}.Release|Win32.ActiveCfg = Release|Win32
 		{D1882C90-D778-46CA-9F9D-2E8426795166}.Release|Win32.Build.0 = Release|Win32
+		{80BA5170-8FA9-4775-921D-8E7263B35330}.Debug|Win32.ActiveCfg = Debug|Win32
+		{80BA5170-8FA9-4775-921D-8E7263B35330}.Debug|Win32.Build.0 = Debug|Win32
+		{80BA5170-8FA9-4775-921D-8E7263B35330}.Release|Win32.ActiveCfg = Release|Win32
+		{80BA5170-8FA9-4775-921D-8E7263B35330}.Release|Win32.Build.0 = Release|Win32
+		{0064FDCE-7409-4D01-AF36-D33B44AE0D17}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0064FDCE-7409-4D01-AF36-D33B44AE0D17}.Debug|Win32.Build.0 = Debug|Win32
+		{0064FDCE-7409-4D01-AF36-D33B44AE0D17}.Release|Win32.ActiveCfg = Release|Win32
+		{0064FDCE-7409-4D01-AF36-D33B44AE0D17}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@
  * File:   BlockingQueue.h
  * Author: ZhangJing
  *
- * Created on 2012�?2�?�? 下午5:16
+ * Created on 2012骞?2鏈?鏃? 涓嬪崍5:16
  */
 
 #ifndef COMMON_UTILS_BLOCKINGQUEUE_H

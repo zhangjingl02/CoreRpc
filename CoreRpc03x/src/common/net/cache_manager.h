@@ -57,10 +57,10 @@ namespace net{
 
 		
 		cache_message<Rsp>* find(K key){
-			std::map<K,cache_message<Rsp>* >::iterator it= cache_map_.find(key);
-			if(it!=cache_map_.end()){
-				return it->second;
-			}
+			//std::map<K,cache_message<Rsp> *>::iterator it= cache_map_.find(key);
+			//if(it!=cache_map_.end()){
+			//	return it->second;
+			//}
 			return NULL;
 		}
 
@@ -69,7 +69,7 @@ namespace net{
 		}
 		
 	private:
-		std::map<K,cache_message<Rsp>*> cache_map_;
+		std::map<K,cache_message<Rsp> * > cache_map_;
 	};
 }
 

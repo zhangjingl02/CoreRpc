@@ -84,11 +84,11 @@ namespace net{
 			connected_callback_=connected_callback;
 		}
 
-		tcp::endpoint& local_endpoint(){
+		const tcp::endpoint& local_endpoint(){
 			return socket_.local_endpoint();
 		}
 
-		tcp::endpoint& remote_endpoint(){
+		const tcp::endpoint& remote_endpoint(){
 			return socket_.remote_endpoint();
 		}
 

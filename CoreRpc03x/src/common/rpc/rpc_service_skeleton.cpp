@@ -1,3 +1,4 @@
+#include <boost/locale.hpp>
 #include "../common.h"
 #include "rpc_service_skeleton.h"
 
@@ -14,6 +15,7 @@ namespace rpc{
 
 	void RpcServiceSkeleton::onMessage(net::tcp_connection& connection,boost::shared_ptr<TransferMessage> message){
 	
+            
 		switch (message->command())
 		{
 		case TransferMessage_Command_Request:{
@@ -68,22 +70,23 @@ namespace rpc{
 			const google::protobuf::MethodDescriptor* method=service_ptr->GetDescriptor()->FindMethodByName(request.methodname());
 			if(method){
 				google::protobuf::Message* message=service_ptr->GetRequestPrototype(method).New();
+                               // std::string dst=boost::locale::conv::from_utf(request.message(),"GBK");
 				if(message->ParseFromString(request.message())){
 					 google::protobuf::Message* response=service_ptr->GetResponsePrototype(method).New();
 					 service_ptr->CallMethod(method,NULL,message,response,NULL);
-					 rsp.set_errorcode(RpcError::SUCCESS);
+					 rsp.set_errorcode(SUCCESS);
 					 rsp.set_errormessage("success");
 					 rsp.set_message(response->SerializeAsString());
 				}else{
-					rsp.set_errorcode(RpcError::ERR_PARAM);
+					rsp.set_errorcode(ERR_PARAM);
 					rsp.set_errormessage("param error");
 				}
 			}else{
-				rsp.set_errorcode(RpcError::ERR_NOT_FOUND_METHOD);
+				rsp.set_errorcode(ERR_NOT_FOUND_METHOD);
 				rsp.set_errormessage("not found method");
 			}
 		}else{
-			rsp.set_errorcode(RpcError::ERR_NOT_FOUND_SERVICE);
+			rsp.set_errorcode(ERR_NOT_FOUND_SERVICE);
 			rsp.set_errormessage("not found service");
 		}
 		tm.set_message(rsp.SerializeAsString());
@@ -131,7 +134,8 @@ namespace rpc{
 			);
 		for(int i=0;i<serviceList.service_size();i++){
 			ServiceInfo info=serviceList.service().Get(i);
-			rpc_channel_->addConnection(info.servicename(),net::tcp_connection_ptr(&connection));
+                        net::tcp_connection_ptr con_ptr(&connection);
+			rpc_channel_->addConnection(info.servicename(),con_ptr);
 		}
 
 	}

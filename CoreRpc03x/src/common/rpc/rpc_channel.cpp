@@ -42,7 +42,7 @@ namespace rpc{
 			
 			boost::shared_ptr<Response> rsp=cacheMessage.response();
 			if(rsp){
-				if(rsp->errorcode()==RpcError::SUCCESS){
+				if(rsp->errorcode()==SUCCESS){
 					std::string dst=boost::locale::conv::from_utf(rsp->message(),"GB2312");
 					response->ParseFromString(dst);
 				}
