@@ -45,7 +45,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(INCLUDE_PATH);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;__STL_DEBUG;GOOGLE_GLOG_DLL_DECL=;_SECURE_SCL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;__STL_DEBUG;GOOGLE_GLOG_DLL_DECL=;_SECURE_SCL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -88,6 +88,7 @@
     <ClCompile Include="src\common\startup\main.cpp" />
     <ClCompile Include="src\common\startup\net_service.cpp" />
     <ClCompile Include="src\common\startup\XnuxDaemon.cpp" />
+    <ClCompile Include="src\common\util\file_system.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ismp.pb.h" />
@@ -129,6 +130,7 @@
     <ClInclude Include="src\common\startup\XnuxDaemon.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
     <ClInclude Include="src\common\util\concurrent_queue.h" />
+    <ClInclude Include="src\common\util\file_system.h" />
     <ClInclude Include="src\common\util\sequence_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
