@@ -50,9 +50,16 @@ int doNTService(int argc, char* argv[])
 	// 到这里，服务已经停止
 	return ntservice.m_status.dwWin32ExitCode;
 }
+#else
 
 #endif
 
 int main(int argc, char** argv) {
+
+#ifdef WIN32
+	doNTService(argc,argv);
+#else
+
+#endif
 	return 0;
 }
