@@ -31,6 +31,9 @@
     <Filter Include="common\rpc\test">
       <UniqueIdentifier>{3a03f034-5cb3-4a78-8046-0697a9cc2a21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="startup">
+      <UniqueIdentifier>{4dbb155d-9387-43b6-88f5-89653038a6a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -83,6 +86,15 @@
     </ClCompile>
     <ClCompile Include="src\common\net\tcp_connection.cpp">
       <Filter>common\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\startup\main.cpp">
+      <Filter>startup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\startup\net_service.cpp">
+      <Filter>startup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\startup\XnuxDaemon.cpp">
+      <Filter>startup</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="src\common\util\concurrent_queue.h">
       <Filter>common\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\startup\nt_service.h">
+      <Filter>startup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\startup\XnuxDaemon.h">
+      <Filter>startup</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

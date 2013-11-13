@@ -85,6 +85,9 @@
     <ClCompile Include="src\common\rpc\rpc_factory.cpp" />
     <ClCompile Include="src\common\rpc\rpc_service_skeleton.cpp" />
     <ClCompile Include="src\common\rpc\test\RpcTest.pb.cc" />
+    <ClCompile Include="src\common\startup\main.cpp" />
+    <ClCompile Include="src\common\startup\net_service.cpp" />
+    <ClCompile Include="src\common\startup\XnuxDaemon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ismp.pb.h" />
@@ -122,6 +125,8 @@
     <ClInclude Include="src\common\rpc\rpc_tcp_server.h" />
     <ClInclude Include="src\common\rpc\test\RpcTest.pb.h" />
     <ClInclude Include="src\common\rpc\test\test.h" />
+    <ClInclude Include="src\common\startup\nt_service.h" />
+    <ClInclude Include="src\common\startup\XnuxDaemon.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
     <ClInclude Include="src\common\util\concurrent_queue.h" />
     <ClInclude Include="src\common\util\sequence_generator.h" />
