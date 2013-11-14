@@ -51,6 +51,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(LIB_PATH);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libglog_static.lib;libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,8 +88,10 @@
     <ClCompile Include="src\common\rpc\rpc_factory.cpp" />
     <ClCompile Include="src\common\rpc\rpc_service_skeleton.cpp" />
     <ClCompile Include="src\common\rpc\test\RpcTest.pb.cc" />
+    <ClCompile Include="src\common\startup\commander.cpp" />
     <ClCompile Include="src\common\startup\main.cpp" />
     <ClCompile Include="src\common\startup\net_service.cpp" />
+    <ClCompile Include="src\common\startup\service.cpp" />
     <ClCompile Include="src\common\startup\XnuxDaemon.cpp" />
     <ClCompile Include="src\common\util\file_system.cpp" />
   </ItemGroup>
@@ -126,7 +131,9 @@
     <ClInclude Include="src\common\rpc\rpc_tcp_server.h" />
     <ClInclude Include="src\common\rpc\test\RpcTest.pb.h" />
     <ClInclude Include="src\common\rpc\test\test.h" />
+    <ClInclude Include="src\common\startup\commander.h" />
     <ClInclude Include="src\common\startup\nt_service.h" />
+    <ClInclude Include="src\common\startup\service.h" />
     <ClInclude Include="src\common\startup\XnuxDaemon.h" />
     <ClInclude Include="src\common\util\blocking_queue.h" />
     <ClInclude Include="src\common\util\concurrent_queue.h" />

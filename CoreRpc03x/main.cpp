@@ -38,7 +38,7 @@ using namespace std;
 /*
  * 
  */
-int main(int argc, char** argv) {
+int aamain33(int argc, char** argv) {
 
 	google::InitGoogleLogging(argv[0]);  
 google::LogToStderr();//只输出到标准错误输出

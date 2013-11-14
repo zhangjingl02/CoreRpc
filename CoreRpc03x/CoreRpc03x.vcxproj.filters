@@ -99,6 +99,12 @@
     <ClCompile Include="src\common\util\file_system.cpp">
       <Filter>common\util</Filter>
     </ClCompile>
+    <ClCompile Include="src\common\startup\service.cpp">
+      <Filter>startup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\startup\commander.cpp">
+      <Filter>startup</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -223,6 +229,12 @@
     </ClInclude>
     <ClInclude Include="src\common\util\file_system.h">
       <Filter>common\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\startup\service.h">
+      <Filter>startup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\startup\commander.h">
+      <Filter>startup</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
