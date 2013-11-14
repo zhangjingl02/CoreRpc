@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="88">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="src" displayName="src" projectFiles="true">
+      <logicalFolder name="common" displayName="common" projectFiles="true">
+        <logicalFolder name="buffer" displayName="buffer" projectFiles="true">
+          <itemPath>src/common/buffer/buffer_def.h</itemPath>
+          <itemPath>src/common/buffer/buffer_def.h.bak</itemPath>
+          <itemPath>src/common/buffer/byte_buffer.cpp</itemPath>
+          <itemPath>src/common/buffer/byte_buffer.cpp.bak</itemPath>
+          <itemPath>src/common/buffer/byte_buffer.h</itemPath>
+          <itemPath>src/common/buffer/byte_buffer.h.bak</itemPath>
+          <itemPath>src/common/buffer/shared_buffer.cpp</itemPath>
+          <itemPath>src/common/buffer/shared_buffer.cpp.bak</itemPath>
+          <itemPath>src/common/buffer/shared_buffer.h</itemPath>
+          <itemPath>src/common/buffer/shared_buffer.h.bak</itemPath>
+          <itemPath>src/common/buffer/shared_buffer_list.cpp</itemPath>
+          <itemPath>src/common/buffer/shared_buffer_list.cpp.bak</itemPath>
+          <itemPath>src/common/buffer/shared_buffer_list.h</itemPath>
+          <itemPath>src/common/buffer/shared_buffer_list.h.bak</itemPath>
+        </logicalFolder>
+        <logicalFolder name="net" displayName="net" projectFiles="true">
+          <itemPath>src/common/net/Test.h</itemPath>
+          <itemPath>src/common/net/Test.h.bak</itemPath>
+          <itemPath>src/common/net/cache_manager.h</itemPath>
+          <itemPath>src/common/net/cache_manager.h.bak</itemPath>
+          <itemPath>src/common/net/frame_decoder.h</itemPath>
+          <itemPath>src/common/net/frame_decoder.h.bak</itemPath>
+          <itemPath>src/common/net/io_service_pool.cpp</itemPath>
+          <itemPath>src/common/net/io_service_pool.cpp.bak</itemPath>
+          <itemPath>src/common/net/io_service_pool.h</itemPath>
+          <itemPath>src/common/net/io_service_pool.h.bak</itemPath>
+          <itemPath>src/common/net/message_decoder.h</itemPath>
+          <itemPath>src/common/net/message_decoder.h.bak</itemPath>
+          <itemPath>src/common/net/message_dispatcher.cpp</itemPath>
+          <itemPath>src/common/net/message_dispatcher.cpp.bak</itemPath>
+          <itemPath>src/common/net/message_dispatcher.h</itemPath>
+          <itemPath>src/common/net/message_dispatcher.h.bak</itemPath>
+          <itemPath>src/common/net/message_encoder.h</itemPath>
+          <itemPath>src/common/net/message_encoder.h.bak</itemPath>
+          <itemPath>src/common/net/message_filter.h</itemPath>
+          <itemPath>src/common/net/message_filter.h.bak</itemPath>
+          <itemPath>src/common/net/message_handler.h</itemPath>
+          <itemPath>src/common/net/message_handler.h.bak</itemPath>
+          <itemPath>src/common/net/net_buffer.h</itemPath>
+          <itemPath>src/common/net/net_buffer.h.bak</itemPath>
+          <itemPath>src/common/net/net_def.h</itemPath>
+          <itemPath>src/common/net/net_def.h.bak</itemPath>
+          <itemPath>src/common/net/net_package.h</itemPath>
+          <itemPath>src/common/net/net_package.h.bak</itemPath>
+          <itemPath>src/common/net/service_skeleton.cpp</itemPath>
+          <itemPath>src/common/net/service_skeleton.cpp.bak</itemPath>
+          <itemPath>src/common/net/service_skeleton.h</itemPath>
+          <itemPath>src/common/net/service_skeleton.h.bak</itemPath>
+          <itemPath>src/common/net/tcp_client.cpp</itemPath>
+          <itemPath>src/common/net/tcp_client.cpp.bak</itemPath>
+          <itemPath>src/common/net/tcp_client.h</itemPath>
+          <itemPath>src/common/net/tcp_client.h.bak</itemPath>
+          <itemPath>src/common/net/tcp_connection.cpp</itemPath>
+          <itemPath>src/common/net/tcp_connection.cpp.bak</itemPath>
+          <itemPath>src/common/net/tcp_connection.h</itemPath>
+          <itemPath>src/common/net/tcp_connection.h.bak</itemPath>
+          <itemPath>src/common/net/tcp_server.cpp</itemPath>
+          <itemPath>src/common/net/tcp_server.cpp.bak</itemPath>
+          <itemPath>src/common/net/tcp_server.h</itemPath>
+          <itemPath>src/common/net/tcp_server.h.bak</itemPath>
+        </logicalFolder>
+        <logicalFolder name="rpc" displayName="rpc" projectFiles="true">
+          <itemPath>src/common/rpc/protobuf_decoder.cpp</itemPath>
+          <itemPath>src/common/rpc/protobuf_decoder.cpp.bak</itemPath>
+          <itemPath>src/common/rpc/protobuf_decoder.h</itemPath>
+          <itemPath>src/common/rpc/protobuf_decoder.h.bak</itemPath>
+          <itemPath>src/common/rpc/protobuf_encoder.h</itemPath>
+          <itemPath>src/common/rpc/protobuf_encoder.h.bak</itemPath>
+          <itemPath>src/common/rpc/protobuf_frame_decoder.h</itemPath>
+          <itemPath>src/common/rpc/protobuf_frame_decoder.h.bak</itemPath>
+          <itemPath>src/common/rpc/rpc.pb.cc</itemPath>
+          <itemPath>src/common/rpc/rpc.pb.cc.bak</itemPath>
+          <itemPath>src/common/rpc/rpc.pb.h</itemPath>
+          <itemPath>src/common/rpc/rpc.pb.h.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_call_back.h</itemPath>
+          <itemPath>src/common/rpc/rpc_call_back.h.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_channel.cpp</itemPath>
+          <itemPath>src/common/rpc/rpc_channel.cpp.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_channel.h</itemPath>
+          <itemPath>src/common/rpc/rpc_channel.h.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_common.h</itemPath>
+          <itemPath>src/common/rpc/rpc_common.h.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_factory.cpp</itemPath>
+          <itemPath>src/common/rpc/rpc_factory.cpp.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_factory.h</itemPath>
+          <itemPath>src/common/rpc/rpc_factory.h.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_service_skeleton.cpp</itemPath>
+          <itemPath>src/common/rpc/rpc_service_skeleton.cpp.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_service_skeleton.h</itemPath>
+          <itemPath>src/common/rpc/rpc_service_skeleton.h.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_tcp_client.h</itemPath>
+          <itemPath>src/common/rpc/rpc_tcp_client.h.bak</itemPath>
+          <itemPath>src/common/rpc/rpc_tcp_server.h</itemPath>
+          <itemPath>src/common/rpc/rpc_tcp_server.h.bak</itemPath>
+        </logicalFolder>
+        <logicalFolder name="startup" displayName="startup" projectFiles="true">
+          <itemPath>src/common/startup/XnuxDaemon.cpp</itemPath>
+          <itemPath>src/common/startup/XnuxDaemon.h</itemPath>
+          <itemPath>src/common/startup/commander.cpp</itemPath>
+          <itemPath>src/common/startup/commander.h</itemPath>
+          <itemPath>src/common/startup/main.cpp</itemPath>
+          <itemPath>src/common/startup/net_service.cpp</itemPath>
+          <itemPath>src/common/startup/nt_service.h</itemPath>
+          <itemPath>src/common/startup/service.cpp</itemPath>
+          <itemPath>src/common/startup/service.h</itemPath>
+          <itemPath>src/common/startup/stdafx.cpp</itemPath>
+          <itemPath>src/common/startup/stdafx.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="util" displayName="util" projectFiles="true">
+          <itemPath>src/common/util/blocking_queue.h</itemPath>
+          <itemPath>src/common/util/blocking_queue.h.bak</itemPath>
+          <itemPath>src/common/util/concurrent_queue.h</itemPath>
+          <itemPath>src/common/util/concurrent_queue.h.bak</itemPath>
+          <itemPath>src/common/util/file_system.cpp</itemPath>
+          <itemPath>src/common/util/file_system.h</itemPath>
+          <itemPath>src/common/util/sequence_generator.h</itemPath>
+          <itemPath>src/common/util/sequence_generator.h.bak</itemPath>
+        </logicalFolder>
+        <itemPath>src/common/common.h</itemPath>
+        <itemPath>src/common/common.h.bak</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="测试文件"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="重要文件"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <linkerTool>
+          <output>work/coreRpcwork</output>
+          <linkerLibItems>
+            <linkerLibLibItem>boost_system</linkerLibLibItem>
+            <linkerLibLibItem>boost_thread</linkerLibLibItem>
+            <linkerLibLibItem>glog</linkerLibLibItem>
+            <linkerLibLibItem>protobuf</linkerLibLibItem>
+            <linkerLibLibItem>boost_locale</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/buffer/buffer_def.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/buffer/buffer_def.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/buffer/byte_buffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/buffer/byte_buffer.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/byte_buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/buffer/byte_buffer.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer_list.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer_list.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer_list.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer_list.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/common.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/Test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/Test.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/cache_manager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/cache_manager.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/frame_decoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/frame_decoder.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/io_service_pool.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/net/io_service_pool.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/io_service_pool.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/io_service_pool.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_decoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/message_decoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_dispatcher.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_dispatcher.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_dispatcher.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_dispatcher.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_encoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/message_encoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_filter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/message_filter.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_handler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/message_handler.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/net_buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_buffer.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_def.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_def.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_package.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_package.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/service_skeleton.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/service_skeleton.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/service_skeleton.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/service_skeleton.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_client.cpp.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_client.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_client.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_connection.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_connection.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_server.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_server.cpp.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_server.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_decoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_decoder.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_decoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_decoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_encoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_encoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_frame_decoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_frame_decoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc.pb.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc.pb.cc.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc.pb.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc.pb.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_call_back.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_call_back.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_channel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_channel.cpp.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_channel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_channel.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_common.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_factory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_factory.cpp.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_factory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_factory.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_service_skeleton.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_service_skeleton.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_service_skeleton.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_service_skeleton.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_tcp_client.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_tcp_client.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_tcp_server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_tcp_server.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/startup/XnuxDaemon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/XnuxDaemon.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/startup/commander.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/commander.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/startup/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/net_service.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/nt_service.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/startup/service.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/service.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/startup/stdafx.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/stdafx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/util/blocking_queue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/util/blocking_queue.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/util/concurrent_queue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/util/concurrent_queue.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/util/file_system.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/util/file_system.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/util/sequence_generator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/util/sequence_generator.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/buffer/buffer_def.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/buffer/buffer_def.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/buffer/byte_buffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/buffer/byte_buffer.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/byte_buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/buffer/byte_buffer.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer_list.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer_list.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer_list.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/buffer/shared_buffer_list.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/common.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/Test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/Test.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/cache_manager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/cache_manager.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/frame_decoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/frame_decoder.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/io_service_pool.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/net/io_service_pool.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/io_service_pool.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/io_service_pool.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_decoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/message_decoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_dispatcher.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_dispatcher.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_dispatcher.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_dispatcher.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_encoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/message_encoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_filter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/message_filter.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/message_handler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/message_handler.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/net_buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_buffer.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_def.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_def.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_package.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/net_package.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/service_skeleton.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/service_skeleton.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/service_skeleton.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/service_skeleton.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_client.cpp.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_client.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_client.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_connection.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_connection.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_server.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_server.cpp.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/net/tcp_server.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_decoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_decoder.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_decoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_decoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_encoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_encoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_frame_decoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/protobuf_frame_decoder.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc.pb.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc.pb.cc.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc.pb.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc.pb.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_call_back.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_call_back.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_channel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_channel.cpp.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_channel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_channel.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_common.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_factory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_factory.cpp.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_factory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_factory.h.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_service_skeleton.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_service_skeleton.cpp.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_service_skeleton.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_service_skeleton.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_tcp_client.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_tcp_client.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_tcp_server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/rpc/rpc_tcp_server.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/startup/XnuxDaemon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/XnuxDaemon.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/startup/commander.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/commander.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/startup/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/net_service.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/nt_service.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/startup/service.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/service.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/startup/stdafx.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/startup/stdafx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/util/blocking_queue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/util/blocking_queue.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/util/concurrent_queue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/util/concurrent_queue.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/util/file_system.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/common/util/file_system.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/common/util/sequence_generator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/common/util/sequence_generator.h.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

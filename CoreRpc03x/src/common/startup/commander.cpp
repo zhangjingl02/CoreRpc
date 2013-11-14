@@ -1,5 +1,6 @@
 #include "commander.h"
 #include <assert.h>
+#include <stdio.h>
 Commander::Commander()
 {
 	service_ = createService();

@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include "Service.h"
+#include "service.h"
 
 class Commander
 {
@@ -21,7 +21,7 @@ public:
 	const char*  displayName();
 
 private:
-	boost::shared_ptr<Service>	service_;	// Ä£¿é
+	boost::shared_ptr<Service>	service_;	// Ä£ï¿½ï¿½
 };
 
 #endif

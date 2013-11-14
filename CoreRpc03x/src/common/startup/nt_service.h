@@ -2,6 +2,8 @@
 #pragma once
 
 #include <string>
+#include <winreg.h>
+#include <windef.h>
 //#include "ntservmsg.h" // Event message ids
 
 #define SERVICE_CONTROL_USER 128

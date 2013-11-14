@@ -1,4 +1,6 @@
 #include "service.h"
+#include<stdio.h>
+#include <string.h>
 #include <boost/format.hpp>
 static const int NAME_LENGTH = 16;
 static const int VERSION_LENGTH = 16; 

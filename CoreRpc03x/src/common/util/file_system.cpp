@@ -1,5 +1,5 @@
 
-
+#include <stdio.h>
 #include <vector>
 
 #include <sys/types.h>
@@ -13,6 +13,7 @@
 	#include <fcntl.h>
 	#include <sys/stat.h>
 	#include <sys/types.h>
+        #include <stdlib.h>
 #else
 	#include <Windows.h>
 	#include <direct.h>

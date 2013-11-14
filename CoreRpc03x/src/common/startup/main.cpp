@@ -3,6 +3,8 @@
 #include <fstream>
 #include <set>
 #include <string>
+#include <string.h>
+#include <stdio.h>
 #include "service.h"
 #include "commander.h"
 #include "../util/file_system.h"
@@ -23,55 +25,6 @@ uid_t	uid	= 0;
 #include <WinBase.h>
 #endif
 using namespace std;
-#ifdef WIN32
-class ShineService : public NTService
-{
-public:
-	ShineService(Commander& commander)
-
-		: NTService("","",""),commander_(commander)
-	{
-
-	}
-	virtual bool OnInit()
-	{
-		return true;
-	}
-	virtual void Run()
-	{
-		NTService::Run();
-	}
-	virtual void OnStop()
-	{
-		commander_.stopService();
-	}
-private:
-	Commander& commander_;
-};
-
-int doService(int argc, char* argv[])
-{
-	std::string modpath = util::FileSystem::getModulePath();
-	SetCurrentDirectory(modpath.c_str());
-	Commander cmd;
-	ShineService ntservice(cmd);
-	if (!ntservice.ParseStandardArgs(argc, argv)) {
-		ntservice.StartService();
-	}
-	return ntservice.m_status.dwWin32ExitCode;
-}
-#else
-int doService(int argc, char* argv[]){
-	createChild(argc,argv);
-}
-#endif
-
-
-
-boost::shared_ptr<Service> createService(){
-	 boost::shared_ptr<Service> te;
-	 return te;
-};
 
 
 
@@ -196,10 +149,66 @@ void createChild(int argc, char* argv[])
 	rl.rlim_cur     = rl.rlim_max;
 	if ( setrlimit( RLIMIT_CORE, &rl ) != 0 ){
 		printf("ERRO: fail to setrlimit, %s\n", 
-			strerror(errno) );
+                        "" );
+			//strerror(errno) );
 	};
 #endif
 }
+
+#ifdef WIN32
+class ShineService : public NTService
+{
+public:
+	ShineService(Commander& commander)
+
+		: NTService("","",""),commander_(commander)
+	{
+
+	}
+	virtual bool OnInit()
+	{
+		return true;
+	}
+	virtual void Run()
+	{
+		NTService::Run();
+	}
+	virtual void OnStop()
+	{
+		commander_.stopService();
+	}
+private:
+	Commander& commander_;
+};
+
+int doService(int argc, char* argv[])
+{
+	std::string modpath = util::FileSystem::getModulePath();
+	SetCurrentDirectory(modpath.c_str());
+	Commander cmd;
+	ShineService ntservice(cmd);
+	if (!ntservice.ParseStandardArgs(argc, argv)) {
+		ntservice.StartService();
+	}
+	return ntservice.m_status.dwWin32ExitCode;
+}
+#else
+int doService(int argc, char* argv[]){
+	createChild(argc,argv);
+        Commander cmd;
+        cmd.startService(2007);
+        sigWait();
+}
+#endif
+
+
+
+boost::shared_ptr<Service> createService(){
+	 boost::shared_ptr<Service> te;
+	 return te;
+};
+
+
 
 
 int main(int argc, char** argv) {

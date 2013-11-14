@@ -1,7 +1,6 @@
+#ifdef WIN32
 #include "stdafx.h"
 #include "nt_service.h"
-#include <winreg.h>
-#include <windef.h>
 #include <iostream>
 #include <assert.h>
 #include <fstream>
@@ -604,3 +603,4 @@ void NTService::DebugMsg(const char* pszFormat, ...)
     OutputDebugString(buf);
 #endif
 }
+#endif

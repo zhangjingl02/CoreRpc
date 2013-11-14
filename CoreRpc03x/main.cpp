@@ -40,15 +40,15 @@ using namespace std;
  */
 int aamain33(int argc, char** argv) {
 
-	google::InitGoogleLogging(argv[0]);  
-google::LogToStderr();//只输出到标准错误输出
-LOG(INFO) <<"my first info";   int valueint=10;  
-LOG_IF(ERROR, valueint=10)<<" valueint=10";
+	//google::InitGoogleLogging(argv[0]);  
+//google::LogToStderr();//只输出到标准错误输出
+//LOG(INFO) <<"my first info";   int valueint=10;  
+//LOG_IF(ERROR, valueint=10)<<" valueint=10";
 
-rpc::rpc_fatory factory;
-factory.start(9997);
-boost::shared_ptr<rpc::Test> test(new rpc::Test());
-factory.regedist_service(test);
+//rpc::rpc_fatory factory;
+//factory.start(9997);
+//boost::shared_ptr<rpc::Test> test(new rpc::Test());
+//factory.regedist_service(test);
 
 
 

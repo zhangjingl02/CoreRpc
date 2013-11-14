@@ -5,16 +5,19 @@
 #ifndef WIN32
 
 #include "XnuxDaemon.h"
-
+ #include<stdio.h>
+#include <stdlib.h>
 #include <signal.h>
 #include <grp.h>
 #include <errno.h>
 #include <unistd.h>
-
+#include <sys/stat.h>
+#include <sys/ipc.h>
+#include <dirent.h>
 #define MAX_PATH 266
 
 #include <iostream>
-
+#include <string.h>
 int createMessageQueue(key_t msgKey)
 {
 	int flag = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP;
