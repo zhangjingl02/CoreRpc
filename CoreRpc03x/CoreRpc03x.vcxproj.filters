@@ -105,6 +105,9 @@
     <ClCompile Include="src\common\startup\commander.cpp">
       <Filter>startup</Filter>
     </ClCompile>
+    <ClCompile Include="src\test\TestService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\common\common.h">
@@ -235,6 +238,9 @@
     </ClInclude>
     <ClInclude Include="src\common\startup\commander.h">
       <Filter>startup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\TestService.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

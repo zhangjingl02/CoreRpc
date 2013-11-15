@@ -183,6 +183,7 @@ private:
 
 int doService(int argc, char* argv[])
 {
+        createChild(argc,argv);
 	std::string modpath = util::FileSystem::getModulePath();
 	SetCurrentDirectory(modpath.c_str());
 	Commander cmd;
@@ -203,10 +204,6 @@ int doService(int argc, char* argv[]){
 
 
 
-boost::shared_ptr<Service> createService(){
-	 boost::shared_ptr<Service> te;
-	 return te;
-};
 
 
 

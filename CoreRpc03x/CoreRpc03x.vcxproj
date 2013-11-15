@@ -94,6 +94,7 @@
     <ClCompile Include="src\common\startup\service.cpp" />
     <ClCompile Include="src\common\startup\XnuxDaemon.cpp" />
     <ClCompile Include="src\common\util\file_system.cpp" />
+    <ClCompile Include="src\test\TestService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ismp.pb.h" />
@@ -139,6 +140,7 @@
     <ClInclude Include="src\common\util\concurrent_queue.h" />
     <ClInclude Include="src\common\util\file_system.h" />
     <ClInclude Include="src\common\util\sequence_generator.h" />
+    <ClInclude Include="src\test\TestService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
